@@ -12,6 +12,8 @@ import json
 import datetime
 from random import randint, sample
 import requests
+from bs4 import BeautifulSoup
+import ntpath
 
 
 MAX_JOBS = 40
@@ -20,8 +22,10 @@ OUT_FILE = "all_jobs" #Old: '/Users/rarviv/Downloads/all_jobs.json'
 OWNER = "openshift"
 REPO = "origin"
 GITHUB_API_BASE_URL  = r'https://api.github.com'
-GITHUB_API_PR_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/pulls/{pull_number}'
+GITHUB_API_PR_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/pulls/{pull_number}' #From: https://docs.github.com/en/rest/reference/pulls#get-a-pull-request
 GITHUB_API_COMMIT_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/commits/{commit_hash}'
+
+TST_FETCHING_BASE_URL = r"https://prow.ci.openshift.org/"
 
 
 def change_priorities(file):
@@ -85,6 +89,28 @@ def get_data():
         i = i+jobs_len+1
         for item in jobs:
             all_data[item['ID']] = item
+
+            #Test fetching
+            spyglass_res = requests.get(f'{TST_FETCHING_BASE_URL}{item["SpyglassLink"]}')
+            close_i = spyglass_res.text.index(r'>Artifacts</a>')
+            open_i = spyglass_res.text[:close_i].rfind('href=')
+            artifacts_webpage = requests.get(spyglass_res.text[open_i + len("href=") + 1:close_i-1] + r'artifacts/e2e-gcp/openshift-e2e-test/artifacts/junit/')
+
+            # From https://www.geeksforgeeks.org/extract-all-the-urls-from-the-webpage-using-python/
+            # url = 'https://www.geeksforgeeks.org/'
+            # reqs = requests.get(tests_res_url)
+            soup = BeautifulSoup(artifacts_webpage.text, 'html.parser')
+
+            urls = []
+            for link in soup.find_all('a'):
+                h_ref_text = link.get('href')
+                filename = ntpath.basename(h_ref_text)
+                if filename.startswith("e2e-intervals_") and filename.endswith(".json"): #TODO: better - check using regex if it's of the pattern: e2e-intervals_XXXX_XXXX.json (every X is a digit)
+                    print(filename)
+                    #TODO - Get the file
+
+
+            # Code change fetching
             for pr_details in item['Refs']['pulls']:
                 cur_code_change = dict()
                 cur_pr_suffix = GITHUB_API_PR_SUFFIX_PATTERN.format(owner=OWNER, repo=REPO,
