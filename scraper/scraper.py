@@ -1,6 +1,7 @@
 import json
 import ntpath
 import time
+import datetime
 
 import requests
 from bs4 import BeautifulSoup
@@ -137,9 +138,13 @@ def get_data(should_include_commits = False):
                 cur_pr = requests.get(f'{GITHUB_API_BASE_URL}{cur_pr_suffix}').json()
                 if "message" in cur_pr and 'API rate limit exceeded' in cur_pr["message"]:
                     print(cur_pr["message"])
+                    e = datetime.datetime.now()
+                    print(f'Current time: {e.strftime("%Y-%m-%d %H:%M:%S")}')
                     print("Going to sleep for an hour")
                     time.sleep(60*60)
+                    print(f'Current time: {e.strftime("%Y-%m-%d %H:%M:%S")}')
                     print("Woke up! Continuing where I left off")
+                    cur_pr = requests.get(f'{GITHUB_API_BASE_URL}{cur_pr_suffix}').json()
                 cur_code_change = add_pr_details(cur_code_change, cur_pr)
                 if should_include_commits:
                     cur_code_change["commits"] = get_cur_change_commits_details(cur_pr['commits_url'])
