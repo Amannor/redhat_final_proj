@@ -74,7 +74,31 @@ def add_pr_details(cur_code_change, cur_pr):
     return cur_code_change
 
 
-def get_data():
+def get_cur_change_commits_details(commits_url):
+    cur_pr_commits_details = requests.get(commits_url).json()
+    cur_code_change_commits = list()
+    for commit_details in cur_pr_commits_details:
+        cur_commit_suffix = GITHUB_API_COMMIT_SUFFIX_PATTERN.format(owner=OWNER, repo=REPO,
+                                                                    commit_hash=commit_details["sha"])
+        cur_commit = requests.get(f'{GITHUB_API_BASE_URL}{cur_commit_suffix}').json()
+        commit_obj = dict()
+        commit_obj["author_id"] = cur_commit["author"]["id"]
+        commit_obj["author_type"] = cur_commit["author"]["type"]
+        commit_obj["is_author_admin"] = cur_commit["author"]["site_admin"]
+        commit_obj["commit_files"] = list()
+        for commit_file in cur_commit["files"]:
+            file_obj = dict()
+            file_obj["filename"] = commit_file["filename"]
+            file_obj["status"] = commit_file["status"]
+            file_obj["additions"] = commit_file["additions"]
+            file_obj["deletions"] = commit_file["deletions"]
+            file_obj["changes"] = commit_file["changes"]
+            commit_obj["commit_files"].append(file_obj)
+        cur_code_change_commits.append(commit_obj)
+    return cur_code_change_commits
+
+
+def get_data(should_include_commits = False):
     all_data = dict()
     changeset_to_failed_tests = list()
     r = requests.get(url=URL)
@@ -117,27 +141,27 @@ def get_data():
                                                                     pull_number=pr_details['number'])
                 cur_pr = requests.get(f'{GITHUB_API_BASE_URL}{cur_pr_suffix}').json()
                 cur_code_change = add_pr_details(cur_code_change, cur_pr)
-                cur_pr_commits_details = requests.get(cur_pr['commits_url']).json()
-                cur_code_change_commits = list()
-                for commit_details in cur_pr_commits_details:
-                    cur_commit_suffix = GITHUB_API_COMMIT_SUFFIX_PATTERN.format(owner=OWNER, repo=REPO,
-                                                                                commit_hash=commit_details["sha"])
-                    cur_commit = requests.get(f'{GITHUB_API_BASE_URL}{cur_commit_suffix}').json()
-                    commit_obj = dict()
-                    commit_obj["author_id"] = cur_commit["author"]["id"]
-                    commit_obj["author_type"] = cur_commit["author"]["type"]
-                    commit_obj["is_author_admin"] = cur_commit["author"]["site_admin"]
-                    commit_obj["commit_files"] = list()
-                    for commit_file in cur_commit["files"]:
-                        file_obj = dict()
-                        file_obj["filename"] = commit_file["filename"]
-                        file_obj["status"] = commit_file["status"]
-                        file_obj["additions"] = commit_file["additions"]
-                        file_obj["deletions"] = commit_file["deletions"]
-                        file_obj["changes"] = commit_file["changes"]
-                        commit_obj["commit_files"].append(file_obj)
-                    cur_code_change_commits.append(commit_obj)
-                cur_code_change["commits"] = cur_code_change_commits
+                if should_include_commits:
+                    cur_code_change["commits"] = get_cur_change_commits_details(cur_pr['commits_url'])
+                else:
+                    pr_files = list()
+                    cur_pr_files = requests.get(f'{GITHUB_API_BASE_URL}{cur_pr_suffix}/files').json()
+                    for cur_pr_file in cur_pr_files:
+                        pr_file_to_add  = dict()
+                        pr_file_to_add["filename"] = cur_pr_file["filename"]
+                        pr_file_to_add["status"] = cur_pr_file["status"]
+                        pr_file_to_add["additions"] = cur_pr_file["additions"]
+                        pr_file_to_add["deletions"] = cur_pr_file["deletions"]
+                        pr_file_to_add["changes"] = cur_pr_file["changes"]
+                        pr_files.append(pr_file_to_add)
+                    cur_code_change["files"] = pr_files
+
+
+
+
+
+
+
                 test_info = f'test_mock_{len(changeset_to_failed_tests)}'
                 changeset_to_failed_tests.append((cur_code_change, test_info))
 
