@@ -135,7 +135,7 @@ def get_data(should_include_commits = False):
                 cur_pr_suffix = GITHUB_API_PR_SUFFIX_PATTERN.format(owner=OWNER, repo=REPO,
                                                                     pull_number=pr_details['number'])
                 cur_pr = requests.get(f'{GITHUB_API_BASE_URL}{cur_pr_suffix}').json()
-                if "message" in cur_pr and cur_pr["message"].contains('API rate limit exceeded'):
+                if "message" in cur_pr and 'API rate limit exceeded' in cur_pr["message"]:
                     print(cur_pr["message"])
                     print("Going to sleep for an hour")
                     time.sleep(60*60)
