@@ -6,7 +6,7 @@ import datetime
 import requests
 from bs4 import BeautifulSoup
 
-MAX_JOBS = 40
+MAX_JOBS = 4000
 OUT_FILE = "all_jobs" #Old: '/Users/rarviv/Downloads/all_jobs.json'
 
 OWNER = "openshift"
@@ -90,18 +90,20 @@ def get_cur_change_commits_details(commits_url):
 
 def get_data(should_include_commits = False):
     all_data = dict()
-    changeset_to_failed_tests = list()
+
     r = requests.get(url=URL)
     size = len('var allBuilds = ')
     index = r.text.find('var allBuilds = ')
     i = 0
     while index > 0 and i<MAX_JOBS:
+        changeset_to_failed_tests = list()
         last_index = r.text.find(';\n</script>')
         temp = r.text[index + size:last_index]
         jobs = json.loads(temp)
         jobs_len = len(jobs)-1
         i = i+jobs_len+1
         for item in jobs:
+            print(f'Item id: {item["ID"]}')
             all_data[item['ID']] = item
 
             #Test fetching
@@ -142,6 +144,7 @@ def get_data(should_include_commits = False):
                     print(f'Current time: {e.strftime("%Y-%m-%d %H:%M:%S")}')
                     print("Going to sleep for an hour")
                     time.sleep(60*60)
+                    e = datetime.datetime.now()
                     print(f'Current time: {e.strftime("%Y-%m-%d %H:%M:%S")}')
                     print("Woke up! Continuing where I left off")
                     cur_pr = requests.get(f'{GITHUB_API_BASE_URL}{cur_pr_suffix}').json()
@@ -171,12 +174,17 @@ def get_data(should_include_commits = False):
         index = r.text.find('var allBuilds = ')
         print(i)
 
+        epoch_time = int(time.time())
+        out_fname = f'changeset_to_failed_tests_{epoch_time}.json'
+        print(f'Writing to file {out_fname} (num of tuples: {len(changeset_to_failed_tests)})')
+        with open(out_fname, 'w') as f_out:
+            json.dump(changeset_to_failed_tests, f_out, indent=4)
+
     epoch_time = int(time.time())
     with open(f'{OUT_FILE}_{epoch_time}.json', 'w') as f_out:
         json.dump(all_data, f_out, indent=4)
 
-    with open(f'changeset_to_failed_tests_{epoch_time}.json', 'w') as f_out:
-        json.dump(changeset_to_failed_tests, f_out, indent=4)
+
 
 
 
