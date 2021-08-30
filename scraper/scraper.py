@@ -65,12 +65,13 @@ def add_pr_details(cur_code_change, cur_pr):
 
 
 def get_cur_change_commits_details(commits_url):
-    cur_pr_commits_details = requests.get(commits_url).json()
+    cur_pr_commits_details = fetch_url_and_sleep_if_needed(commits_url)
     cur_code_change_commits = list()
     for commit_details in cur_pr_commits_details:
         cur_commit_suffix = GITHUB_API_COMMIT_SUFFIX_PATTERN.format(owner=OWNER, repo=REPO,
                                                                     commit_hash=commit_details["sha"])
-        cur_commit = requests.get(f'{GITHUB_API_BASE_URL}{cur_commit_suffix}').json()
+        cur_commit = fetch_url_and_sleep_if_needed(f'{GITHUB_API_BASE_URL}{cur_commit_suffix}')
+
         commit_obj = dict()
         commit_obj["author_id"] = cur_commit["author"]["id"]
         commit_obj["author_type"] = cur_commit["author"]["type"]
@@ -87,6 +88,22 @@ def get_cur_change_commits_details(commits_url):
         cur_code_change_commits.append(commit_obj)
     return cur_code_change_commits
 
+
+def fetch_url_and_sleep_if_needed(url):
+    url_data = requests.get(url).json()
+    if "message" in url_data and 'API rate limit exceeded' in url_data["message"]:
+        print(url_data["message"])
+        print(url_data["documentation_url"])
+        e = datetime.datetime.now()
+        print(f'Current time: {e.strftime("%Y-%m-%d %H:%M:%S")}')
+        print("Going to sleep for an hour")
+        time.sleep(60 * 60)
+        e = datetime.datetime.now()
+        print(f'Current time: {e.strftime("%Y-%m-%d %H:%M:%S")}')
+        print("Woke up! Continuing where I left off")
+        url_data = requests.get(url_data).json()
+
+    return url_data
 
 def get_data(should_include_commits = False):
     all_data = dict()
@@ -137,18 +154,9 @@ def get_data(should_include_commits = False):
                 cur_code_change = dict()
                 cur_pr_suffix = GITHUB_API_PR_SUFFIX_PATTERN.format(owner=OWNER, repo=REPO,
                                                                     pull_number=pr_details['number'])
-                cur_pr = requests.get(f'{GITHUB_API_BASE_URL}{cur_pr_suffix}').json()
-                if "message" in cur_pr and 'API rate limit exceeded' in cur_pr["message"]:
-                    print(cur_pr["message"])
-                    print(cur_pr["documentation_url"])
-                    e = datetime.datetime.now()
-                    print(f'Current time: {e.strftime("%Y-%m-%d %H:%M:%S")}')
-                    print("Going to sleep for an hour")
-                    time.sleep(60*60)
-                    e = datetime.datetime.now()
-                    print(f'Current time: {e.strftime("%Y-%m-%d %H:%M:%S")}')
-                    print("Woke up! Continuing where I left off")
-                    cur_pr = requests.get(f'{GITHUB_API_BASE_URL}{cur_pr_suffix}').json()
+
+                cur_pr = fetch_url_and_sleep_if_needed(f'{GITHUB_API_BASE_URL}{cur_pr_suffix}')
+
                 cur_code_change = add_pr_details(cur_code_change, cur_pr)
                 if should_include_commits:
                     cur_code_change["commits"] = get_cur_change_commits_details(cur_pr['commits_url'])
