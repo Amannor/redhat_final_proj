@@ -1,5 +1,6 @@
 import json
 import ntpath
+import os
 import time
 import datetime
 
@@ -8,6 +9,7 @@ from bs4 import BeautifulSoup
 
 MAX_JOBS = 4000
 OUT_FILE = "all_jobs" #Old: '/Users/rarviv/Downloads/all_jobs.json'
+DATA_FOLDER = "sample_data"
 
 OWNER = "openshift"
 REPO = "origin"
@@ -105,7 +107,7 @@ def fetch_url_and_sleep_if_needed(url):
 
     return url_data
 
-def get_data(should_include_commits = False):
+def get_data(should_include_commits = True):
     all_data = dict()
 
     r = requests.get(url=URL)
@@ -125,7 +127,11 @@ def get_data(should_include_commits = False):
 
             #Test fetching
             print("Fetching tests")
+            cur_tests_count = 0
             spyglass_res = requests.get(f'{TST_FETCHING_BASE_URL}{item["SpyglassLink"]}')
+            if spyglass_res.status_code != 200:
+                print(f'Got {spyglass_res.status_code} response code. Skipping item')
+                continue
             close_i = spyglass_res.text.index(r'>Artifacts</a>')
             open_i = spyglass_res.text[:close_i].rfind('href=')
             artifacts_url = spyglass_res.text[open_i + len("href=") + 1:close_i-1] + r'artifacts/e2e-gcp/openshift-e2e-test/artifacts/junit/'
@@ -139,9 +145,10 @@ def get_data(should_include_commits = False):
                 basename = ntpath.basename(h_ref_text)
                 if basename.startswith("e2e-intervals_") and basename.endswith(".json"): #TODO: better - check using regex if it's of the pattern: e2e-intervals_XXXX_XXXX.json (every X is a digit)
                     tests_results = requests.get(f'{artifacts_url}{basename}').json()
-                    for failed_test in tests_results["items"]:
-                        if failed_test["message"].endswith("\"Failed\""):
-                            failed_tests_info.append(failed_test["locator"])
+                    cur_tests_count = len(tests_results["items"])
+                    for tests_result in tests_results["items"]:
+                        if tests_result["message"].endswith("\"Failed\""):
+                            failed_tests_info.append(tests_result["locator"])
 
             if len(failed_tests_info) == 0:
                 print("No failed tests found - skipping this item")
@@ -152,6 +159,7 @@ def get_data(should_include_commits = False):
             print("Fetching code-change")
             for pr_details in item['Refs']['pulls']:
                 cur_code_change = dict()
+                cur_code_change["target_cardinality"] = cur_tests_count
                 cur_pr_suffix = GITHUB_API_PR_SUFFIX_PATTERN.format(owner=OWNER, repo=REPO,
                                                                     pull_number=pr_details['number'])
 
@@ -185,12 +193,14 @@ def get_data(should_include_commits = False):
 
         epoch_time = int(time.time())
         out_fname = f'changeset_to_failed_tests_{epoch_time}.json'
+        out_fname = os.path.join(DATA_FOLDER, out_fname)
         print(f'Writing to file {out_fname} (num of tuples: {len(changeset_to_failed_tests)})')
         with open(out_fname, 'w') as f_out:
             json.dump(changeset_to_failed_tests, f_out, indent=4)
 
     epoch_time = int(time.time())
-    with open(f'{OUT_FILE}_{epoch_time}.json', 'w') as f_out:
+    out_fname = os.path.join(DATA_FOLDER, f'{OUT_FILE}_{epoch_time}.json')
+    with open(out_fname, 'w') as f_out:
         json.dump(all_data, f_out, indent=4)
 
 
@@ -203,4 +213,6 @@ if __name__ == "__main__":
     # change_priorities('/Users/rarviv/Downloads/prowjobs/prowjobs_19_8_18_00.js')
     # change_priorities('/Users/rarviv/Downloads/prowjobs/prowjobs_18_8_12_00.js')
     # change_priorities('/Users/rarviv/Downloads/prowjobs/prowjobs_19_8_8_00.js')
+    if not os.path.exists(DATA_FOLDER):
+        os.makedirs(DATA_FOLDER)
     get_data()
