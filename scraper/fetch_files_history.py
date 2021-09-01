@@ -28,7 +28,7 @@ def fetch_url_and_sleep_if_needed(url):
         e = datetime.datetime.now()
         print(f'Current time: {e.strftime("%Y-%m-%d %H:%M:%S")}')
         print("Woke up! Continuing where I left off")
-        url_data = requests.get(url_data).json()
+        url_data = requests.get(url).json()
 
     return url_data
 
