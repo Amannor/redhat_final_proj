@@ -5,6 +5,9 @@ import time
 
 import requests
 
+from credentials import username
+from credentials import token
+
 OWNER = "openshift"
 REPO = "origin"
 GITHUB_API_BASE_URL  = r'https://api.github.com'
@@ -13,11 +16,11 @@ GITHUB_API_TREE_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/git/trees/{tree_sha}' #
 DATA_FOLDER = 'sample_data'
 ALL_PROJ_FILES_FILE = 'all_project_files_metdata.json'
 PROJ_ROOT_SHA = r'507b91e30606df94166e3a13a02b046222abbc8f' #Taken from https://api.github.com/repos/openshift/origin/branches/master (see https://stackoverflow.com/a/25128301)
-MAX_RECORDS_PER_FILE = 30
+MAX_RECORDS_PER_FILE = 300
 
 
-def fetch_url_and_sleep_if_needed(url):
-    url_data = requests.get(url).json()
+def fetch_url_and_sleep_if_needed(url, use_auth=True):
+    url_data = requests.get(url, auth=(username, token)).json() if use_auth else requests.get(url).json()
     if "message" in url_data and 'API rate limit exceeded' in url_data["message"]:
         print(url_data["message"])
         print(url_data["documentation_url"])
@@ -28,7 +31,7 @@ def fetch_url_and_sleep_if_needed(url):
         e = datetime.datetime.now()
         print(f'Current time: {e.strftime("%Y-%m-%d %H:%M:%S")}')
         print("Woke up! Continuing where I left off")
-        url_data = requests.get(url).json()
+        url_data = requests.get(url, auth=(username, token)).json() if use_auth else requests.get(url).json()
 
     return url_data
 
