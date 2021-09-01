@@ -103,7 +103,7 @@ def fetch_url_and_sleep_if_needed(url):
         e = datetime.datetime.now()
         print(f'Current time: {e.strftime("%Y-%m-%d %H:%M:%S")}')
         print("Woke up! Continuing where I left off")
-        url_data = requests.get(url_data).json()
+        url_data = requests.get(url).json()
 
     return url_data
 
@@ -170,7 +170,7 @@ def get_data(should_include_commits = True):
                     cur_code_change["commits"] = get_cur_change_commits_details(cur_pr['commits_url'])
                 else:
                     pr_files = list()
-                    cur_pr_files = requests.get(f'{GITHUB_API_BASE_URL}{cur_pr_suffix}/files').json()
+                    cur_pr_files = fetch_url_and_sleep_if_needed(f'{GITHUB_API_BASE_URL}{cur_pr_suffix}/files')
                     for cur_pr_file in cur_pr_files:
                         pr_file_to_add  = dict()
                         pr_file_to_add["filename"] = cur_pr_file["filename"]
