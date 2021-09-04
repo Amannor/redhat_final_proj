@@ -56,33 +56,87 @@ def flatten_jsons():
     changed_files = []
     failed_test_files = []
     # r=root, d=directories, f = files
-    file_changes = dict()
     for r, d, f in os.walk(path):
         for file in f:
             if file.startswith('files_changes_history'):
                 changed_files.append(os.path.join(r, file))
             elif file.startswith('changeset_to_failed_test'):
                 failed_test_files.append(os.path.join(r, file))
+    file_changes = commits_breakdown(changed_files)
+
+
+    with open('flatten_data.json', mode='w') as j_flat_file:
+        flat_json_list = list()
+        for f in failed_test_files:
+            with open(f, 'r') as f_reader:
+                reader = json.load(f_reader)
+                for item in reader:
+                    f_size = len(item['code_changes_data']['files'])
+                    as_size = len(item['code_changes_data']['assignees'])
+                    for fn in item['code_changes_data']['files']:
+                        ext = fn['filename'].rfind('.')
+                        t_size = len(item['failed_tests'])
+                        for t in item['failed_tests']:
+                            flat_json = dict()
+                            flat_json['file_name'] = fn['filename']
+                            flat_json['num_files_changed'] = f_size
+                            flat_json['file_extension'] = fn['filename'][ext + 1:len(fn['filename'])]
+                            flat_json['num_target_tests'] = t_size
+                            flat_json['number_changes_3d'] = file_changes[fn['filename']][0]
+                            flat_json['number_changes_14d'] = file_changes[fn['filename']][1]
+                            flat_json['number_changes_56d'] = file_changes[fn['filename']][2]
+                            flat_json['project_name'] = 'NA'
+                            flat_json['distinct_authors'] = as_size
+                            flat_json['failed_7d'] = 0
+                            flat_json['failed_14d'] = 0
+                            flat_json['failed_28d'] = 0
+                            flat_json['failed_56d'] = 0
+                            flat_json['minimal_distance'] = 0
+                            flat_json['test_name'] = t
+                            flat_json_list.append(flat_json)
+
+
+def commits_breakdown(changed_files):
+    file_changes = dict()
     for file in changed_files:
-        with open(f, 'r') as f_reader:
+        with open(file, 'r') as f_reader:
             reader = json.load(f_reader)
             ch_3 = 0
             ch_14 = 0
             ch_56 = 0
             for item in reader:
                 for ch in item["commits"]:
-                    if datetime.fromisoformat(ch['committed']) > datetime.now() - timedelta(days=3):
+                    if datetime.fromisoformat(ch['committed'].replace('Z', '')) > datetime.now() - timedelta(days=3):
                         ch_3 += 1
-                    elif datetime.fromisoformat(ch['committed']) > datetime.now() - timedelta(days=14):
+                    elif datetime.fromisoformat(ch['committed'].replace('Z', '')) > datetime.now() - timedelta(days=14):
                         ch_14 += 1
-                    elif datetime.fromisoformat(ch['committed']) > datetime.now() - timedelta(days=56):
+                    elif datetime.fromisoformat(ch['committed'].replace('Z', '')) > datetime.now() - timedelta(days=56):
                         ch_56 += 1
                 file_changes[item["path"]] = (ch_3, ch_14, ch_56)
-
-    x = 0
-    #with open('flatten_data.json', mode='w') as j_flat_file:
+    return file_changes
 
 
+def test_failure_breakdown(failed_test_files):
+    failure_breakdown = dict()
+    for f in failed_test_files:
+        with open(f, 'r') as f_reader:
+            reader = json.load(f_reader)
+            f_7 = 0
+            f_14 = 0
+            f_28 = 0
+            f_56 = 0
+            for item in reader:
+                for t in item['failed_tests']:
+                    if datetime.fromisoformat(ch['committed'].replace('Z', '')) > datetime.now() - timedelta(days=7):
+                        f_7 += 1
+                    elif datetime.fromisoformat(ch['committed'].replace('Z', '')) > datetime.now() - timedelta(days=14):
+                        f_14 += 1
+                    elif datetime.fromisoformat(ch['committed'].replace('Z', '')) > datetime.now() - timedelta(days=28):
+                        f_28 += 1
+                    elif datetime.fromisoformat(ch['committed'].replace('Z', '')) > datetime.now() - timedelta(days=56):
+                        f_56 += 1
+                failure_breakdown[item["path"]] = (f_7, f_14, f_28, f_56)
+        return failure_breakdown
 
 # # load data
 # dataset = loadtxt('pima-indians-diabetes.csv', delimiter=",")

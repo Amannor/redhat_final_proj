@@ -139,13 +139,16 @@ def get_data(should_include_commits = True):
 
             soup = BeautifulSoup(artifacts_webpage.text, 'html.parser')
             failed_tests_info = list()
-
+            ci_date = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
             for link in soup.find_all('a'):
                 h_ref_text = link.get('href')
                 basename = ntpath.basename(h_ref_text)
                 if basename.startswith("e2e-intervals_") and basename.endswith(".json"): #TODO: better - check using regex if it's of the pattern: e2e-intervals_XXXX_XXXX.json (every X is a digit)
                     tests_results = requests.get(f'{artifacts_url}{basename}').json()
                     cur_tests_count = len(tests_results["items"])
+                    base_date = basename[len('e2e-intervals_'):len(basename) - len('.json')]
+                    ci_date = datetime.datetime(int(base_date[0:4]), int(base_date[4:6]),
+                                                int(base_date[6:8]), 0, 0, 0).strftime("%Y-%m-%dT%H:%M:%S")
                     for tests_result in tests_results["items"]:
                         if tests_result["message"].endswith("\"Failed\""):
                             failed_tests_info.append(tests_result["locator"])
@@ -180,7 +183,7 @@ def get_data(should_include_commits = True):
                         pr_file_to_add["changes"] = cur_pr_file["changes"]
                         pr_files.append(pr_file_to_add)
                     cur_code_change["files"] = pr_files
-                cur_data = {"code_changes_data": cur_code_change, "failed_tests": failed_tests_info}
+                cur_data = {"code_changes_data": cur_code_change, "failed_tests": failed_tests_info, "date": ci_date}
                 changeset_to_failed_tests.append(cur_data)
 
 
