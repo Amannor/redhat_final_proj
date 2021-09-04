@@ -1,0 +1,52 @@
+{
+  "y_fields": [
+    {
+      "field": "test_name"
+    }
+  ],
+  "schema_fields": [
+    {
+      "file_name": "code_changes_data,files"
+    },
+    {
+      "num_files_changed": ""
+    },
+    {
+      "file_extension": ""
+    },
+    {
+      "num_target_tests": ""
+    },
+    {
+      "number_changes_3d": ""
+    },
+    {
+      "number_changes_14d": ""
+    },
+    {
+      "number_changes_56d": ""
+    },
+    {
+      "distance": ""
+    },
+    {
+      "failed_7d": ""
+    },
+    {
+      "failed_14d": ""
+    },
+    {
+      "failed_28d": ""
+    },
+    {
+      "failed_56d": ""
+    },
+    {
+      "minimal_distance": ""
+    },
+    {
+      "test_name": "failed_tests"
+    }
+  ]
+}
+
