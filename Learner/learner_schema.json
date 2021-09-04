@@ -6,47 +6,52 @@
   ],
   "schema_fields": [
     {
-      "file_name": "code_changes_data,files"
+      "file_name": "file_name"
     },
     {
-      "num_files_changed": ""
+      "num_files_changed": "num_files_changed"
     },
     {
-      "file_extension": ""
+      "file_extension": "file_extension"
     },
     {
-      "num_target_tests": ""
+      "num_target_tests": "num_target_tests"
     },
     {
-      "number_changes_3d": ""
+      "number_changes_3d": "number_changes_3d"
     },
     {
-      "number_changes_14d": ""
+      "number_changes_14d": "number_changes_14d"
     },
     {
-      "number_changes_56d": ""
+      "number_changes_56d": "number_changes_56d"
     },
     {
-      "distance": ""
+      "project_name": "project_name"
     },
     {
-      "failed_7d": ""
+      "distinct_authors": "distinct_authors"
     },
     {
-      "failed_14d": ""
+      "failed_7d": "failed_7d"
     },
     {
-      "failed_28d": ""
+      "failed_14d": "failed_14d"
     },
     {
-      "failed_56d": ""
+      "failed_28d": "failed_28d"
     },
     {
-      "minimal_distance": ""
+      "failed_56d": "failed_56d"
     },
     {
-      "test_name": "failed_tests"
+      "minimal_distance": "minimal_distance"
+    },
+    {
+      "common_tokens": "common_tokens"
+    },
+    {
+      "test_name": "test_name"
     }
   ]
 }
-
