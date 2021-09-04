@@ -7,6 +7,9 @@ import datetime
 import requests
 from bs4 import BeautifulSoup
 
+from credentials import username
+from credentials import token
+
 MAX_JOBS = 4000
 OUT_FILE = "all_jobs" #Old: '/Users/rarviv/Downloads/all_jobs.json'
 DATA_FOLDER = "sample_data"
@@ -91,8 +94,8 @@ def get_cur_change_commits_details(commits_url):
     return cur_code_change_commits
 
 
-def fetch_url_and_sleep_if_needed(url):
-    url_data = requests.get(url).json()
+def fetch_url_and_sleep_if_needed(url, use_auth=True):
+    url_data = requests.get(url, auth=(username, token)).json() if use_auth else requests.get(url).json()
     if "message" in url_data and 'API rate limit exceeded' in url_data["message"]:
         print(url_data["message"])
         print(url_data["documentation_url"])
@@ -103,7 +106,7 @@ def fetch_url_and_sleep_if_needed(url):
         e = datetime.datetime.now()
         print(f'Current time: {e.strftime("%Y-%m-%d %H:%M:%S")}')
         print("Woke up! Continuing where I left off")
-        url_data = requests.get(url).json()
+        url_data = requests.get(url, auth=(username, token)).json() if use_auth else requests.get(url).json()
 
     return url_data
 
