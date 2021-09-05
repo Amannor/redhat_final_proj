@@ -55,6 +55,7 @@ def get_data():
         files_changes_history = list()
         for file_data in all_files_data['tree']:
             path = file_data['path']
+
             print(path)
 
             suffix = GITHUB_API_FILE_COMMITS_SUFFIX_PATTERN.format(owner=OWNER, repo=REPO, PATH_TO_FILE=path)
@@ -79,6 +80,13 @@ def get_data():
                 with open(out_fname, 'w') as f_out:
                     json.dump(files_changes_history, f_out, indent=4)
                 files_changes_history = list()
+
+        epoch_time = int(time.time())
+        out_fname = f'files_changes_history_{epoch_time}.json'
+        out_fname = os.path.join(DATA_FOLDER, out_fname)
+        print(f'Writing to file {out_fname} (num of tuples: {len(files_changes_history)})')
+        with open(out_fname, 'w') as f_out:
+            json.dump(files_changes_history, f_out, indent=4)
 
 if __name__ == "__main__":
     # change_priorities('/Users/rarviv/Downloads/prowjobs/prowjobs_19_8_18_00.js')
