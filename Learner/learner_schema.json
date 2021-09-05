@@ -1,57 +1,24 @@
 {
-  "y_fields": [
-    {
+  "date": "2021-09-05T00:00:00",
+  "y_fields": {
       "field": "test_name"
-    }
-  ],
-  "schema_fields": [
-    {
-      "file_name": "file_name"
     },
-    {
-      "num_files_changed": "num_files_changed"
-    },
-    {
-      "file_extension": "file_extension"
-    },
-    {
-      "num_target_tests": "num_target_tests"
-    },
-    {
-      "number_changes_3d": "number_changes_3d"
-    },
-    {
-      "number_changes_14d": "number_changes_14d"
-    },
-    {
-      "number_changes_56d": "number_changes_56d"
-    },
-    {
-      "project_name": "project_name"
-    },
-    {
-      "distinct_authors": "distinct_authors"
-    },
-    {
-      "failed_7d": "failed_7d"
-    },
-    {
-      "failed_14d": "failed_14d"
-    },
-    {
-      "failed_28d": "failed_28d"
-    },
-    {
-      "failed_56d": "failed_56d"
-    },
-    {
-      "minimal_distance": "minimal_distance"
-    },
-    {
-      "common_tokens": "common_tokens"
-    },
-    {
-      "test_name": "test_name"
-    }
-  ]
+  "schema_fields": {
+    "file_name": "file_name",
+    "num_files_changed": "num_files_changed",
+    "file_extension": "file_extension",
+    "num_target_tests": "num_target_tests",
+    "number_changes_3d": "number_changes_3d",
+    "number_changes_14d": "number_changes_14d",
+    "number_changes_56d": "number_changes_56d",
+    "project_name": "project_name",
+    "distinct_authors": "distinct_authors",
+    "failed_7d": "failed_7d",
+    "failed_14d": "failed_14d",
+    "failed_28d": "failed_28d",
+    "failed_56d": "failed_56d",
+    "minimal_distance": "minimal_distance",
+    "common_tokens": "common_tokens",
+    "test_name": "test_name"
+  }
 }
