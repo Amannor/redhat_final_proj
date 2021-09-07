@@ -1,5 +1,6 @@
 # First XGBoost model
 from numpy import loadtxt
+from sklearn.preprocessing import LabelEncoder
 from xgboost import XGBClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
@@ -9,6 +10,8 @@ import json
 
 from datetime import datetime
 from datetime import timedelta
+import pandas as pd
+import numpy as np
 
 
 def create_csv():
@@ -71,13 +74,17 @@ def flatten_jsons():
                 f_size = len(item['code_changes_data']['commits'][0]['commit_files'])
                 as_size = len(item['code_changes_data']['assignees'])
                 for fn in item['code_changes_data']['commits'][0]['commit_files']:
+                    last_token = fn['filename'].rfind('/')
                     ext = fn['filename'].rfind('.')
                     t_size = len(item['failed_tests'])
                     for t in item['failed_tests']:
                         flat_json = dict()
                         flat_json['file_name'] = fn['filename']
                         flat_json['num_files_changed'] = f_size
-                        flat_json['file_extension'] = fn['filename'][ext + 1:len(fn['filename'])]
+                        if last_token < ext:
+                            flat_json['file_extension'] = fn['filename'][ext + 1:len(fn['filename'])]
+                        else:
+                            flat_json['file_extension'] = ''
                         flat_json['num_target_tests'] = t_size
                         if fn['filename'] in file_changes:
                             flat_json['number_changes_3d'] = file_changes[fn['filename']][0]
@@ -87,7 +94,7 @@ def flatten_jsons():
                             flat_json['number_changes_3d'] = 0
                             flat_json['number_changes_14d'] = 0
                             flat_json['number_changes_56d'] = 0
-                        flat_json['project_name'] = 'NA'
+                        flat_json['project_name'] = ''
                         flat_json['distinct_authors'] = as_size
                         flat_json['failed_7d'] = failure_breakdown[t][0]
                         flat_json['failed_14d'] = failure_breakdown[t][1]
@@ -148,34 +155,63 @@ def test_failure_breakdown(failed_test_files):
 
     return failure_breakdown
 
-# # load data
-# dataset = loadtxt('pima-indians-diabetes.csv', delimiter=",")
-#
-# # split data into X and y
-# X = dataset[:, 0:8]
-# Y = dataset[:, 8]
-#
-# # split data into train and test sets
-# seed = 7
-# test_size = 0.2
-# X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=test_size, random_state=seed)
-#
-# # fit model no training data
-# model = XGBClassifier()
-# model.fit(X_train, y_train)
-#
-# # make predictions for test data
-# y_pred = model.predict(X_test)
-# predictions = [round(value) for value in y_pred]
-#
-# # evaluate predictions
-# accuracy = accuracy_score(y_test, predictions)
-# print("Accuracy: %.2f%%" % (accuracy * 100.0))
+
+def learn():
+    # load data
+    # for now we are dropping 'project_name'
+    dataset = pd.read_csv(r'prs.csv').drop('project_name', axis=1)
+    arr = dataset.to_numpy()
+    # split data into X and y
+
+    X = arr[:, 0:14]
+    Y = arr[:, 14]
+
+    # split data into train and test sets
+    seed = 7
+    test_size = 0.2
+    temp = set(X[:, 2])
+    # converting string value like file extensions
+    res = {element: i for (i, element) in enumerate(temp)}
+    dataset[['file_extension']] = dataset[['file_extension']].replace(res)
+    arr = dataset.to_numpy()
+    # split data into X and y
+
+    X = arr[:, 0:14]
+    Y = arr[:, 14]
+
+    # encoding test results
+    label_encoder_y = LabelEncoder()
+    label_encoder_y = label_encoder_y.fit(Y)
+    label_encoded_y = label_encoder_y.transform(Y)
+
+    # encoding file names
+    label_encoder_x = LabelEncoder()
+    label_encoder_x = label_encoder_x.fit(X[:, 0])
+    label_encoded_x = label_encoder_x.transform(X[:, 0])
+
+    # created new features with encoded values
+    new_X = np.append(np.reshape(label_encoded_x, (len(label_encoded_x), 1)), X[:, 1:14],axis=1)
+    # split the data
+    X_train, X_test, y_train, y_test = train_test_split(new_X, label_encoded_y, test_size=test_size, random_state=seed)
+
+    # fit model no training data
+    model = XGBClassifier()
+    model.fit(X_train, y_train)
+
+    # make predictions for test data
+    y_pred = model.predict(X_test)
+    predictions = [round(value) for value in y_pred]
+
+    # evaluate predictions
+    accuracy = accuracy_score(y_test, predictions)
+    print("Accuracy: %.2f%%" % (accuracy * 100.0))
 
 
 if __name__ == "__main__":
-    # change_priorities('/Users/rarviv/Downloads/prowjobs/prowjobs_19_8_18_00.js')
-    # change_priorities('/Users/rarviv/Downloads/prowjobs/prowjobs_18_8_12_00.js')
-    # change_priorities('/Users/rarviv/Downloads/prowjobs/prowjobs_19_8_8_00.js')
+    # not necessary to run first 2 function each time ##########
     flatten_jsons()
     create_csv()
+    ############################################################
+    learn()
+
+
