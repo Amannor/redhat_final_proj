@@ -6,6 +6,8 @@ import datetime
 
 import requests
 from bs4 import BeautifulSoup
+import xmltodict
+import re
 
 from credentials import username
 from credentials import token
@@ -21,7 +23,6 @@ GITHUB_API_PR_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/pulls/{pull_number}' #Fro
 GITHUB_API_COMMIT_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/commits/{commit_hash}'
 
 TST_FETCHING_BASE_URL = r"https://prow.ci.openshift.org/"
-
 
 def change_priorities(file):
     with open(file, 'r') as f_jobs:
@@ -110,6 +111,77 @@ def fetch_url_and_sleep_if_needed(url, use_auth=True):
 
     return url_data
 
+
+def get_proj_test_path_by_locator(artifacts_url, failed_test_locator):
+    print("Fetching failed test paths")
+    tests_paths = set()
+    open_i = failed_test_locator.find("[")
+    close_i = failed_test_locator.rfind("]")
+    if open_i<0 or close_i<0:
+        print("No valid failed test string found - unable tp deduce path")
+        tests_paths.add("")
+        return tests_paths
+
+    failed_test_id = failed_test_locator[open_i:close_i+1]
+
+    artifacts_webpage = requests.get(artifacts_url)
+    soup = BeautifulSoup(artifacts_webpage.text, 'html.parser')
+    for link in soup.find_all('a'):
+        h_ref_text = link.get('href')
+        basename = ntpath.basename(h_ref_text)
+        if basename.startswith("junit_e2e_") and basename.endswith(".xml"):  # TODO: better - check using regex if it's of the pattern: junit_e2e_XXXXXXXX-XXXXXX.xml (every X is a digit)
+            response = requests.get(f'{artifacts_url}{basename}')
+            dict_data = xmltodict.parse(response.content) #From https://stackoverflow.com/a/67296064
+            if not ('testsuite' in dict_data and 'testcase' in dict_data['testsuite']):
+                continue
+            test_general_info_list = [t for t in dict_data['testsuite']['testcase'] if t["@name"] == failed_test_id]
+
+            #Option 1 - looking in failure texts
+            test_fail_info_list = [t for t in test_general_info_list if "failure" in t and '#text' in t["failure"]]
+            for test_fail_info in test_fail_info_list:
+                path_start_i = test_fail_info["failure"]['#text'].find(f'github.com/{OWNER}/{REPO}')
+                if path_start_i <0:
+                    continue
+                partial_s = test_fail_info["failure"]['#text'][path_start_i:]
+                colon_i = partial_s.find(":")
+                sqr_i = partial_s.find("]")
+                if colon_i < 0:
+                    path_end_i = sqr_i
+                elif sqr_i < 0:
+                    path_end_i = colon_i
+                else:
+                    path_end_i = min(sqr_i, colon_i)
+                path_end_i += path_start_i
+                test_path = test_fail_info["failure"]['#text'][path_start_i:path_end_i]
+                test_path = re.sub('\s+', ' ', test_path)  # Removing leading \ trailing whitespaces
+                tests_paths.add(test_path)
+
+            # Option 2 - looking in the system out prints
+            if len(tests_paths) == 0:
+                test_fail_info_list = [t for t in test_general_info_list if "system-out" in t]
+                for test_fail_info in test_fail_info_list:
+                    path_start_i = test_fail_info["system-out"].find(f'github.com/{OWNER}/{REPO}')
+                    if path_start_i < 0:
+                        continue
+                    partial_s = test_fail_info["system-out"][path_start_i:]
+                    colon_i = partial_s.find(":")
+                    sqr_i = partial_s.find("]")
+                    if colon_i < 0:
+                        path_end_i = sqr_i
+                    elif sqr_i < 0:
+                        path_end_i = colon_i
+                    else:
+                        path_end_i = min(sqr_i, colon_i)
+                    path_end_i += path_start_i
+                    test_path = test_fail_info["system-out"][path_start_i:path_end_i]
+                    test_path = re.sub('\s+', ' ', test_path) #Removing leading \ trailing whitespaces
+                    tests_paths.add(test_path)
+
+
+    if len(tests_paths) == 0:
+        print("No tests paths found")
+    return tests_paths
+
 def get_data(should_include_commits = True):
     all_data = dict()
 
@@ -154,7 +226,10 @@ def get_data(should_include_commits = True):
                                                 int(base_date[6:8]), 0, 0, 0).strftime("%Y-%m-%dT%H:%M:%S")
                     for tests_result in tests_results["items"]:
                         if tests_result["message"].endswith("\"Failed\""):
-                            failed_tests_info.append(tests_result["locator"])
+                            failed_test_locator = tests_result["locator"]
+                            failed_tests_paths = list(get_proj_test_path_by_locator(artifacts_url, failed_test_locator))
+                            failed_test_obj = {"locator": failed_test_locator, "paths": failed_tests_paths}
+                            failed_tests_info.append(failed_test_obj)
 
             if len(failed_tests_info) == 0:
                 print("No failed tests found - skipping this item")
@@ -186,7 +261,7 @@ def get_data(should_include_commits = True):
                         pr_file_to_add["changes"] = cur_pr_file["changes"]
                         pr_files.append(pr_file_to_add)
                     cur_code_change["files"] = pr_files
-                cur_data = {"code_changes_data": cur_code_change, "failed_tests": failed_tests_info, "date": ci_date}
+                cur_data = {"code_changes_data": cur_code_change, "failed_tests": failed_tests_info, "date": ci_date, "artifact_url": artifacts_url}
                 changeset_to_failed_tests.append(cur_data)
 
 
