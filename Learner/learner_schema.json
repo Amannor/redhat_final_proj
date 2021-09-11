@@ -19,6 +19,7 @@
     "failed_56d": "failed_56d",
     "minimal_distance": "minimal_distance",
     "common_tokens": "common_tokens",
+    "test_file" : "test_file",
     "test_name": "test_name"
   }
 }
