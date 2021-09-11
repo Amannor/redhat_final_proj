@@ -1,0 +1,3772 @@
+[
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/namespace/namespace.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/patchjson6902",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/patchjson6902/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/patchjson6902/patchjson6902.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/patchstrategicmerge",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/patchstrategicmerge/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/patchstrategicmerge/patchstrategicmerge.go",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/prefixsuffix",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/prefixsuffix/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/prefixsuffix/prefixsuffix.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/refvar",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/refvar/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/refvar/expand.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/refvar/refvar.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/replacement",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/replacement/doc.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/replacement/replacement.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/replicacount",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/replicacount/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/replicacount/replicacount.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/valueadd",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/filters/valueadd/valueadd.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/hasher",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/hasher/hasher.go",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/ifc",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/ifc/ifc.go",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/image",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/image/image.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/accumulator",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/accumulator/loadconfigfromcrds.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/accumulator/namereferencetransformer.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/accumulator/refvartransformer.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/accumulator/resaccumulator.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/generators",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/generators/configmap.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/generators/secret.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/generators/utils.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/git",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/git/cloner.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/git/gitrunner.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/git/repospec.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/kusterr",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/kusterr/yamlformaterror.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/builtinconfig",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/builtinconfig/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/builtinconfig/loaddefaultconfig.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/builtinconfig/namebackreferences.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/builtinconfig/transformerconfig.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/builtinhelpers",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/builtinhelpers/builtinplugintype_string.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/builtinhelpers/builtins.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/execplugin",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/execplugin/execplugin.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/fnplugin",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/fnplugin/fnplugin.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/loader",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/loader/loader.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/utils",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/plugins/utils/utils.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/target",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/target/errmissingkustomization.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/target/kusttarget.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/target/kusttarget_configplugin.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/target/multitransformer.go",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/utils",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/utils/errtimeout.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/utils/makeResIds.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/utils/pathsplitter.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/utils/stringslice.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/utils/timedcall.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/validate",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/internal/validate/fieldvalidator.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/konfig",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/konfig/builtinpluginconsts",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/konfig/builtinpluginconsts/commonannotations.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/konfig/builtinpluginconsts/commonlabels.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/konfig/builtinpluginconsts/defaultconfig.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/konfig/builtinpluginconsts/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/konfig/builtinpluginconsts/images.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/konfig/builtinpluginconsts/nameprefix.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/konfig/builtinpluginconsts/namereference.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/konfig/builtinpluginconsts/namespace.go",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/konfig/builtinpluginconsts/replicas.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/konfig/builtinpluginconsts/varreference.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/konfig/doc.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/konfig/general.go",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/konfig/plugins.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/krusty",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/krusty/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/krusty/kustomizer.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/krusty/options.go",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/kv",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/kv/kv.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/loader",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/loader/fileloader.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/loader/loader.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/loader/loadrestrictions.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/provenance",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/provenance/provenance.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/provider",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/provider/depprovider.go",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/resmap",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/resmap/factory.go",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/resmap/idslice.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/resmap/resmap.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/resmap/reswrangler.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/resource",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/resource/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/resource/factory.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/resource/idset.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/resource/resource.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/builtinpluginloadingoptions_string.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/configmapargs.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/erronlybuiltinpluginsallowed.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/errunabletofind.go",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/fieldspec.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/fix.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/genargs.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/generationbehavior.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/generatorargs.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/generatoroptions.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/helmchartargs.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/iampolicygenerator.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/image.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/inventory.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/kustomization.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/kvpairsources.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/labels.go",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/loadrestrictions.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/loadrestrictions_string.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/objectmeta.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/pair.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/patch.go",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/patchstrategicmerge.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/pluginconfig.go",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/pluginrestrictions.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/pluginrestrictions_string.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/replacement.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/replacementfield.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/replica.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/secretargs.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/selector.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/typemeta.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/api/types/var.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/LICENSE",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/LICENSE_TEMPLATE",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/comments",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/comments/comments.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/errors",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/errors/errors.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/ext",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/ext/ext.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fieldmeta",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fieldmeta/fieldmeta.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/filesys",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/filesys/confirmeddir.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/filesys/doc.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/filesys/file.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/filesys/fileinfo.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/filesys/fileondisk.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/filesys/filesystem.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/filesys/fsnode.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/filesys/fsondisk.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/filesys/util.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn/runtime",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn/runtime/container",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn/runtime/container/container.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn/runtime/exec",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn/runtime/exec/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn/runtime/exec/exec.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn/runtime/runtimeutil",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn/runtime/runtimeutil/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn/runtime/runtimeutil/functiontypes.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn/runtime/runtimeutil/runtimeutil.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn/runtime/runtimeutil/types.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn/runtime/starlark",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn/runtime/starlark/context.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn/runtime/starlark/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/fn/runtime/starlark/starlark.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/LICENSE",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/NOTICE",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/README.md",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/apic.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/decode.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/emitterc.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/encode.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/parserc.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/readerc.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/resolve.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/scannerc.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/sorter.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/writerc.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/yaml.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/yamlh.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml/yamlprivateh.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/qri-io",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/qri-io/starlib",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/qri-io/starlib/util",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/qri-io/starlib/util/LICENSE",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/qri-io/starlib/util/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/qri-io/starlib/util/util.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/byteio_reader.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/byteio_writer.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/filters",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/filters/filters.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/filters/fmtr.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/filters/grep.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/filters/local.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/filters/merge.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/filters/merge3.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/filters/modify.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/filters/stripcomments.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/ignorefilesmatcher.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/kio.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/kioutil",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/kioutil/kioutil.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/pkgio_reader.go",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/pkgio_writer.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/testing.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/kio/tree.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/openapi",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/openapi/Makefile",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/openapi/README.md",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/openapi/kubernetesapi",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/openapi/kubernetesapi/openapiinfo.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/openapi/kubernetesapi/v1204",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/openapi/kubernetesapi/v1204/swagger.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/openapi/kubernetesapi/v1204/swagger.json",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/openapi/kustomizationapi",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/openapi/kustomizationapi/swagger.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/openapi/kustomizationapi/swagger.json",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/openapi/openapi.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/resid",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/resid/gvk.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/resid/resid.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/runfn",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/runfn/runfn.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/sets",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/sets/string.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/sets/stringlist.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/alias.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/compatibility.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/const.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/datamap.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/doc.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/filters.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/fns.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/labels",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/labels/copied.deepcopy.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/labels/labels.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/labels/selector.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/selection",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/selection/operator.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/util",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/util/errors",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/util/errors/errors.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/util/sets",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/util/sets/empty.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/util/sets/string.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/util/validation",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/util/validation/field",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/util/validation/field/errors.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/util/validation/field/path.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/internal/k8sgen/pkg/util/validation/validation.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/kfns.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/mapnode.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/match.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/merge2",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/merge2/merge2.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/merge2/smpdirective.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/merge2/smpdirective_string.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/merge3",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/merge3/merge3.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/merge3/visitor.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/order.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/rnode.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/schema",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/schema/schema.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/types.go",
+        "commits": [
+            {
+                "authored": "2021-08-11T11:00:24Z",
+                "committed": "2021-08-16T08:14:36Z",
+                "commit_sha": "59599fad87743abf4c84f05952552e6d42728781"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/walk",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/walk/associative_sequence.go",
+        "commits": [
+            {
+                "authored": "2021-05-24T10:51:10Z",
+                "committed": "2021-05-24T11:29:40Z",
+                "commit_sha": "6e58f78aae1f481046a86cb2e5ef9395d7fab9d5"
+            },
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/walk/map.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    },
+    {
+        "path": "vendor/sigs.k8s.io/kustomize/kyaml/yaml/walk/nonassociative_sequence.go",
+        "commits": [
+            {
+                "authored": "2021-04-25T11:32:01Z",
+                "committed": "2021-05-08T04:55:41Z",
+                "commit_sha": "eb70a67422d66c839d17a5aa06d1a411a904ae24"
+            }
+        ]
+    }
+]
