@@ -62,6 +62,8 @@ def minimal_distance(changed_files, test_file):
         for i in range(min(len(splits_cf) - 1, len(splits_tf) - 1)):
             if splits_tf[i] == splits_cf[i]:
                 count -= 2
+            else:
+                break
         if count < min_val:
             min_val = count
     return min_val
@@ -75,7 +77,7 @@ def common_token(changed_file, test_file):
     count = 0
     for i in range(min(len(splits_cf)-1, len(splits_tf)-1)):
         if splits_tf[i] == splits_cf[i]:
-            count += len(splits_tf[i]) + 1
+            count += 1
     return count
 
 
