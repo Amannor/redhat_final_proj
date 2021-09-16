@@ -1,0 +1,66 @@
+{
+    "e2e-test/\"[sig-network] services basic functionality should allow connections to another pod on the same node via a service IP [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] PersistentVolumes [Feature:vsphere][Feature:LabelSelector] Selector-Label Volume Binding:vsphere [Feature:vsphere] should bind volume with claim for given label [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-network] Services should serve multiport endpoints from pods  [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link] [Testpattern: Inline-volume (default fs)] subPath should support existing directories when readOnly specified in the volumeSource [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: vsphere] [Testpattern: Dynamic PV (ntfs)][Feature:Windows] subPath should support non-existent path [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "ns/e2e-csi-mock-volumes-1374 pod/inline-volume-m26vq node/ci-op-9r3g39zf-2a78c-92d4n-worker-a-6l2lj": [
+        ""
+    ],
+    "e2e-test/\"[sig-apps] CronJob should not emit unexpected warnings [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] Networking Granular Checks: Services should function for endpoint-Service: http [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: nfs] [Testpattern: Dynamic PV (default fs)] provisioning should provision storage with pvc data source [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-network] Services should find a service from listing all namespaces [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: azure-disk] [Testpattern: Pre-provisioned PV (default fs)] subPath should support existing directory [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link-bindmounted] [Testpattern: Dynamic PV (default fs)] fsgroupchangepolicy (OnRootMismatch)[LinuxOnly], pod created with an initial fsgroup, new pod fsgroup applied to volume contents [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-network-edge][Conformance][Area:Networking][Feature:Router] The HAProxy router should pass the http2 tests [Suite:openshift/conformance/parallel/minimal]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: cinder] [Testpattern: Inline-volume (ext3)] volumes should store data [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link] [Testpattern: Dynamic PV (ntfs)][Feature:Windows] subPath should support non-existent path [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-bindmounted] [Testpattern: Dynamic PV (default fs)] volumes should allow exec of files on the volume [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] CSI mock volume storage capacity exhausted, late binding, no topology [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] PersistentVolumes-local  Pod with node different from PV's NodeAffinity should fail scheduling due to different NodeAffinity [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-auth][Feature:OAuthServer] [Headers] expected headers returned from the root URL [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link] [Testpattern: Inline-volume (default fs)] subPath should support existing single file [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-api-machinery] Garbage collector should not be blocked by dependency circle [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link-bindmounted] [Testpattern: Dynamic PV (default fs)] provisioning should provision storage with snapshot data source [Feature:VolumeSnapshotDataSource] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-auth][Feature:HTPasswdAuth] HTPasswd IDP should successfully configure htpasswd and be responsive [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: azure-disk] [Testpattern: Inline-volume (default fs)] subPath should support file as subpath [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-network] NetworkPolicyLegacy [LinuxOnly] NetworkPolicy between server and client should enforce updated policy [Feature:NetworkPolicy] [Skipped:Network/OpenShiftSDN/Multitenant] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] CSI Volumes [Driver: csi-hostpath] [Testpattern: Inline-volume (ext4)] volumes should store data [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir] [Testpattern: Dynamic PV (default fs)] capacity provides storage capacity information [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir] [Testpattern: Dynamic PV (block volmode)(allowExpansion)] volume-expand Verify if offline PVC expansion works [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-node] NodeLease when the NodeLease feature is enabled should have OwnerReferences set [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: block] [Testpattern: Dynamic PV (ntfs)][Feature:Windows] subPath should support existing directory [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ]
+}
