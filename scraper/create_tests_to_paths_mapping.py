@@ -10,6 +10,9 @@ from bs4 import BeautifulSoup
 import xmltodict
 import re
 
+# from inspect import currentframe, getframeinfo #TODO - need to replace prints with logger
+import xml.etree.ElementTree as ET
+
 from credentials import username
 from credentials import token
 
@@ -57,8 +60,22 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
                 h_ref_text = link.get('href')
                 basename = ntpath.basename(h_ref_text)
                 if basename.startswith("junit_e2e_") and basename.endswith(".xml"):  # TODO: better - check using regex if it's of the pattern: junit_e2e_XXXXXXXX-XXXXXX.xml (every X is a digit)
+                    print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} full url: {artifacts_url}{basename}')
                     response = requests.get(f'{artifacts_url}{basename}')
+                    print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} response size: {len(response.content)}')
                     dict_data = xmltodict.parse(response.content) #From https://stackoverflow.com/a/67296064
+
+                    ###TODO - there are seveal faster option to parse xml (see for example here: https://gist.github.com/hhatto/25896e29edbedfbe057e4b79b71ad1b2)
+                    # The fastest one (from xml.etree import ElementTree) leaves out a lot of much neede info, so it's irrelevant.
+                    # This is it:
+                    # tree = ET.fromstring(response.content)
+                    # root = tree.getroot()
+                    # print
+
+                    ##TODO: I can try the 2nd best one (from lxml.etree import XML)
+
+
+
                     if not ('testsuite' in dict_data and 'testcase' in dict_data['testsuite']):
                         continue
                     test_general_info_list = [t for t in dict_data['testsuite']['testcase'] if t["@name"] == test_id]
@@ -133,7 +150,11 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
     return tests_locators_to_paths
 
 
+
+
 def write_data():
+    set_containing_only_empty_str = set()
+    set_containing_only_empty_str.add("")
     all_data = dict()
 
     r = requests.get(url=URL)
@@ -141,8 +162,20 @@ def write_data():
     index = r.text.find('var allBuilds = ')
     i = 0
     overall_tests_to_paths = dict()
+    ###Tmp code to fill overall_tests_to_paths - Start
+    for filename in os.listdir(DATA_FOLDER):
+        if filename.startswith("tests_locators_to_paths_") and filename.endswith(".json"):
+            print(f'Loading existing data from: {os.path.join(DATA_FOLDER, filename)}')
+            with open(os.path.join(DATA_FOLDER, filename)) as f:
+                data = json.load(f)
+                for k in data.keys():
+                    if len(data[k]) >0 and set([v.replace('"', '') for v in data[k]]) != set_containing_only_empty_str:
+                        overall_tests_to_paths[k] = data[k]
+    ###Tmp code to fill overall_tests_to_paths - End
+
     while index > 0 and i < MAX_JOBS:
         cur_tests_to_paths = dict()
+
         # changeset_to_failed_tests = list()
         last_index = r.text.find(';\n</script>')
         if last_index < 0:
@@ -189,7 +222,9 @@ def write_data():
                         for tests_result in tests_results["items"]:
                             cur_locator = tests_result["locator"]
                             if (not cur_locator in overall_tests_to_paths) or len(overall_tests_to_paths[cur_locator])==0:
-                                test_locators.add(cur_locator)
+                                ##TODO: this line is tmp since this specfic test caused the code to hang for 5 hours (!) and the process had to be killed
+                                if not "[sig-network] Proxy version v1 should proxy through a service and a pod  [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]" in cur_locator:
+                                    test_locators.add(cur_locator)
                             # if tests_result["message"].endswith("\"Failed\""):
                             #     failed_test_locators.append(tests_result["locator"])
 
