@@ -25,6 +25,8 @@ GITHUB_API_COMMIT_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/commits/{commit_hash}
 
 TST_FETCHING_BASE_URL = r"https://prow.ci.openshift.org/"
 
+DEFAULT_REQUEST_TIMEOUT_SECONDS = 1800
+
 def change_priorities(file):
     with open(file, 'r') as f_jobs:
         jobs = json.load(f_jobs)
@@ -97,7 +99,7 @@ def get_cur_change_commits_details(commits_url):
 
 
 def fetch_url_and_sleep_if_needed(url, use_auth=True):
-    url_data = requests.get(url, auth=(username, token)).json() if use_auth else requests.get(url).json()
+    url_data = requests.get(url, auth=(username, token), timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS).json() if use_auth else requests.get(url, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
     if "message" in url_data and 'API rate limit exceeded' in url_data["message"]:
         print(url_data["message"])
         print(url_data["documentation_url"])
@@ -108,7 +110,7 @@ def fetch_url_and_sleep_if_needed(url, use_auth=True):
         e = datetime.datetime.now()
         print(f'Current time: {e.strftime("%Y-%m-%d %H:%M:%S")}')
         print("Woke up! Continuing where I left off")
-        url_data = requests.get(url, auth=(username, token)).json() if use_auth else requests.get(url).json()
+        url_data = requests.get(url, auth=(username, token), timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS).json() if use_auth else requests.get(url, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
 
     return url_data
 
@@ -130,14 +132,14 @@ def get_failed_tests_locators_to_paths(artifacts_url, failed_test_locators):
 
         failed_test_id = failed_test_locator[open_i:close_i+1]
         if artifacts_webpage is None:
-            artifacts_webpage = requests.get(artifacts_url)
+            artifacts_webpage = requests.get(artifacts_url, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
         if soup is None:
             soup = BeautifulSoup(artifacts_webpage.text, 'html.parser')
         for link in soup.find_all('a'):
             h_ref_text = link.get('href')
             basename = ntpath.basename(h_ref_text)
             if basename.startswith("junit_e2e_") and basename.endswith(".xml"):  # TODO: better - check using regex if it's of the pattern: junit_e2e_XXXXXXXX-XXXXXX.xml (every X is a digit)
-                response = requests.get(f'{artifacts_url}{basename}')
+                response = requests.get(f'{artifacts_url}{basename}', timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
                 dict_data = xmltodict.parse(response.content) #From https://stackoverflow.com/a/67296064
                 if not ('testsuite' in dict_data and 'testcase' in dict_data['testsuite']):
                     continue
@@ -193,7 +195,7 @@ def get_failed_tests_locators_to_paths(artifacts_url, failed_test_locators):
 def get_data(should_include_commits = True):
     all_data = dict()
 
-    r = requests.get(url=URL)
+    r = requests.get(url=URL, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
     size = len('var allBuilds = ')
     index = r.text.find('var allBuilds = ')
     i = 0
@@ -218,14 +220,14 @@ def get_data(should_include_commits = True):
                 #Test fetching
                 print("Fetching tests")
                 cur_tests_count = 0
-                spyglass_res = requests.get(f'{TST_FETCHING_BASE_URL}{item["SpyglassLink"]}')
+                spyglass_res = requests.get(f'{TST_FETCHING_BASE_URL}{item["SpyglassLink"]}', timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
                 if spyglass_res.status_code != 200:
                     print(f'Got {spyglass_res.status_code} response code. Skipping item')
                     continue
                 close_i = spyglass_res.text.index(r'>Artifacts</a>')
                 open_i = spyglass_res.text[:close_i].rfind('href=')
                 artifacts_url = spyglass_res.text[open_i + len("href=") + 1:close_i-1] + r'artifacts/e2e-gcp/openshift-e2e-test/artifacts/junit/'
-                artifacts_webpage = requests.get(artifacts_url)
+                artifacts_webpage = requests.get(artifacts_url, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
 
                 soup = BeautifulSoup(artifacts_webpage.text, 'html.parser')
                 failed_tests_info = list()
@@ -234,7 +236,7 @@ def get_data(should_include_commits = True):
                     h_ref_text = link.get('href')
                     basename = ntpath.basename(h_ref_text)
                     if basename.startswith("e2e-intervals_") and basename.endswith(".json"): #TODO: better - check using regex if it's of the pattern: e2e-intervals_XXXX_XXXX.json (every X is a digit)
-                        tests_results = requests.get(f'{artifacts_url}{basename}').json()
+                        tests_results = requests.get(f'{artifacts_url}{basename}', timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
                         cur_tests_count = len(tests_results["items"])
                         base_date = basename[len('e2e-intervals_'):len(basename) - len('.json')]
                         ci_date = datetime.datetime(int(base_date[0:4]), int(base_date[4:6]),
@@ -285,7 +287,7 @@ def get_data(should_include_commits = True):
         try:
             x = jobs[jobs_len]['ID']
             print(f'x {x}')
-            r = requests.get(url=URL+'='+x)
+            r = requests.get(url=URL+'='+x, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
             size = len('var allBuilds = ')
             index = r.text.find('var allBuilds = ')
         except:
@@ -319,8 +321,8 @@ if __name__ == "__main__":
     # change_priorities('/Users/rarviv/Downloads/prowjobs/prowjobs_19_8_18_00.js')
     # change_priorities('/Users/rarviv/Downloads/prowjobs/prowjobs_18_8_12_00.js')
     # change_priorities('/Users/rarviv/Downloads/prowjobs/prowjobs_19_8_8_00.js')
-    print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Start')
+    print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {os.path.basename(__file__)} Start')
     if not os.path.exists(DATA_FOLDER):
         os.makedirs(DATA_FOLDER)
     get_data()
-    print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} End')
+    print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}  {os.path.basename(__file__)} End')
