@@ -1,0 +1,40 @@
+{
+    "e2e-test/\"[sig-apps] ReplicationController should surface a failure condition on a common issue like exceeded quota [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-node] Kubelet when scheduling a busybox command that always fails in a pod should have an terminated reason [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] PVC Protection Verify that scheduling of a pod that uses PVC that is being deleted fails and the pod becomes Unschedulable [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-apps] CronJob should delete failed finished jobs with limit of one job [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] CSI mock volume CSI Volume expansion should not expand volume if resizingOnDriver=off, resizingOnSC=on [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "ns/e2e-pods-2679 pod/pod-qos-class-86a5c314-1674-4ee2-a00a-233313cba074 node/ci-op-02sdh3vg-2a78c-qlm4p-worker-a-bkbl8": [
+        ""
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-bindmounted] [Testpattern: Pre-provisioned PV (default fs)] subPath should support readOnly directory specified in the volumeMount [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] Networking Granular Checks: Services should function for multiple endpoint-Services with same selector [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-cli] oc adm groups [Suite:openshift/conformance/parallel]\"": [],
+    "ns/e2e-test-build-clone-git-protocol-9jnxz pod/ruby-ex-1-build node/ci-op-02sdh3vg-2a78c-qlm4p-worker-c-k4xxd": [
+        ""
+    ],
+    "e2e-test/\"[sig-apps] ReplicaSet Replace and Patch tests [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-cli] oc adm role-reapers [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-network] network isolation when using OpenshiftSDN in a mode that does not isolate namespaces by default should allow communication between pods in different namespaces on different nodes [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-cli] Kubectl client Update Demo should scale a replication controller  [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-auth] ServiceAccounts should set ownership and permission when RunAsUser or FsGroup is present [LinuxOnly] [NodeFeature:FSGroup] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] Projected secret should be able to mount in a volume regardless of a different secret existing with same name in different namespace [NodeConformance] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] NetworkPolicyLegacy [LinuxOnly] NetworkPolicy between server and client should enforce policy based on PodSelector or NamespaceSelector [Feature:NetworkPolicy] [Skipped:Network/OpenShiftSDN/Multitenant] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] PersistentVolumes-local  [Volume type: block] Two pods mounting a local volume at the same time should be able to write from pod1 and read from pod2 [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "ns/e2e-test-build-volumes-xn2l5 pod/mys2itest-1-kknkl node/ci-op-02sdh3vg-2a78c-qlm4p-worker-b-mbqmm": [
+        ""
+    ],
+    "e2e-test/\"[sig-network] network isolation when using OpenshiftSDN in a mode that does not isolate namespaces by default should allow communication between pods in different namespaces on the same node [Suite:openshift/conformance/parallel]\"": [],
+    "ns/e2e-limitrange-8711 pod/pfpod2 node/": [
+        ""
+    ],
+    "e2e-test/\"[sig-storage] PersistentVolumes-local  [Volume type: dir] One pod requesting one prebound PVC should be able to mount volume and write from pod1 [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] ResourceQuota [Feature:PodPriority] should verify ResourceQuota's priority class scope (quota set to pod count: 1) against 2 pods with different priority class. [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-node] Docker Containers should be able to override the image's default command (docker entrypoint) [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-cli] Kubectl client Kubectl logs should be able to retrieve and filter logs  [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: gcepd] [Testpattern: Dynamic PV (block volmode)(allowExpansion)] volume-expand Verify if offline PVC expansion works [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-imageregistry][Feature:Image] oc tag should work when only imagestreams api is available [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-apps][Feature:OpenShiftControllerManager] TestDeploymentConfigDefaults [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] Downward API volume should set mode on item file [LinuxOnly] [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-apps][Feature:DeploymentConfig] deploymentconfigs paused should disable actions on deployments [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": []
+}
