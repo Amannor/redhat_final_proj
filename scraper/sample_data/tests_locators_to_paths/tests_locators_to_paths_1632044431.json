@@ -1,0 +1,36 @@
+{
+    "e2e-test/\"[sig-storage] CSI mock volume storage capacity exhausted, immediate binding [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-node] Probing container should *not* be restarted with a tcp:8080 liveness probe [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-cli] Kubectl client Simple pod should support port-forward [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: hostPath] [Testpattern: Inline-volume (default fs)] subPath should support non-existent path [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: emptydir] [Testpattern: Inline-volume (default fs)] subPath should support file as subpath [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-bindmounted] [Testpattern: Pre-provisioned PV (default fs)] subPath should support existing single file [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-builds][Feature:Builds][volumes] build volumes  should mount given secrets and configmaps into the build pod for docker strategy builds [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-node] Kubelet when scheduling a read only busybox container should not write to root filesystem [LinuxOnly] [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-imageregistry][Feature:Image] oc tag should preserve image reference for external images [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-node] Downward API should provide host IP and pod IP as an env var if pod uses host network [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-cli] oc adm new-project [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-apps][Feature:DeploymentConfig] deploymentconfigs  should adhere to Three Laws of Controllers [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-bindmounted] [Testpattern: Pre-provisioned PV (default fs)] subPath should support readOnly file specified in the volumeMount [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-cli] oc adm who-can [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] PersistentVolumes-local  [Volume type: blockfswithoutformat] One pod requesting one prebound PVC should be able to mount volume and read from pod1 [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-auth][Feature:OAuthServer] OAuth server should use http1.1 only to prevent http2 connection reuse [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link-bindmounted] [Testpattern: Pre-provisioned PV (default fs)] subPath should support existing directories when readOnly specified in the volumeSource [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "ns/e2e-limitrange-2439 pod/pod-no-resources node/": [
+        ""
+    ],
+    "e2e-test/\"[sig-imageregistry][Feature:ImageTriggers] Image change build triggers TestSimpleImageChangeBuildTriggerFromImageStreamTagCustom [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] CSI mock volume storage capacity exhausted, late binding, with topology [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] PersistentVolumes-local  [Volume type: dir-bindmounted] Two pods mounting a local volume at the same time should be able to write from pod1 and read from pod2 [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "clusteroperator/ingress": [
+        ""
+    ],
+    "e2e-test/\"[sig-etcd] etcd leader changes are not excessive [Late] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-cli] oc adm role-selectors [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-devex][Feature:OpenShiftControllerManager] TestDockercfgTokenDeletedController [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-network] EndpointSliceMirroring should mirror a custom Endpoints resource through create update and delete [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-auth] [Feature:NodeAuthorizer] Getting an existing configmap should exit with the Forbidden error [Skipped:ibmcloud] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] Services should allow pods to hairpin back to themselves through services [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network][Feature:Router] The HAProxy router should override the route host with a custom value [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] PersistentVolumes NFS with Single PV - PVC pairs should create a non-pre-bound PV and PVC: test write access  [Suite:openshift/conformance/parallel] [Suite:k8s]\"": []
+}
