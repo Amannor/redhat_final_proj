@@ -1,0 +1,67 @@
+{
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link-bindmounted] [Testpattern: Dynamic PV (immediate binding)] topology should fail to schedule a pod which has topologies that conflict with AllowedTopologies [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] CSI Volumes [Driver: csi-hostpath] [Testpattern: Dynamic PV (default fs)] fsgroupchangepolicy (Always)[LinuxOnly], pod created with an initial fsgroup, new pod fsgroup applied to volume contents [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: hostPathSymlink] [Testpattern: Dynamic PV (default fs)] volumes should store data [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] CSI Volumes [Driver: csi-hostpath] [Testpattern: Dynamic PV (default fs)] subPath should be able to unmount after the subpath directory is deleted [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: cinder] [Testpattern: Dynamic PV (ntfs)][Feature:Windows] volumes should allow exec of files on the volume [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] CSI Volumes [Driver: csi-hostpath] [Testpattern: Dynamic PV (ntfs)(allowExpansion)][Feature:Windows] volume-expand Verify if offline PVC expansion works [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: vsphere] [Testpattern: Dynamic PV (default fs)] volumes should store data [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link] [Testpattern: Pre-provisioned PV (ext3)] volumes should allow exec of files on the volume [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: block] [Testpattern: Dynamic PV (default fs)] fsgroupchangepolicy (OnRootMismatch)[LinuxOnly], pod created with an initial fsgroup, volume contents ownership changed in first pod, new pod with same fsgroup skips ownership changes to the volume contents [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: windows-gcepd] [Testpattern: Pre-provisioned PV (default fs)] volumes should allow exec of files on the volume [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-devex][Feature:Templates] templateinstance impersonation tests should pass impersonation update tests [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir] [Testpattern: Dynamic PV (delayed binding)] topology should fail to schedule a pod which has topologies that conflict with AllowedTopologies [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-builds][Feature:Builds] prune builds based on settings in the buildconfig  should prune builds after a buildConfig change [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-node] Probing container should *not* be restarted by liveness probe because startup probe delays it [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: block] [Testpattern: Pre-provisioned PV (default fs)] subPath should support existing directory [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-apps][Feature:DeploymentConfig] deploymentconfigs  should adhere to Three Laws of Controllers [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-apps] StatefulSet Basic StatefulSet functionality [StatefulSetBasic] Should recreate evicted statefulset [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-node] Probing container should be restarted with a exec \\\"cat /tmp/health\\\" liveness probe [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: blockfs] [Testpattern: Dynamic PV (default fs)(allowExpansion)] volume-expand Verify if offline PVC expansion works [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-node] Security Context When creating a container with runAsUser should run the container with uid 0 [LinuxOnly] [NodeConformance] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: windows-gcepd] [Testpattern: Dynamic PV (default fs)] volume-expand should not allow expansion of pvcs without AllowVolumeExpansion property [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] Storage Policy Based Volume Provisioning [Feature:vsphere] verify VSAN storage capability with invalid capability name objectSpaceReserve is not honored for dynamically provisioned pvc using storageclass [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir] [Testpattern: Dynamic PV (default fs)] fsgroupchangepolicy (OnRootMismatch)[LinuxOnly], pod created with an initial fsgroup, volume contents ownership changed in first pod, new pod with different fsgroup applied to the volume contents [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: hostPathSymlink] [Testpattern: Dynamic PV (default fs)] fsgroupchangepolicy (Always)[LinuxOnly], pod created with an initial fsgroup, volume contents ownership changed in first pod, new pod with same fsgroup applied to the volume contents [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "ns/e2e-security-context-test-4812 pod/explicit-root-uid node/ci-op-k79pdty7-2a78c-7nhh4-worker-a-8vzqg": [
+        ""
+    ],
+    "e2e-test/\"[sig-storage] PersistentVolumes-local  [Volume type: dir-bindmounted] Two pods mounting a local volume at the same time should be able to write from pod1 and read from pod2 [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] Services should have session affinity work for NodePort service [LinuxOnly] [Conformance] [Skipped:Network/OVNKubernetes] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-auth][Feature:OAuthServer] [Headers] expected headers returned from the login URL for the bootstrap IDP [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: gcepd] [Testpattern: Inline-volume (default fs)] volumes should store data [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "ns/e2e-deployment-8480 pod/webserver-deployment-795d758f88-t6wcr node/ci-op-k79pdty7-2a78c-7nhh4-worker-a-8vzqg": [
+        ""
+    ],
+    "e2e-test/\"[sig-network] DNS should provide DNS for pods for Subdomain [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": []
+}

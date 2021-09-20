@@ -1,0 +1,68 @@
+{
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: blockfs] [Testpattern: Pre-provisioned PV (default fs)] subPath should support readOnly file specified in the volumeMount [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link] [Testpattern: Inline-volume (ntfs)][Feature:Windows] volumes should store data [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link-bindmounted] [Testpattern: Pre-provisioned PV (default fs)] subPath should support existing directory [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link] [Testpattern: Dynamic PV (default fs)] provisioning should provision storage with snapshot data source [Feature:VolumeSnapshotDataSource] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-devex][Feature:Templates] templateinstance cross-namespace test should create and delete objects across namespaces [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-network][Feature:Router] The HAProxy router should expose a health check on the metrics port [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: hostPathSymlink] [Testpattern: Dynamic PV (default fs)] subPath should support non-existent path [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir] [Testpattern: Pre-provisioned PV (default fs)] subPath should support readOnly directory specified in the volumeMount [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-cli] Kubectl Port forwarding With a server listening on localhost that expects NO client request should support a client that connects, sends DATA, and disconnects [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: nfs] [Testpattern: Pre-provisioned PV (filesystem volmode)] volumeMode should not mount / map unused volumes in a pod [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] services when using OpenshiftSDN in a mode that isolates namespaces by default should allow connections from pods in the default namespace to a service in another namespace on the same node [Suite:openshift/conformance/parallel]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: tmpfs] [Testpattern: Dynamic PV (default fs)] fsgroupchangepolicy (Always)[LinuxOnly], pod created with an initial fsgroup, new pod fsgroup applied to volume contents [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: cinder] [Testpattern: Inline-volume (default fs)] subPath should support file as subpath [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: tmpfs] [Testpattern: Dynamic PV (default fs)] subPath should support existing directory [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: windows-gcepd] [Testpattern: Inline-volume (default fs)] volumes should store data [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-network] DNS should provide DNS for pods for Subdomain [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] CSI Volumes [Driver: csi-hostpath] [Testpattern: Generic Ephemeral-volume (default fs) (late-binding)] ephemeral should support multiple inline ephemeral volumes [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: cinder] [Testpattern: Inline-volume (ntfs)][Feature:Windows] volumes should store data [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-bindmounted] [Testpattern: Dynamic PV (ntfs)][Feature:Windows] volumes should allow exec of files on the volume [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] PersistentVolumes-local  [Volume type: dir-link] Set fsGroup for local volume should set different fsGroup for second pod if first pod is deleted [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "ns/e2e-kubectl-6558 pod/httpd-deployment-c7fc8ffc7-9wxcj node/ci-op-rpw1iid7-2a78c-2kz62-worker-a-bbcpr": [
+        ""
+    ],
+    "e2e-test/\"[sig-storage] CSI Volumes [Driver: csi-hostpath] [Testpattern: Dynamic PV (default fs)] subPath should support file as subpath [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-arch] Managed cluster should ensure pods use downstream images from our release image with proper ImagePullPolicy [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: block] [Testpattern: Inline-volume (default fs)] subPath should be able to unmount after the subpath directory is deleted [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link-bindmounted] [Testpattern: Dynamic PV (default fs)] subPath should support non-existent path [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: azure-disk] [Testpattern: Dynamic PV (default fs)] provisioning should provision storage with pvc data source [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: hostPath] [Testpattern: Dynamic PV (block volmode)] provisioning should provision storage with snapshot data source [Feature:VolumeSnapshotDataSource] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link-bindmounted] [Testpattern: Pre-provisioned PV (ext4)] volumes should allow exec of files on the volume [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-cli] Kubectl client Kubectl diff should check if kubectl diff finds a difference for Deployments [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: tmpfs] [Testpattern: Pre-provisioned PV (ext3)] volumes should store data [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ]
+}

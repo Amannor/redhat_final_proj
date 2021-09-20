@@ -1,0 +1,36 @@
+{
+    "e2e-test/\"[sig-auth][Feature:SecurityContextConstraints]  TestPodUpdateSCCEnforcement [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] Downward API volume should provide container's cpu request [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-node] Pods should contain environment variables for services [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] CustomResourceDefinition resources [Privileged:ClusterAdmin] should include custom resource definition resources in discovery documents [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] Garbage collector should orphan RS created by deployment when deleteOptions.PropagationPolicy is Orphan [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] Garbage collector should delete RS created by deployment when not orphaning [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] Projected downwardAPI should provide container's cpu request [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] CSI Volumes [Driver: csi-hostpath] [Testpattern: Dynamic PV (block volmode)(allowExpansion)] volume-expand should resize volume when PVC is edited while pod is using it [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-apps][Feature:DeploymentConfig] deploymentconfigs keep the deployer pod invariant valid should deal with cancellation of running deployment [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-instrumentation] Prometheus when installed on the cluster should have non-Pod host cAdvisor metrics [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-api-machinery][Feature:ServerSideApply] Server-Side Apply should work for oauth.openshift.io/v1, Resource=oauthclients [Suite:openshift/conformance/parallel]\"": [],
+    "ns/e2e-test-cli-deployment-vkrpc pod/deployment-simple-2-k2d92 node/ci-op-gd8ygyv0-2a78c-6cdsg-worker-b-gjtx9": [
+        ""
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: hostPathSymlink] [Testpattern: Inline-volume (default fs)] subPath should support file as subpath [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-node] Security Context should support pod.Spec.SecurityContext.SupplementalGroups [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] CSI mock volume CSI Volume Snapshots secrets [Feature:VolumeSnapshotDataSource] volume snapshot create/delete with secrets [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] CSI Volumes [Driver: csi-hostpath] [Testpattern: Dynamic PV (filesystem volmode)] volumeLimits should verify that all csinodes have volume limits [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] NetworkPolicyLegacy [LinuxOnly] NetworkPolicy between server and client should allow ingress access from updated namespace [Feature:NetworkPolicy] [Skipped:Network/OpenShiftSDN/Multitenant] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery][Feature:ServerSideApply] Server-Side Apply should work for build.openshift.io/v1, Resource=builds [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-api-machinery][Feature:ResourceQuota] Object count should properly count the number of imagestreams resources [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-cli] Kubectl client Simple pod should support exec [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] CSI Volumes [Driver: csi-hostpath] [Testpattern: Dynamic PV (default fs)] subPath should support existing directories when readOnly specified in the volumeSource [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-cli] Kubectl client Kubectl api-versions should check if v1 is in available api versions  [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] PV Protection Verify \\\"immediate\\\" deletion of a PV that is not bound to a PVC [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-auth] [Feature:NodeAuthenticator] The kubelet's main port 10250 should reject requests with no credentials [Skipped:ibmcloud] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] Projected downwardAPI should provide podname as non-root with fsgroup and defaultMode [LinuxOnly] [NodeFeature:FSGroup] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] EndpointSlice should create Endpoints and EndpointSlices for Pods matching a Service [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] CSI Volumes [Driver: csi-hostpath] [Testpattern: Generic Ephemeral-volume (default fs) (late-binding)] ephemeral should create read/write inline ephemeral volume [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "ns/e2e-kubectl-976 pod/agnhost-primary-8cbcs node/ci-op-gd8ygyv0-2a78c-6cdsg-worker-b-gjtx9": [
+        ""
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: tmpfs] [Testpattern: Pre-provisioned PV (default fs)] volumes should allow exec of files on the volume [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-node] PrivilegedPod [NodeConformance] should enable privileged commands [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": []
+}

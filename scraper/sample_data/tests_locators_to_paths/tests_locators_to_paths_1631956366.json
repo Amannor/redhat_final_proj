@@ -1,0 +1,64 @@
+{
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: hostPathSymlink] [Testpattern: Pre-provisioned PV (ntfs)][Feature:Windows] volumes should store data [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "clusteroperator/ingress": [
+        ""
+    ],
+    "e2e-test/\"[sig-network] Networking Granular Checks: Pods should function for node-pod communication: udp [LinuxOnly] [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: cinder] [Testpattern: Dynamic PV (filesystem volmode)] volumeLimits should verify that all csinodes have volume limits [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "openshift-apiserver-reused-connection": [
+        ""
+    ],
+    "e2e-test/\"[sig-auth][Feature:OpenShiftAuthorization] authorization  TestAuthorizationSubjectAccessReviewAPIGroup should succeed [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: aws] [Testpattern: Inline-volume (default fs)] subPath should support readOnly file specified in the volumeMount [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: windows-gcepd] [Testpattern: Inline-volume (ext4)] volumes should allow exec of files on the volume [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] Projected configMap should be consumable from pods in volume as non-root with defaultMode and fsGroup set [LinuxOnly] [NodeFeature:FSGroup] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] PersistentVolumes-local  [Volume type: blockfswithoutformat] One pod requesting one prebound PVC should be able to mount volume and write from pod1 [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: tmpfs] [Testpattern: Pre-provisioned PV (default fs)] subPath should support existing directories when readOnly specified in the volumeSource [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-cluster-lifecycle][Feature:Machines][Early] Managed cluster should have same number of Machines and Nodes [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-apps] DisruptionController evictions: enough pods, replicaSet, percentage => should allow an eviction [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: cinder] [Testpattern: Dynamic PV (default fs)] fsgroupchangepolicy (Always)[LinuxOnly], pod created with an initial fsgroup, new pod fsgroup applied to volume contents [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: blockfs] [Testpattern: Pre-provisioned PV (default fs)] subPath should support file as subpath [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-arch] Managed cluster should ensure control plane operators do not make themselves unevictable [Suite:openshift/conformance/parallel]\"": [],
+    "ns/e2e-replicaset-1245 pod/test-rs-5wbgw node/ci-op-8bvqkycv-2a78c-6xc7w-worker-c-shpld": [
+        ""
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir] [Testpattern: Inline-volume (ext4)] volumes should allow exec of files on the volume [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-node] Container Runtime blackbox test when running a container with a new image should be able to pull image [NodeConformance] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "ns/e2e-init-container-9006 pod/pod-init-208337c0-bac1-4fbe-bd78-7805e243e5bb node/ci-op-8bvqkycv-2a78c-6xc7w-worker-a-d5v7j": [
+        ""
+    ],
+    "ns/openshift-marketplace pod/community-operators-mrjfs node/ci-op-8bvqkycv-2a78c-6xc7w-worker-a-d5v7j": [
+        ""
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: vsphere] [Testpattern: Inline-volume (default fs)] subPath should support non-existent path [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link] [Testpattern: Dynamic PV (ntfs)][Feature:Windows] subPath should support existing single file [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-bindmounted] [Testpattern: Dynamic PV (default fs)] volume-expand should not allow expansion of pvcs without AllowVolumeExpansion property [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-storage] CSI Volumes [Driver: csi-hostpath] [Testpattern: Generic Ephemeral-volume (default fs) (immediate-binding)] ephemeral should support two pods which share the same volume [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] NetworkPolicy API should support creating NetworkPolicy API operations [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] Proxy version v1 A set of valid responses are returned for both pod and service ProxyWithPath [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery][Feature:APIServer] TestTLSDefaults [Suite:openshift/conformance/parallel]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ],
+    "e2e-test/\"[sig-network] NetworkPolicyLegacy [LinuxOnly] NetworkPolicy between server and client should not allow access by TCP when a policy specifies only SCTP [Feature:NetworkPolicy] [Skipped:Network/OpenShiftSDN/Multitenant] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-imageregistry][Feature:ImageExtract] Image extract should extract content from an image [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [
+        "github.com/openshift/origin/test/extended/util/framework.go"
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "clusteroperator/ingress": [
+        ""
+    ],
+    "e2e-test/\"[sig-etcd] etcd leader changes are not excessive [Late] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-cli] oc adm role-selectors [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-devex][Feature:OpenShiftControllerManager] TestDockercfgTokenDeletedController [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-network] EndpointSliceMirroring should mirror a custom Endpoints resource through create update and delete [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-auth] [Feature:NodeAuthorizer] Getting an existing configmap should exit with the Forbidden error [Skipped:ibmcloud] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "ns/e2e-apply-3195 pod/deployment-shared-map-item-removal-55649fd747-lh62k node/ci-op-7vid6hmq-2a78c-pp6xt-worker-b-5qtbb": [
+        ""
+    ],
+    "e2e-test/\"[sig-network] Services should allow pods to hairpin back to themselves through services [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network][Feature:Router] The HAProxy router should override the route host with a custom value [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] PersistentVolumes NFS with Single PV - PVC pairs should create a non-pre-bound PV and PVC: test write access  [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: tmpfs] [Testpattern: Pre-provisioned PV (default fs)] subPath should support readOnly directory specified in the volumeMount [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-cli] oc builds complex build start-build [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-network] Services should serve multiport endpoints from pods  [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-auth][Feature:UserAPI] groups should work [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-imageregistry][Feature:ImageTriggers] Image change build triggers TestSimpleImageChangeBuildTriggerFromImageStreamTagDocker [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-auth][Feature:RoleBindingRestrictions] RoleBindingRestrictions should be functional  Create a rolebinding when subject is permitted by RBR should succeed [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-cli] oc adm ui-project-commands [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-node] Kubelet when scheduling a busybox Pod with hostAliases should write entries to /etc/hosts [LinuxOnly] [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-arch] Managed cluster should ensure pods use downstream images from our release image with proper ImagePullPolicy [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] Downward API volume should update labels on modification [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-node] Probing container should override timeoutGracePeriodSeconds when LivenessProbe field is set [Feature:ProbeTerminationGracePeriod] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] Projected configMap should be consumable from pods in volume with mappings [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] Servers with support for Table transformation should return chunks of table results for list calls [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] Projected secret should be consumable in multiple volumes in a pod [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-cli] Kubectl client Simple pod should return command exit codes running a failing command [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-node] Security Context should support seccomp unconfined on the container [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] ResourceQuota should create a ResourceQuota and capture the life of a custom resource. [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-auth][Feature:OAuthServer] [Headers] expected headers returned from the login URL for the bootstrap IDP [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] PersistentVolumes NFS with multiple PVs and PVCs all in same ns should create 2 PVs and 4 PVCs: test write access [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] NetworkPolicyLegacy [LinuxOnly] NetworkPolicy between server and client should support allow-all policy [Feature:NetworkPolicy] [Skipped:Network/OpenShiftSDN/Multitenant] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": []
+}

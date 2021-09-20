@@ -1,0 +1,30 @@
+{
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link] [Testpattern: Pre-provisioned PV (default fs)] volumes should allow exec of files on the volume [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-instrumentation][Late] Alerts shouldn't exceed the 500 series limit of total series sent via telemetry from each cluster [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-node] Kubelet when scheduling a read only busybox container should not write to root filesystem [LinuxOnly] [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: block] [Testpattern: Pre-provisioned PV (default fs)] subPath should support existing single file [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] Networking Granular Checks: Services should function for node-Service: http [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] Garbage collector should support orphan deletion of custom resources [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-builds][Feature:Builds][valueFrom] process valueFrom in build strategy environment variables  should successfully resolve valueFrom in docker build environment variables [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] CSI mock volume CSI FSGroupPolicy [LinuxOnly] should not modify fsGroup if fsGroupPolicy=None [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] AdmissionWebhook [Privileged:ClusterAdmin] should be able to deny custom resource creation, update and deletion [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] Services should test the lifecycle of an Endpoint [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-builds][Feature:Builds] build without output image  building from templates should create an image from a S2i template without an output image reference defined [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-api-machinery] ResourceQuota should create a ResourceQuota and capture the life of a persistent volume claim [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "ns/e2e-test-new-app-4dphc pod/a234567890123456789012345678901234567890123456789012345678-1-build node/ci-op-9v802q8k-2a78c-rd4fj-worker-c-9dljm": [
+        ""
+    ],
+    "ns/e2e-deployment-8910 pod/webserver-deployment-795d758f88-5gwch node/ci-op-9v802q8k-2a78c-rd4fj-worker-a-jpqtw": [
+        ""
+    ],
+    "e2e-test/\"[sig-storage] PersistentVolumes-local  [Volume type: dir] One pod requesting one prebound PVC should be able to mount volume and read from pod1 [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "ns/e2e-test-cli-deployment-tg482 pod/deployment-simple-1-deploy node/ci-op-9v802q8k-2a78c-rd4fj-worker-a-jpqtw": [
+        ""
+    ],
+    "e2e-test/\"[sig-apps][Feature:OpenShiftControllerManager] TestDeploymentConfigDefaults [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-auth][Feature:OpenShiftAuthorization] self-SAR compatibility  TestBootstrapPolicySelfSubjectAccessReviews should succeed [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-api-machinery] client-go should negotiate watch and report errors with accept \\\"application/json\\\" [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-apps][Feature:DeploymentConfig] deploymentconfigs with multiple image change triggers should run a successful deployment with a trigger used by different containers [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-network] EndpointSlice should support creating EndpointSlice API operations [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] Services should serve multiport endpoints from pods  [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": []
+}

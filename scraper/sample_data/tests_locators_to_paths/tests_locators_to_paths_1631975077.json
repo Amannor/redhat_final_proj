@@ -1,0 +1,38 @@
+{
+    "e2e-test/\"[sig-api-machinery] ResourceQuota [Feature:ScopeSelectors] should verify ResourceQuota with terminating scopes through scope selectors. [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] Networking Granular Checks: Services should update endpoints: udp [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-apps] ReplicaSet should serve a basic image on each replica with a private image [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "ns/e2e-test-cli-idling-trjg2 pod/idling-echo-1-kjh8b node/ci-op-k79pdty7-2a78c-7nhh4-worker-b-dpc62": [
+        ""
+    ],
+    "e2e-test/\"[sig-storage] Ephemeralstorage When pod refers to non-existent ephemeral storage should allow deletion of pod with invalid volume : projected [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-node] Security Context When creating a container with runAsNonRoot should run with an image specified user ID [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-auth] [Feature:NodeAuthenticator] The kubelet's main port 10250 should reject requests with no credentials [Skipped:ibmcloud] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] Services should be possible to connect to a service via ExternalIP when the external IP is not assigned to a node [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-imageregistry][Feature:ImageTriggers] Image change build triggers TestSimpleImageChangeBuildTriggerFromImageStreamTagSTIWithConfigChange [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-apps][Feature:DeploymentConfig] deploymentconfigs with minimum ready seconds set should not transition the deployment to Complete before satisfied [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-node] Security Context When creating a container with runAsUser should run the container with uid 0 [LinuxOnly] [NodeConformance] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-auth] Certificates API [Privileged:ClusterAdmin] should support CSR API operations [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-imageregistry][Feature:ImageTriggers] Image change build triggers TestSimpleImageChangeBuildTriggerFromImageStreamTagDocker [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-api-machinery][Feature:APIServer][Late] API LBs follow /readyz of kube-apiserver and don't send request early [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-cli] Kubectl client Kubectl create quota should create a quota without scopes [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] Managed cluster should have no crashlooping recycler pods over four minutes [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-network] Services should be able to update service type to NodePort listening on same port number but different protocols [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] ResourceQuota should create a ResourceQuota and capture the life of a replica set. [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-devex][Feature:Templates] templateinstance readiness test  should report ready soon after all annotated objects are ready [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-api-machinery] Generated clientset should create v1 cronJobs, delete cronJobs, watch cronJobs [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] Services should be able to switch session affinity for service with type clusterIP [LinuxOnly] [Conformance] [Skipped:Network/OVNKubernetes] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "ns/e2e-deployment-8480 pod/webserver-deployment-5fd578d5-tp22w node/ci-op-k79pdty7-2a78c-7nhh4-worker-b-dpc62": [
+        ""
+    ],
+    "e2e-test/\"[sig-apps][Feature:OpenShiftControllerManager] TestTriggers_configChange [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] PersistentVolumes-local  [Volume type: dir-link] One pod requesting one prebound PVC should be able to mount volume and write from pod1 [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "ns/e2e-svcaccounts-3551 pod/pod-service-account-defaultsa-mountspec node/ci-op-k79pdty7-2a78c-7nhh4-worker-a-8vzqg": [
+        ""
+    ],
+    "e2e-test/\"[sig-network][Feature:Router] The HAProxy router should override the route host for overridden domains with a custom value [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-apps][Feature:DeploymentConfig] deploymentconfigs adoption will orphan all RCs and adopt them back when recreated [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-cli] Kubectl client Proxy server should support --unix-socket=/path  [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-cli] oc adm serviceaccounts [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] Volumes NFSv3 should be mountable for NFSv3 [Suite:openshift/conformance/parallel] [Suite:k8s]\"": []
+}

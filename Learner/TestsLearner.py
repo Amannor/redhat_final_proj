@@ -1,8 +1,10 @@
 # First XGBoost model
 from numpy import loadtxt
 from sklearn.preprocessing import LabelEncoder
-from xgboost import XGBClassifier
+from sklearn.preprocessing import OneHotEncoder
+from xgboost import XGBClassifier, XGBRegressor
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score
 import os
 import csv
@@ -12,6 +14,7 @@ from datetime import datetime
 from datetime import timedelta
 import pandas as pd
 import numpy as np
+import pickle
 
 
 def create_csv():
@@ -86,6 +89,7 @@ def flatten_jsons():
     history = collect_data_history()
     changed_files = []
     failed_test_files = []
+    test_locators = []
     # r=root, d=directories, f = files
     for r, d, f in os.walk(path):
         for file in f:
@@ -93,11 +97,15 @@ def flatten_jsons():
                 changed_files.append(os.path.join(r, file))
             elif file.startswith('changeset_to_failed_test'):
                 failed_test_files.append(os.path.join(r, file))
+            elif file.startswith('tests_locators_to_paths'):
+                test_locators.append(os.path.join(r, file))
+    test_mapping, test_name_enum, test_file_enum = test_mapper(test_locators)
     file_changes = commits_breakdown(changed_files)
     failure_breakdown = test_failure_breakdown(failed_test_files)
 
     flat_json_list = list()
     for f in failed_test_files:
+        print(f)
         with open(f, 'r') as f_reader:
             reader = json.load(f_reader)
             for item in reader:
@@ -106,10 +114,54 @@ def flatten_jsons():
                 for fn in item['code_changes_data']['commits'][0]['commit_files']:
                     last_token = fn['filename'].rfind('/')
                     ext = fn['filename'].rfind('.')
-                    t_size = len(item['failed_tests'])
-                    for t in item['failed_tests']:
-                        for n_t in t:
-                            if len(t[n_t]) == 0:
+                    t_size = len(item['tests_locator_to_state'])
+                    for tests_locator in item['tests_locator_to_state']:
+                        if item['tests_locator_to_state'][tests_locator] != "Passed" and \
+                                item['tests_locator_to_state'][tests_locator] != "Failed":
+                            continue
+                        if tests_locator not in test_mapping:
+                            flat_json = dict()
+                            flat_json['file_name'] = fn['filename']
+                            flat_json['num_files_changed'] = f_size
+                            if last_token < ext:
+                                flat_json['file_extension'] = fn['filename'][ext + 1:len(fn['filename'])]
+                            else:
+                                flat_json['file_extension'] = ''
+                            flat_json['num_target_tests'] = t_size
+                            if fn['filename'] in file_changes:
+                                flat_json['number_changes_3d'] = file_changes[fn['filename']][0]
+                                flat_json['number_changes_14d'] = file_changes[fn['filename']][1]
+                                flat_json['number_changes_56d'] = file_changes[fn['filename']][2]
+                            else:
+                                flat_json['number_changes_3d'] = 0
+                                flat_json['number_changes_14d'] = 0
+                                flat_json['number_changes_56d'] = 0
+                            flat_json['project_name'] = ''
+                            flat_json['distinct_authors'] = as_size
+                            if tests_locator in failure_breakdown:
+                                flat_json['failed_7d'] = failure_breakdown[tests_locator][0]
+                                flat_json['failed_14d'] = failure_breakdown[tests_locator][1]
+                                flat_json['failed_28d'] = failure_breakdown[tests_locator][2]
+                                flat_json['failed_56d'] = failure_breakdown[tests_locator][3]
+                            else:
+                                flat_json['failed_7d'] = 0
+                                flat_json['failed_14d'] = 0
+                                flat_json['failed_28d'] = 0
+                                flat_json['failed_56d'] = 0
+                            flat_json['minimal_distance'] = 0
+                            flat_json['common_tokens'] = 0
+                            test_name = tests_locator[len('e2e-test/"'):len(tests_locator) - 1]
+                            if test_name in test_name_enum:
+                                flat_json['test_name'] = test_name_enum[test_name]
+                            else:
+                                flat_json['test_name'] = 0
+                            flat_json['test_file'] = 0
+                            flat_json['test_status'] = 0
+                            if item['tests_locator_to_state'][tests_locator] == "Failed":
+                                flat_json['test_status'] = 1
+                            flat_json_list.append(flat_json)
+                        else:
+                            for f_t in test_mapping[tests_locator]:
                                 flat_json = dict()
                                 flat_json['file_name'] = fn['filename']
                                 flat_json['num_files_changed'] = f_size
@@ -128,47 +180,34 @@ def flatten_jsons():
                                     flat_json['number_changes_56d'] = 0
                                 flat_json['project_name'] = ''
                                 flat_json['distinct_authors'] = as_size
-                                flat_json['failed_7d'] = failure_breakdown[n_t][0]
-                                flat_json['failed_14d'] = failure_breakdown[n_t][1]
-                                flat_json['failed_28d'] = failure_breakdown[n_t][2]
-                                flat_json['failed_56d'] = failure_breakdown[n_t][3]
-                                flat_json['minimal_distance'] = 0
-                                flat_json['common_tokens'] = 0
-                                flat_json['test_name'] = n_t[len('e2e-test/"'):len(n_t) - 1]
-                                flat_json['test_file'] = ''
+                                if tests_locator in failure_breakdown:
+                                    flat_json['failed_7d'] = failure_breakdown[tests_locator][0]
+                                    flat_json['failed_14d'] = failure_breakdown[tests_locator][1]
+                                    flat_json['failed_28d'] = failure_breakdown[tests_locator][2]
+                                    flat_json['failed_56d'] = failure_breakdown[tests_locator][3]
+                                else:
+                                    flat_json['failed_7d'] = 0
+                                    flat_json['failed_14d'] = 0
+                                    flat_json['failed_28d'] = 0
+                                    flat_json['failed_56d'] = 0
+                                test_name = tests_locator[len('e2e-test/"'):len(tests_locator) - 1]
+                                if test_name in test_name_enum:
+                                    flat_json['test_name'] = test_name_enum[test_name]
+                                else:
+                                    flat_json['test_name'] = 0
+                                if f_t in test_file_enum:
+                                    flat_json['test_file'] = test_file_enum[f_t]
+                                else:
+                                    flat_json['test_file'] = 0
+                                flat_json['minimal_distance'] = common_token(flat_json['file_name'],
+                                                                             flat_json['test_file'])
+                                flat_json['common_tokens'] = minimal_distance(
+                                    item['code_changes_data']['commits'][0]['commit_files'],
+                                    flat_json['test_file'])
+                                flat_json['test_status'] = 0
+                                if item['tests_locator_to_state'][tests_locator] == "Failed":
+                                    flat_json['test_status'] = 1
                                 flat_json_list.append(flat_json)
-                            else:
-                                for f_t in t[n_t]:
-                                    flat_json = dict()
-                                    flat_json['file_name'] = fn['filename']
-                                    flat_json['num_files_changed'] = f_size
-                                    if last_token < ext:
-                                        flat_json['file_extension'] = fn['filename'][ext + 1:len(fn['filename'])]
-                                    else:
-                                        flat_json['file_extension'] = ''
-                                    flat_json['num_target_tests'] = t_size
-                                    if fn['filename'] in file_changes:
-                                        flat_json['number_changes_3d'] = file_changes[fn['filename']][0]
-                                        flat_json['number_changes_14d'] = file_changes[fn['filename']][1]
-                                        flat_json['number_changes_56d'] = file_changes[fn['filename']][2]
-                                    else:
-                                        flat_json['number_changes_3d'] = 0
-                                        flat_json['number_changes_14d'] = 0
-                                        flat_json['number_changes_56d'] = 0
-                                    flat_json['project_name'] = ''
-                                    flat_json['distinct_authors'] = as_size
-                                    flat_json['failed_7d'] = failure_breakdown[n_t][0]
-                                    flat_json['failed_14d'] = failure_breakdown[n_t][1]
-                                    flat_json['failed_28d'] = failure_breakdown[n_t][2]
-                                    flat_json['failed_56d'] = failure_breakdown[n_t][3]
-                                    flat_json['test_name'] = n_t[len('e2e-test/"'):len(n_t)-1]
-                                    flat_json['test_file'] = f_t
-                                    flat_json['minimal_distance'] = common_token(flat_json['file_name'],
-                                                                                 flat_json['test_file'])
-                                    flat_json['common_tokens'] = minimal_distance(
-                                        item['code_changes_data']['commits'][0]['commit_files'],
-                                        flat_json['test_file'])
-                                    flat_json_list.append(flat_json)
     with open(r'flatten_data.json', mode='w') as j_flat_file:
         json.dump(flat_json_list, j_flat_file)
 
@@ -206,20 +245,43 @@ def test_failure_breakdown(failed_test_files):
         with open(f, 'r') as f_reader:
             reader = json.load(f_reader)
             for item in reader:
-                for t in item['failed_tests']:
-                    for f_t in t:
-                        if f_t not in failure_breakdown:
-                            failure_breakdown[f_t] = [0, 0, 0, 0]
-                        if datetime.fromisoformat(item['date'].replace('Z', '')) > collect_date - timedelta(days=7):
-                            failure_breakdown[f_t][0] += 1
-                        if datetime.fromisoformat(item['date'].replace('Z', '')) > collect_date - timedelta(days=14):
-                            failure_breakdown[f_t][1] += 1
-                        if datetime.fromisoformat(item['date'].replace('Z', '')) > collect_date - timedelta(days=28):
-                            failure_breakdown[f_t][2] += 1
-                        if datetime.fromisoformat(item['date'].replace('Z', '')) > collect_date - timedelta(days=56):
-                            failure_breakdown[f_t][3] += 1
+                for f_t in item['tests_locator_to_state']:
+                    if item['tests_locator_to_state'][f_t] != 'Failed':
+                        continue
+                    if f_t not in failure_breakdown:
+                        failure_breakdown[f_t] = [0, 0, 0, 0]
+                    if datetime.fromisoformat(item['date'].replace('Z', '')) > collect_date - timedelta(days=7):
+                        failure_breakdown[f_t][0] += 1
+                    if datetime.fromisoformat(item['date'].replace('Z', '')) > collect_date - timedelta(days=14):
+                        failure_breakdown[f_t][1] += 1
+                    if datetime.fromisoformat(item['date'].replace('Z', '')) > collect_date - timedelta(days=28):
+                        failure_breakdown[f_t][2] += 1
+                    if datetime.fromisoformat(item['date'].replace('Z', '')) > collect_date - timedelta(days=56):
+                        failure_breakdown[f_t][3] += 1
 
     return failure_breakdown
+
+
+def test_mapper(test_locators):
+    test_mapping = dict()
+    test_name_enum = dict()
+    test_file_enum = dict()
+    i = 1
+    j = 1
+    for f in test_locators:
+        with open(f, 'r') as f_reader:
+            reader = json.load(f_reader)
+            for item in reader:
+                key = item[len('e2e-test/"'):len(item) - 1]
+                if key not in test_name_enum:
+                    test_name_enum[key] = i
+                    i += 1
+                test_mapping[key] = reader[item]
+                for f_n in reader[item]:
+                    if f_n not in test_file_enum:
+                        test_file_enum[f_n] = j
+                        j += 1
+    return test_mapping, test_name_enum, test_file_enum
 
 
 def learn():
@@ -229,54 +291,129 @@ def learn():
     arr = dataset.to_numpy()
     # split data into X and y
 
-    X = arr[:, 0:14]
-    Y = arr[:, 14]
+    X = arr[:, 0:16]
 
     # split data into train and test sets
     seed = 7
-    test_size = 0.2
-    temp = set(X[:, 2])
-    # converting string value like file extensions
-    res = {element: i for (i, element) in enumerate(temp)}
-    dataset[['file_extension']] = dataset[['file_extension']].replace(res)
-    arr = dataset.to_numpy()
-    # split data into X and y
+    test_size = 0.3
 
-    X = arr[:, 0:15]
-    Y = arr[:, 15]
+    labelencoder = LabelEncoder()
+    X[:, 0] = labelencoder.fit_transform(X[:, 0])
+    print(1)
+    labelencoder = LabelEncoder()
+    X[:, 2] = labelencoder.fit_transform(X[:, 2])
+    print(2)
+    # labelencoder = LabelEncoder()
+    # X[:, 14] = labelencoder.fit_transform(X[:, 14])
+    # print(3)
+    # labelencoder = LabelEncoder()
+    # X[:, 15] = labelencoder.fit_transform(X[:, 15])
+    # print(4)
 
-    # encoding test results
-    label_encoder_y = LabelEncoder()
-    label_encoder_y = label_encoder_y.fit(Y)
-    label_encoded_y = label_encoder_y.transform(Y)
+    # temp = set(X[:, 2])
+    # # converting string value like file extensions
+    # res = {element: i for (i, element) in enumerate(temp)}
+    # dataset[['file_extension']] = dataset[['file_extension']].replace(res)
+    # temp = set(X[:, 0])
+    # # converting string value like file extensions
+    # res = {element: i for (i, element) in enumerate(temp)}
+    # dataset[['file_name']] = dataset[['file_name']].replace(res)
+    # temp = set(X[:, 14])
+    # # converting string value like file extensions
+    # res = {element: i for (i, element) in enumerate(temp)}
+    # dataset[['test_file']] = dataset[['test_file']].replace(res)
+    # temp = set(X[:, 15])
+    # # converting string value like file extensions
+    # res = {element: i for (i, element) in enumerate(temp)}
+    # dataset[['test_name']] = dataset[['test_name']].replace(res)
+    # arr = dataset.to_numpy()
+    # # split data into X and y
+    #
+    # X = arr[:, 0:16]
+    Y = arr[:, 16]
 
-    # encoding file names
-    label_encoder_x = LabelEncoder()
-    label_encoder_x = label_encoder_x.fit(X[:, 0])
-    label_encoded_x = label_encoder_x.transform(X[:, 0])
 
-    # encoding test file names
-    label_encoder_x_test = LabelEncoder()
-    label_encoder_x_test = label_encoder_x_test.fit(X[:, 14])
-    label_encoded_x_test = label_encoder_x_test.transform(X[:, 14])
+    # Y[Y==False] = 0
+    # Y[Y==True] = 1
 
-    # created new features with encoded values
-    new_X = np.append(np.reshape(label_encoded_x, (len(label_encoded_x), 1)), X[:, 1:14], axis=1)
-    new_X = np.append(new_X, np.reshape(label_encoded_x_test, (len(label_encoded_x_test), 1)), axis=1)
+
+
+    # # encoding file names
+    # label_encoder_x = LabelEncoder()
+    # label_encoder_x = label_encoder_x.fit(X[:, 0])
+    # label_encoded_x = label_encoder_x.transform(X[:, 0])
+
+    # encoded_x = None
+    # for i in range(0, X.shape[1]):
+    #     label_encoder = LabelEncoder()
+    #     if i in (0, 14):
+    #         feature = label_encoder.fit_transform(X[:, i])
+    #         feature = feature.reshape(X.shape[0], 1)
+    #         onehot_encoder = OneHotEncoder(sparse=False, categories='auto')
+    #         feature = onehot_encoder.fit_transform(feature)
+    #         if encoded_x is None:
+    #             encoded_x = feature
+    #         else:
+    #             encoded_x = np.concatenate((encoded_x, feature), axis=1)
+    #     else:
+    #         feature = X[:, i]
+    #         feature = feature.reshape(X.shape[0], 1)
+    #         if encoded_x is None:
+    #             encoded_x = feature
+    #         else:
+    #             encoded_x = np.concatenate((encoded_x, feature), axis=1)
+
+    # # encoding test file names
+    # label_encoder_x_test = LabelEncoder()
+    # label_encoder_x_test = label_encoder_x_test.fit(X[:, 14])
+    # label_encoded_x_test = label_encoder_x_test.transform(X[:, 14])
+
+    # # created new features with encoded values
+    # new_X = np.append(np.reshape(label_encoded_x, (len(label_encoded_x), 1)), X[:, 1:14], axis=1)
+    # new_X = np.append(new_X, np.reshape(label_encoded_x_test, (len(label_encoded_x_test), 1)), axis=1)
     # split the data
-    X_train, X_test, y_train, y_test = train_test_split(new_X, label_encoded_y, test_size=test_size, random_state=seed)
+
+    # set missing values to 0
+    X[X == '?'] = 0
+    # convert to numeric
+    # encoded_x = X.astype('float32')
+
+    # df = pd.DataFrame(X)
+    # df.to_csv('file.csv', index=False)
+    # print(3)
+    X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=test_size, random_state=seed)
 
     # fit model no training data
-    model = XGBClassifier()
+    # model = XGBClassifier(learning_rate=0.1,
+    #                       n_estimators=1000,
+    #                       max_depth=5,
+    #                       min_child_weight=1,
+    #                       gamma=0,
+    #                       subsample=0.8,
+    #                       colsample_bytree=0.8,
+    #                       nthread=4,
+    #                       seed=27)
+    model = XGBClassifier(verbosity=2, use_label_encoder=False)
     model.fit(X_train, y_train)
+    pickle.dump(model, open('model.pkl', 'wb'))
+    pickle.dump(X_test, open('X_test.pkl', 'wb'))
+    pickle.dump(y_test, open('y_test.pkl', 'wb'))
 
+
+
+def predict():
+    loaded_model = pickle.load(open('model.pkl', 'rb'))
+    X_test = pickle.load(open('X_test.pkl', 'rb'))
+    y_test = pickle.load(open('y_test.pkl', 'rb'))
     # make predictions for test data
-    y_pred = model.predict(X_test)
-    predictions = [round(value) for value in y_pred]
-
-    # evaluate predictions
+    y_pred = loaded_model.predict(X_test)
+    predictions = np.array([int(round(value)) for value in y_pred])
+    y_test=y_test.astype('int32')
     accuracy = accuracy_score(y_test, predictions)
-    print("Accuracy: %.2f%%" % (accuracy * 100.0))
+
+    print("Accuracy: %.2f%%" % (accuracy*100))
+    # cm = confusion_matrix(y_test, predictions, normalize='all')
+    # print(cm)
 
 
 if __name__ == "__main__":
@@ -285,5 +422,6 @@ if __name__ == "__main__":
     create_csv()
     ############################################################
     learn()
+    predict()
 
 

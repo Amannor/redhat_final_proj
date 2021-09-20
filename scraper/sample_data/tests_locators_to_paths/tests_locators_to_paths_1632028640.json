@@ -1,0 +1,38 @@
+{
+    "e2e-test/\"[sig-network][Feature:Router] The HAProxy router should serve a route that points to two services and respect weights [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] PersistentVolumes-local  [Volume type: blockfswithoutformat] One pod requesting one prebound PVC should be able to mount volume and write from pod1 [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-apps] CronJob should schedule multiple jobs concurrently [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network][Feature:Router] The HAProxy router should set Forwarded headers appropriately [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-apps][Feature:DeploymentConfig] deploymentconfigs with multiple image change triggers should run a successful deployment with multiple triggers [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "ns/e2e-kubectl-2024 pod/httpd-deployment-c7fc8ffc7-mx4sl node/ci-op-9r3g39zf-2a78c-92d4n-worker-c-bh5gp": [
+        ""
+    ],
+    "e2e-test/\"[sig-storage] Subpath Container restart should verify that container can restart successfully after configmaps modified [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-node] Sysctls [LinuxOnly] [NodeConformance] should support sysctls [MinimumKubeletVersion:1.21] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: block] [Testpattern: Pre-provisioned PV (default fs)] subPath should be able to unmount after the subpath directory is deleted [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-apps] ReplicaSet should serve a basic image on each replica with a public image  [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-arch] [Conformance] FIPS TestFIPS [Suite:openshift/conformance/parallel/minimal]\"": [],
+    "e2e-test/\"[sig-node] Pods should be submitted and removed [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] CSI Volumes [Driver: csi-hostpath] [Testpattern: Pre-provisioned Snapshot (retain policy)] snapshottable[Feature:VolumeSnapshotDataSource] volume snapshot controller  should check snapshot fields, check restore correctly works after modifying source data, check deletion [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] CSI mock volume CSIStorageCapacity CSIStorageCapacity used, have capacity [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] Servers with support for Table transformation should return a 406 for a backend which does not implement metadata [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] ResourceQuota should create a ResourceQuota and capture the life of a secret. [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] ResourceQuota should verify ResourceQuota with terminating scopes. [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "ns/e2e-apply-8217 pod/test-pod node/ci-op-9r3g39zf-2a78c-92d4n-worker-a-6l2lj": [
+        ""
+    ],
+    "e2e-test/\"[sig-apps][Feature:DeploymentConfig] deploymentconfigs initially should not deploy if pods never transition to ready [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-imageregistry][Feature:ImageLayers] Image layer subresource should return layers from tagged images [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-node] Container Runtime blackbox test on terminated container should report termination message [LinuxOnly] if TerminationMessagePath is set [NodeConformance] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] AdmissionWebhook [Privileged:ClusterAdmin] patching/updating a validating webhook should work [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-apps] StatefulSet Basic StatefulSet functionality [StatefulSetBasic] should perform canary updates and phased rolling updates of template modifications [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] AdmissionWebhook [Privileged:ClusterAdmin] should be able to deny pod and configmap creation [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-builds][Feature:Builds] oc new-app  should succeed with a --name of 58 characters [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "ns/e2e-test-templates-p6658 pod/simple-example-1-phw97 node/ci-op-9r3g39zf-2a78c-92d4n-worker-c-bh5gp": [
+        ""
+    ],
+    "e2e-test/\"[sig-auth][Feature:OAuthServer] [Token Expiration] Using a OAuth client with a non-default token max age to generate tokens that do not expire works as expected when using a code authorization flow [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-api-machinery] ResourceQuota should verify ResourceQuota with cross namespace pod affinity scope using scope-selectors. [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] ConfigMap should be consumable from pods in volume as non-root [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-imageregistry][Feature:ImageTriggers] Image change build triggers TestSimpleImageChangeBuildTriggerFromImageStreamTagSTI [Suite:openshift/conformance/parallel]\"": []
+}

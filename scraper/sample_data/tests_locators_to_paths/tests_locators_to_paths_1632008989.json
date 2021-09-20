@@ -1,0 +1,38 @@
+{
+    "e2e-test/\"[sig-builds][Feature:Builds] clone repository using git:// protocol  should clone using git:// if no proxy is configured [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-network][Feature:Router] The HAProxy router should serve the correct routes when scoped to a single namespace and label set [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-auth][Feature:SecurityContextConstraints]  TestAllowedSCCViaRBAC [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-api-machinery] ServerSideApply should work for CRDs [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-apps][Feature:OpenShiftControllerManager] TestTriggers_MultipleICTs [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] PersistentVolumes-local  [Volume type: blockfswithoutformat] Two pods mounting a local volume one after the other should be able to write from pod1 and read from pod2 [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-apps][Feature:DeploymentConfig] deploymentconfigs viewing rollout history should print the rollout history [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "ns/e2e-test-apiserver-t2bqt pod/ci-op-gd8ygyv0-2a78c-6cdsg-master-0-debug node/ci-op-gd8ygyv0-2a78c-6cdsg-master-0": [
+        ""
+    ],
+    "e2e-test/\"[sig-storage] EmptyDir volumes should support (non-root,0777,tmpfs) [LinuxOnly] [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] AdmissionWebhook [Privileged:ClusterAdmin] should mutate custom resource [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-apps] ReplicaSet should serve a basic image on each replica with a private image [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-network] services basic functionality should allow connections to another pod on a different node via a service IP [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-cli] oc debug does not require a real resource on the server [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-auth][Feature:OAuthServer] ClientSecretWithPlus should create oauthclient [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: blockfs] [Testpattern: Pre-provisioned PV (filesystem volmode)] volumeMode should not mount / map unused volumes in a pod [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-node] Docker Containers should be able to override the image's default arguments (docker cmd) [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: blockfs] [Testpattern: Pre-provisioned PV (default fs)] subPath should be able to unmount after the subpath directory is deleted [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-apps][Feature:DeploymentConfig] deploymentconfigs with failing hook should get all logs from retried hooks [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-cli] Kubectl client Kubectl run pod should create a pod from an image when restart is Never  [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-apps] CronJob should not emit unexpected warnings [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-node] Pods should support retrieving logs from the container over websockets [NodeConformance] [Conformance] [Skipped:Proxy] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-storage] In-tree Volumes [Driver: local][LocalVolumeType: dir-link-bindmounted] [Testpattern: Pre-provisioned PV (default fs)] subPath should support file as subpath [LinuxOnly] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-auth][Feature:OpenShiftAuthorization] RBAC proxy for openshift authz  RunLegacyLocalRoleBindingEndpoint should succeed [Suite:openshift/conformance/parallel]\"": [],
+    "ns/e2e-kubectl-9239 pod/httpd-deployment-c7fc8ffc7-kp482 node/ci-op-gd8ygyv0-2a78c-6cdsg-worker-b-gjtx9": [
+        ""
+    ],
+    "e2e-test/\"[sig-instrumentation] Prometheus when installed on the cluster should have a AlertmanagerReceiversNotConfigured alert in firing state [Skipped:Disconnected] [Suite:openshift/conformance/parallel]\"": [],
+    "e2e-test/\"[sig-node] Container Runtime blackbox test when running a container with a new image should not be able to pull image from invalid registry [NodeConformance] [Suite:openshift/conformance/parallel] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-instrumentation] Events API should ensure that an event can be fetched, patched, deleted, and listed [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "ns/e2e-test-apiserver-vdjcc pod/ci-op-gd8ygyv0-2a78c-6cdsg-master-2-debug node/ci-op-gd8ygyv0-2a78c-6cdsg-master-2": [
+        ""
+    ],
+    "e2e-test/\"[sig-storage] ConfigMap optional updates should be reflected in volume [NodeConformance] [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": [],
+    "e2e-test/\"[sig-api-machinery] ResourceQuota should be able to update and delete ResourceQuota. [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]\"": []
+}
