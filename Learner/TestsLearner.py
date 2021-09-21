@@ -85,7 +85,14 @@ def common_token(changed_file, test_file):
 
 
 def flatten_jsons():
-    path = r'../scraper/sample_data'
+    collect_date = datetime.now()
+    with open(r'learner_schema.json', 'r') as f_schema:
+        schema = json.load(f_schema)
+        collect_date = datetime.fromisoformat(schema['date'])
+
+    path = r'../scraper/sample_data/files_changes_history'
+    path_tests = r'../scraper/sample_data/tests_locators_to_paths'
+    path_changeset = r'../scraper/sample_data/changeset_to_tests'
     history = collect_data_history()
     changed_files = []
     failed_test_files = []
@@ -93,12 +100,14 @@ def flatten_jsons():
     # r=root, d=directories, f = files
     for r, d, f in os.walk(path):
         for file in f:
-            if file.startswith('files_changes_history'):
-                changed_files.append(os.path.join(r, file))
-            elif file.startswith('changeset_to_failed_test'):
-                failed_test_files.append(os.path.join(r, file))
-            elif file.startswith('tests_locators_to_paths'):
-                test_locators.append(os.path.join(r, file))
+            changed_files.append(os.path.join(r, file))
+    for r, d, f in os.walk(path_tests):
+        for file in f:
+            test_locators.append(os.path.join(r, file))
+    for r, d, f in os.walk(path_changeset):
+        for file in f:
+            failed_test_files.append(os.path.join(r, file))
+
     test_mapping, test_name_enum, test_file_enum = test_mapper(test_locators)
     file_changes = commits_breakdown(changed_files)
     failure_breakdown = test_failure_breakdown(failed_test_files)
@@ -109,6 +118,7 @@ def flatten_jsons():
         with open(f, 'r') as f_reader:
             reader = json.load(f_reader)
             for item in reader:
+                date_entry = datetime.fromisoformat(item['date'])
                 f_size = len(item['code_changes_data']['commits'][0]['commit_files'])
                 as_size = len(item['code_changes_data']['assignees'])
                 for fn in item['code_changes_data']['commits'][0]['commit_files']:
@@ -121,6 +131,7 @@ def flatten_jsons():
                             continue
                         if tests_locator not in test_mapping:
                             flat_json = dict()
+                            flat_json['date'] = date_entry.strftime("%Y-%m-%dT%H:%M:%S")
                             flat_json['file_name'] = fn['filename']
                             flat_json['num_files_changed'] = f_size
                             if last_token < ext:
@@ -163,6 +174,7 @@ def flatten_jsons():
                         else:
                             for f_t in test_mapping[tests_locator]:
                                 flat_json = dict()
+                                flat_json['date'] = date_entry.strftime("%Y-%m-%dT%H:%M:%S")
                                 flat_json['file_name'] = fn['filename']
                                 flat_json['num_files_changed'] = f_size
                                 if last_token < ext:
@@ -210,6 +222,7 @@ def flatten_jsons():
                                 flat_json_list.append(flat_json)
     with open(r'flatten_data.json', mode='w') as j_flat_file:
         json.dump(flat_json_list, j_flat_file)
+
 
 def commits_breakdown(changed_files):
     collect_date = datetime.now()
@@ -285,103 +298,48 @@ def test_mapper(test_locators):
 
 
 def learn():
+    collect_date = datetime.now()
+    with open(r'learner_schema.json', 'r') as f_schema:
+        schema = json.load(f_schema)
+        collect_date = datetime.fromisoformat(schema['date'])
     # load data
     # for now we are dropping 'project_name'
-    dataset = pd.read_csv(r'prs.csv').drop('project_name', axis=1)
+    dataset = pd.read_csv(r'prs.csv').drop(['project_name', 'test_name'], axis=1)
     arr = dataset.to_numpy()
+
+    labelencoder1 = LabelEncoder()
+    labelencoder1.fit(arr[:, 1])
+    labelencoder3 = LabelEncoder()
+    labelencoder3.fit(arr[:, 3])
+
+    df_train = dataset.loc[pd.to_datetime(dataset['date']) <= collect_date]
+    df_validate = dataset.loc[pd.to_datetime(dataset['date']) > collect_date]
+    arr_train = df_train.to_numpy()
+    arr_validate = df_validate.to_numpy()
+
     # split data into X and y
 
-    X = arr[:, 0:16]
+    X_train = arr_train[:, 1:16]
+    X_validate = arr_validate[:, 1:16]
+    y_train = arr_train[:, 16]
+    y_validate = arr_validate[:, 16]
 
     # split data into train and test sets
     seed = 7
-    test_size = 0.3
-
-    labelencoder = LabelEncoder()
-    X[:, 0] = labelencoder.fit_transform(X[:, 0])
-    print(1)
-    labelencoder = LabelEncoder()
-    X[:, 2] = labelencoder.fit_transform(X[:, 2])
-    print(2)
-    # labelencoder = LabelEncoder()
-    # X[:, 14] = labelencoder.fit_transform(X[:, 14])
-    # print(3)
-    # labelencoder = LabelEncoder()
-    # X[:, 15] = labelencoder.fit_transform(X[:, 15])
-    # print(4)
-
-    # temp = set(X[:, 2])
-    # # converting string value like file extensions
-    # res = {element: i for (i, element) in enumerate(temp)}
-    # dataset[['file_extension']] = dataset[['file_extension']].replace(res)
-    # temp = set(X[:, 0])
-    # # converting string value like file extensions
-    # res = {element: i for (i, element) in enumerate(temp)}
-    # dataset[['file_name']] = dataset[['file_name']].replace(res)
-    # temp = set(X[:, 14])
-    # # converting string value like file extensions
-    # res = {element: i for (i, element) in enumerate(temp)}
-    # dataset[['test_file']] = dataset[['test_file']].replace(res)
-    # temp = set(X[:, 15])
-    # # converting string value like file extensions
-    # res = {element: i for (i, element) in enumerate(temp)}
-    # dataset[['test_name']] = dataset[['test_name']].replace(res)
-    # arr = dataset.to_numpy()
-    # # split data into X and y
-    #
-    # X = arr[:, 0:16]
-    Y = arr[:, 16]
-
-
-    # Y[Y==False] = 0
-    # Y[Y==True] = 1
-
-
-
-    # # encoding file names
-    # label_encoder_x = LabelEncoder()
-    # label_encoder_x = label_encoder_x.fit(X[:, 0])
-    # label_encoded_x = label_encoder_x.transform(X[:, 0])
-
-    # encoded_x = None
-    # for i in range(0, X.shape[1]):
-    #     label_encoder = LabelEncoder()
-    #     if i in (0, 14):
-    #         feature = label_encoder.fit_transform(X[:, i])
-    #         feature = feature.reshape(X.shape[0], 1)
-    #         onehot_encoder = OneHotEncoder(sparse=False, categories='auto')
-    #         feature = onehot_encoder.fit_transform(feature)
-    #         if encoded_x is None:
-    #             encoded_x = feature
-    #         else:
-    #             encoded_x = np.concatenate((encoded_x, feature), axis=1)
-    #     else:
-    #         feature = X[:, i]
-    #         feature = feature.reshape(X.shape[0], 1)
-    #         if encoded_x is None:
-    #             encoded_x = feature
-    #         else:
-    #             encoded_x = np.concatenate((encoded_x, feature), axis=1)
-
-    # # encoding test file names
-    # label_encoder_x_test = LabelEncoder()
-    # label_encoder_x_test = label_encoder_x_test.fit(X[:, 14])
-    # label_encoded_x_test = label_encoder_x_test.transform(X[:, 14])
-
-    # # created new features with encoded values
-    # new_X = np.append(np.reshape(label_encoded_x, (len(label_encoded_x), 1)), X[:, 1:14], axis=1)
-    # new_X = np.append(new_X, np.reshape(label_encoded_x_test, (len(label_encoded_x_test), 1)), axis=1)
-    # split the data
+    test_size = 0.2
 
     # set missing values to 0
-    X[X == '?'] = 0
-    # convert to numeric
-    # encoded_x = X.astype('float32')
+    X_train[X_train == '?'] = 0
+    X_validate[X_validate == '?'] = 0
 
-    # df = pd.DataFrame(X)
-    # df.to_csv('file.csv', index=False)
-    # print(3)
-    X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=test_size, random_state=seed)
+    X_train[:, 0] = labelencoder1.fit_transform(X_train[:, 0])
+    X_train[:, 2] = labelencoder3.fit_transform(X_train[:, 2])
+
+    X_validate[:, 0] = labelencoder1.fit_transform(X_validate[:, 0])
+    X_validate[:, 2] = labelencoder3.fit_transform(X_validate[:, 2])
+
+
+    X_train, X_test, y_train, y_test = train_test_split(X_train, y_train, test_size=test_size, random_state=seed)
 
     # fit model no training data
     # model = XGBClassifier(learning_rate=0.1,
@@ -396,9 +354,10 @@ def learn():
     model = XGBClassifier(verbosity=2, use_label_encoder=False)
     model.fit(X_train, y_train)
     pickle.dump(model, open('model.pkl', 'wb'))
+    pickle.dump(X_validate, open('X_validate.pkl', 'wb'))
+    pickle.dump(y_validate, open('y_validate.pkl', 'wb'))
     pickle.dump(X_test, open('X_test.pkl', 'wb'))
     pickle.dump(y_test, open('y_test.pkl', 'wb'))
-
 
 
 def predict():
@@ -411,9 +370,17 @@ def predict():
     y_test=y_test.astype('int32')
     accuracy = accuracy_score(y_test, predictions)
 
-    print("Accuracy: %.2f%%" % (accuracy*100))
-    # cm = confusion_matrix(y_test, predictions, normalize='all')
-    # print(cm)
+    print("Validation Accuracy: %.2f%%" % (accuracy*100))
+
+    X_validate = pickle.load(open('X_validate.pkl', 'rb'))
+    y_validate = pickle.load(open('y_validate.pkl', 'rb'))
+
+    y_pred = loaded_model.predict(X_validate)
+    predictions = np.array([int(round(value)) for value in y_pred])
+    y_validate=y_validate.astype('int32')
+    accuracy = accuracy_score(y_validate, predictions)
+
+    print("Test Accuracy: %.2f%%" % (accuracy*100))
 
 
 if __name__ == "__main__":

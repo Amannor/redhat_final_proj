@@ -1,9 +1,10 @@
 {
-  "date": "2021-09-05T00:00:00",
+  "date": "2021-09-02T00:00:00",
   "y_fields": {
       "field": "test_status"
     },
   "schema_fields": {
+    "date": "date",
     "file_name": "file_name",
     "num_files_changed": "num_files_changed",
     "file_extension": "file_extension",
