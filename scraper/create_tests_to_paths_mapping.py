@@ -9,25 +9,9 @@ import requests
 from bs4 import BeautifulSoup
 import xmltodict
 import re
+import CONSTS
 
-
-MAX_JOBS = 4000
-OUT_FILE = "all_jobs"
-DATA_FOLDER = "sample_data"
-DATA_FOLDER = os.path.join(DATA_FOLDER, "tests_locators_to_paths")
-
-OWNER = "openshift"
-REPO = "origin"
-GITHUB_API_BASE_URL  = r'https://api.github.com'
-GITHUB_API_PR_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/pulls/{pull_number}' #From: https://docs.github.com/en/rest/reference/pulls#get-a-pull-request
-GITHUB_API_COMMIT_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/commits/{commit_hash}'
-
-TST_FETCHING_BASE_URL = r"https://prow.ci.openshift.org/"
-URL = 'https://prow.ci.openshift.org/job-history/gs/origin-ci-test/pr-logs/directory/pull-ci-openshift-origin-master-e2e-gcp?buildId'
-DEFAULT_REQUEST_TIMEOUT_SECONDS = 1800
-
-SET_CONTAINING_ONLY_EMPTY_STR = set()
-SET_CONTAINING_ONLY_EMPTY_STR.add("")
+DATA_FOLDER = os.path.join(CONSTS.DATA_FOLDER, "tests_locators_to_paths")
 
 def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_write = 30):
     print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Fetching {len(test_locators_set)} test paths')
@@ -52,7 +36,7 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
 
             test_id = test_locator[open_i:close_i + 1]
             if artifacts_webpage is None:
-                artifacts_webpage = requests.get(artifacts_url, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
+                artifacts_webpage = requests.get(artifacts_url, timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS)
             if soup is None:
                 soup = BeautifulSoup(artifacts_webpage.text, 'html.parser')
             for link in soup.find_all('a'):
@@ -60,7 +44,7 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
                 basename = ntpath.basename(h_ref_text)
                 if basename.startswith("junit_e2e_") and basename.endswith(".xml"):  # TODO: better - check using regex if it's of the pattern: junit_e2e_XXXXXXXX-XXXXXX.xml (every X is a digit)
                     print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} full url: {artifacts_url}{basename}')
-                    response = requests.get(f'{artifacts_url}{basename}', timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
+                    response = requests.get(f'{artifacts_url}{basename}', timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS)
                     print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} response size: {len(response.content)}')
                     dict_data = xmltodict.parse(response.content) #From https://stackoverflow.com/a/67296064
 
@@ -71,7 +55,7 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
                     #Option 1 - looking in the system out prints
                     test_info_list = [t for t in test_general_info_list if "system-out" in t]
                     for test_info_item in test_info_list:
-                        path_start_i = test_info_item["system-out"].find(f'github.com/{OWNER}/{REPO}')
+                        path_start_i = test_info_item["system-out"].find(f'github.com/{CONSTS.OWNER}/{CONSTS.REPO}')
                         if path_start_i < 0:
                             continue
                         partial_s = test_info_item["system-out"][path_start_i:]
@@ -92,7 +76,7 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
                     if len(tests_paths) == 0:
                         test_info_list = [t for t in test_general_info_list if "failure" in t and '#text' in t["failure"]]
                         for test_fail_info in test_info_list:
-                            path_start_i = test_fail_info["failure"]['#text'].find(f'github.com/{OWNER}/{REPO}')
+                            path_start_i = test_fail_info["failure"]['#text'].find(f'github.com/{CONSTS.OWNER}/{CONSTS.REPO}')
                             if path_start_i < 0:
                                 continue
                             partial_s = test_fail_info["failure"]['#text'][path_start_i:]
@@ -139,7 +123,7 @@ def write_data(ignore_previously_fetched_mappings = True):
 
     all_data = dict()
 
-    r = requests.get(url=URL, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
+    r = requests.get(url=CONSTS.MAIN_OPENSHIFT_URL, timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS)
     size = len('var allBuilds = ')
     index = r.text.find('var allBuilds = ')
     i = 0
@@ -152,10 +136,10 @@ def write_data(ignore_previously_fetched_mappings = True):
                 with open(os.path.join(DATA_FOLDER, filename)) as f:
                     data = json.load(f)
                 for k in data.keys():
-                    if len(data[k]) > 0 and set([v.replace('"', '') for v in data[k]]) != SET_CONTAINING_ONLY_EMPTY_STR:
+                    if len(data[k]) > 0 and set([v.replace('"', '') for v in data[k]]) != CONSTS.SET_CONTAINING_ONLY_EMPTY_STR:
                         overall_tests_to_paths[k] = data[k]
 
-    while index > 0 and i < MAX_JOBS:
+    while index > 0 and i < CONSTS.MAX_JOBS:
         cur_tests_to_paths = dict()
 
         last_index = r.text.find(';\n</script>')
@@ -176,14 +160,14 @@ def write_data(ignore_previously_fetched_mappings = True):
 
                 #Test fetching
                 print("Fetching tests")
-                spyglass_res = requests.get(f'{TST_FETCHING_BASE_URL}{item["SpyglassLink"]}', timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
+                spyglass_res = requests.get(f'{CONSTS.TST_FETCHING_BASE_URL}{item["SpyglassLink"]}', timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS)
                 if spyglass_res.status_code != 200:
                     print(f'Got {spyglass_res.status_code} response code. Skipping item')
                     continue
                 close_i = spyglass_res.text.index(r'>Artifacts</a>')
                 open_i = spyglass_res.text[:close_i].rfind('href=')
                 artifacts_url = spyglass_res.text[open_i + len("href=") + 1:close_i-1] + r'artifacts/e2e-gcp/openshift-e2e-test/artifacts/junit/'
-                artifacts_webpage = requests.get(artifacts_url, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
+                artifacts_webpage = requests.get(artifacts_url, timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS)
 
                 soup = BeautifulSoup(artifacts_webpage.text, 'html.parser')
                 ci_date = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
@@ -191,7 +175,7 @@ def write_data(ignore_previously_fetched_mappings = True):
                     h_ref_text = link.get('href')
                     basename = ntpath.basename(h_ref_text)
                     if basename.startswith("e2e-intervals_") and basename.endswith(".json"): #TODO: better - check using regex if it's of the pattern: e2e-intervals_XXXX_XXXX.json (every X is a digit)
-                        tests_results = requests.get(f'{artifacts_url}{basename}', timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
+                        tests_results = requests.get(f'{artifacts_url}{basename}', timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
                         base_date = basename[len('e2e-intervals_'):len(basename) - len('.json')]
                         ci_date = datetime.datetime(int(base_date[0:4]), int(base_date[4:6]),
                                                     int(base_date[6:8]), 0, 0, 0).strftime("%Y-%m-%dT%H:%M:%S")
@@ -213,7 +197,7 @@ def write_data(ignore_previously_fetched_mappings = True):
         try:
             x = jobs[jobs_len]['ID']
             print(f'x {x}')
-            r = requests.get(url=URL+'='+x, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
+            r = requests.get(url=CONSTS.MAIN_OPENSHIFT_URL+'='+x, timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS)
             size = len('var allBuilds = ')
             index = r.text.find('var allBuilds = ')
         except:
@@ -230,7 +214,7 @@ def write_data(ignore_previously_fetched_mappings = True):
                     overall_tests_to_paths[t_key] = cur_tests_to_paths[t_key]
 
     epoch_time = int(time.time())
-    out_fname = os.path.join(DATA_FOLDER, f'{OUT_FILE}_{epoch_time}.json')
+    out_fname = os.path.join(DATA_FOLDER, f'{CONSTS.OUT_FILE}_{epoch_time}.json')
     with open(out_fname, 'w') as f_out:
         json.dump(all_data, f_out, indent=4)
 
