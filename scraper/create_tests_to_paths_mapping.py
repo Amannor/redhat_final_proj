@@ -28,6 +28,7 @@ GITHUB_API_COMMIT_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/commits/{commit_hash}
 
 TST_FETCHING_BASE_URL = r"https://prow.ci.openshift.org/"
 URL = 'https://prow.ci.openshift.org/job-history/gs/origin-ci-test/pr-logs/directory/pull-ci-openshift-origin-master-e2e-gcp?buildId'
+DEFAULT_REQUEST_TIMEOUT_SECONDS = 1800
 
 def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_write = 30):
     print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Fetching {len(test_locators_set)} test paths')
@@ -53,7 +54,7 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
 
             test_id = test_locator[open_i:close_i + 1]
             if artifacts_webpage is None:
-                artifacts_webpage = requests.get(artifacts_url)
+                artifacts_webpage = requests.get(artifacts_url, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
             if soup is None:
                 soup = BeautifulSoup(artifacts_webpage.text, 'html.parser')
             for link in soup.find_all('a'):
@@ -61,7 +62,7 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
                 basename = ntpath.basename(h_ref_text)
                 if basename.startswith("junit_e2e_") and basename.endswith(".xml"):  # TODO: better - check using regex if it's of the pattern: junit_e2e_XXXXXXXX-XXXXXX.xml (every X is a digit)
                     print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} full url: {artifacts_url}{basename}')
-                    response = requests.get(f'{artifacts_url}{basename}')
+                    response = requests.get(f'{artifacts_url}{basename}', timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
                     print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} response size: {len(response.content)}')
                     dict_data = xmltodict.parse(response.content) #From https://stackoverflow.com/a/67296064
 
@@ -149,29 +150,16 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
     # return failed_tests_locators_to_paths
     return tests_locators_to_paths
 
-
-
-
 def write_data():
     set_containing_only_empty_str = set()
     set_containing_only_empty_str.add("")
     all_data = dict()
 
-    r = requests.get(url=URL)
+    r = requests.get(url=URL, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
     size = len('var allBuilds = ')
     index = r.text.find('var allBuilds = ')
     i = 0
     overall_tests_to_paths = dict()
-    ###Tmp code to fill overall_tests_to_paths - Start
-    for filename in os.listdir(DATA_FOLDER):
-        if filename.startswith("tests_locators_to_paths_") and filename.endswith(".json"):
-            print(f'Loading existing data from: {os.path.join(DATA_FOLDER, filename)}')
-            with open(os.path.join(DATA_FOLDER, filename)) as f:
-                data = json.load(f)
-                for k in data.keys():
-                    if len(data[k]) >0 and set([v.replace('"', '') for v in data[k]]) != set_containing_only_empty_str:
-                        overall_tests_to_paths[k] = data[k]
-    ###Tmp code to fill overall_tests_to_paths - End
 
     while index > 0 and i < MAX_JOBS:
         cur_tests_to_paths = dict()
@@ -196,14 +184,14 @@ def write_data():
                 #Test fetching
                 print("Fetching tests")
                 # cur_tests_count = 0
-                spyglass_res = requests.get(f'{TST_FETCHING_BASE_URL}{item["SpyglassLink"]}')
+                spyglass_res = requests.get(f'{TST_FETCHING_BASE_URL}{item["SpyglassLink"]}', timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
                 if spyglass_res.status_code != 200:
                     print(f'Got {spyglass_res.status_code} response code. Skipping item')
                     continue
                 close_i = spyglass_res.text.index(r'>Artifacts</a>')
                 open_i = spyglass_res.text[:close_i].rfind('href=')
                 artifacts_url = spyglass_res.text[open_i + len("href=") + 1:close_i-1] + r'artifacts/e2e-gcp/openshift-e2e-test/artifacts/junit/'
-                artifacts_webpage = requests.get(artifacts_url)
+                artifacts_webpage = requests.get(artifacts_url, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
 
                 soup = BeautifulSoup(artifacts_webpage.text, 'html.parser')
                 # failed_tests_info = list()
@@ -212,7 +200,7 @@ def write_data():
                     h_ref_text = link.get('href')
                     basename = ntpath.basename(h_ref_text)
                     if basename.startswith("e2e-intervals_") and basename.endswith(".json"): #TODO: better - check using regex if it's of the pattern: e2e-intervals_XXXX_XXXX.json (every X is a digit)
-                        tests_results = requests.get(f'{artifacts_url}{basename}').json()
+                        tests_results = requests.get(f'{artifacts_url}{basename}', timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
                         # cur_tests_count = len(tests_results["items"])
                         base_date = basename[len('e2e-intervals_'):len(basename) - len('.json')]
                         ci_date = datetime.datetime(int(base_date[0:4]), int(base_date[4:6]),
@@ -282,7 +270,7 @@ def write_data():
         try:
             x = jobs[jobs_len]['ID']
             print(f'x {x}')
-            r = requests.get(url=URL+'='+x)
+            r = requests.get(url=URL+'='+x, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
             size = len('var allBuilds = ')
             index = r.text.find('var allBuilds = ')
         except:
@@ -312,8 +300,8 @@ def write_data():
 
 
 if __name__ == "__main__":
-    print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Start')
+    print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}  {os.path.basename(__file__)} Start')
     if not os.path.exists(DATA_FOLDER):
         os.makedirs(DATA_FOLDER)
     write_data()
-    print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} End')
+    print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}  {os.path.basename(__file__)} End')
