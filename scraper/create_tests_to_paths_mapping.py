@@ -10,14 +10,9 @@ from bs4 import BeautifulSoup
 import xmltodict
 import re
 
-# from inspect import currentframe, getframeinfo #TODO - need to replace prints with logger
-import xml.etree.ElementTree as ET
-
-from credentials import username
-from credentials import token
 
 MAX_JOBS = 4000
-OUT_FILE = "all_jobs" #Old: '/Users/rarviv/Downloads/all_jobs.json'
+OUT_FILE = "all_jobs"
 DATA_FOLDER = "sample_data"
 DATA_FOLDER = os.path.join(DATA_FOLDER, "tests_locators_to_paths")
 
@@ -38,7 +33,6 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
     print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Fetching {len(test_locators_set)} test paths')
     artifacts_webpage = None
     soup = None
-    # failed_tests_locators_to_paths = dict()
     tests_locators_to_paths = dict()
     iteration_num = 0
     cur_batch = dict()
@@ -69,17 +63,6 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
                     response = requests.get(f'{artifacts_url}{basename}', timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
                     print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} response size: {len(response.content)}')
                     dict_data = xmltodict.parse(response.content) #From https://stackoverflow.com/a/67296064
-
-                    ###TODO - there are seveal faster option to parse xml (see for example here: https://gist.github.com/hhatto/25896e29edbedfbe057e4b79b71ad1b2)
-                    # The fastest one (from xml.etree import ElementTree) leaves out a lot of much neede info, so it's irrelevant.
-                    # This is it:
-                    # tree = ET.fromstring(response.content)
-                    # root = tree.getroot()
-                    # print
-
-                    ##TODO: I can try the 2nd best one (from lxml.etree import XML)
-
-
 
                     if not ('testsuite' in dict_data and 'testcase' in dict_data['testsuite']):
                         continue
@@ -126,7 +109,6 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
                             test_path = re.sub('\s+', ' ', test_path)  # Removing leading \ trailing whitespaces
                             tests_paths.add(test_path)
 
-            # failed_tests_locators_to_paths[test_locator] = list(tests_paths)
             cur_batch[test_locator] = list(tests_paths)
             if len(cur_batch) >= batch_size_to_write:
                 epoch_time = int(time.time())
@@ -151,7 +133,6 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
 
     if len(tests_locators_to_paths) == 0:
         print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} No tests paths found')
-    # return failed_tests_locators_to_paths
     return tests_locators_to_paths
 
 def write_data(ignore_previously_fetched_mappings = True):
@@ -177,7 +158,6 @@ def write_data(ignore_previously_fetched_mappings = True):
     while index > 0 and i < MAX_JOBS:
         cur_tests_to_paths = dict()
 
-        # changeset_to_failed_tests = list()
         last_index = r.text.find(';\n</script>')
         if last_index < 0:
             print(f'last_index {last_index} - skipping this iteration')
@@ -196,7 +176,6 @@ def write_data(ignore_previously_fetched_mappings = True):
 
                 #Test fetching
                 print("Fetching tests")
-                # cur_tests_count = 0
                 spyglass_res = requests.get(f'{TST_FETCHING_BASE_URL}{item["SpyglassLink"]}', timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
                 if spyglass_res.status_code != 200:
                     print(f'Got {spyglass_res.status_code} response code. Skipping item')
@@ -207,76 +186,27 @@ def write_data(ignore_previously_fetched_mappings = True):
                 artifacts_webpage = requests.get(artifacts_url, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
 
                 soup = BeautifulSoup(artifacts_webpage.text, 'html.parser')
-                # failed_tests_info = list()
                 ci_date = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
                 for link in soup.find_all('a'):
                     h_ref_text = link.get('href')
                     basename = ntpath.basename(h_ref_text)
                     if basename.startswith("e2e-intervals_") and basename.endswith(".json"): #TODO: better - check using regex if it's of the pattern: e2e-intervals_XXXX_XXXX.json (every X is a digit)
                         tests_results = requests.get(f'{artifacts_url}{basename}', timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
-                        # cur_tests_count = len(tests_results["items"])
                         base_date = basename[len('e2e-intervals_'):len(basename) - len('.json')]
                         ci_date = datetime.datetime(int(base_date[0:4]), int(base_date[4:6]),
                                                     int(base_date[6:8]), 0, 0, 0).strftime("%Y-%m-%dT%H:%M:%S")
-                        # failed_test_locators = list()
                         test_locators = set()
                         for tests_result in tests_results["items"]:
                             cur_locator = tests_result["locator"]
-                            if (not cur_locator in overall_tests_to_paths) or len(overall_tests_to_paths[cur_locator])==0:
-                                ##TODO: this line is tmp since this specfic test caused the code to hang for 5 hours (!) and the process had to be killed
-                                if not "[sig-network] Proxy version v1 should proxy through a service and a pod  [Conformance] [Suite:openshift/conformance/parallel/minimal] [Suite:k8s]" in cur_locator:
-                                    test_locators.add(cur_locator)
-                            # if tests_result["message"].endswith("\"Failed\""):
-                            #     failed_test_locators.append(tests_result["locator"])
+                            if (not cur_locator in overall_tests_to_paths) or len(overall_tests_to_paths[cur_locator]) == 0:
+                                test_locators.add(cur_locator)
 
-                        # failed_tests_locators_to_paths = get_failed_tests_locators_to_paths(artifacts_url, failed_test_locators)
+
                         cur_tests_locators_to_paths = get_tests_locators_to_paths(artifacts_url, test_locators)
                         for t_key in cur_tests_locators_to_paths.keys():
                             if (not t_key in cur_tests_to_paths) or len(cur_tests_to_paths[t_key]) == 0:
                                 cur_tests_to_paths[t_key] = cur_tests_locators_to_paths[t_key]
 
-                        # no_paths_found = True
-                        # for key in failed_tests_locators_to_paths.keys():
-                        #     if set(failed_tests_locators_to_paths[key]) != set(""):
-                        #         no_paths_found = False
-                        #         break
-                        # if len(failed_tests_locators_to_paths>0) and not no_paths_found:
-                        #     failed_tests_info.append(failed_tests_locators_to_paths)
-
-                # if len(failed_tests_info) == 0:
-                #     print("No failed tests found - skipping this item")
-                #     continue
-
-
-                '''
-                # Code-change fetching
-                print("Fetching code-change")
-                for pr_details in item['Refs']['pulls']:
-                    cur_code_change = dict()
-                    cur_code_change["target_cardinality"] = cur_tests_count
-                    cur_pr_suffix = GITHUB_API_PR_SUFFIX_PATTERN.format(owner=OWNER, repo=REPO,
-                                                                        pull_number=pr_details['number'])
-
-                    cur_pr = fetch_url_and_sleep_if_needed(f'{GITHUB_API_BASE_URL}{cur_pr_suffix}')
-
-                    cur_code_change = add_pr_details(cur_code_change, cur_pr)
-                    if should_include_commits:
-                        cur_code_change["commits"] = get_cur_change_commits_details(cur_pr['commits_url'])
-                    else:
-                        pr_files = list()
-                        cur_pr_files = fetch_url_and_sleep_if_needed(f'{GITHUB_API_BASE_URL}{cur_pr_suffix}/files')
-                        for cur_pr_file in cur_pr_files:
-                            pr_file_to_add  = dict()
-                            pr_file_to_add["filename"] = cur_pr_file["filename"]
-                            pr_file_to_add["status"] = cur_pr_file["status"]
-                            pr_file_to_add["additions"] = cur_pr_file["additions"]
-                            pr_file_to_add["deletions"] = cur_pr_file["deletions"]
-                            pr_file_to_add["changes"] = cur_pr_file["changes"]
-                            pr_files.append(pr_file_to_add)
-                        cur_code_change["files"] = pr_files
-                    cur_data = {"code_changes_data": cur_code_change, "failed_tests": failed_tests_info, "date": ci_date, "artifact_url": artifacts_url}
-                    changeset_to_failed_tests.append(cur_data)
-                    '''
             except:
                 print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Error: type {sys.exc_info()[0]}\nvalue {sys.exc_info()[1]}\ntraceback {sys.exc_info()[2]}', ) #See https://docs.python.org/3/library/sys.html#sys.exc_info
 
@@ -295,16 +225,9 @@ def write_data(ignore_previously_fetched_mappings = True):
         if len(cur_tests_to_paths) == 0:
             print ("No records to write")
         else:
-            # epoch_time = int(time.time())
-            # out_fname = f'tests_to_paths_{epoch_time}.json'
-            # out_fname = os.path.join(DATA_FOLDER, out_fname)
-            # print(f'Writing to file {out_fname} (num of records: {len(cur_tests_to_paths)})')
-            # with open(out_fname, 'w') as f_out:
-            #     json.dump(cur_tests_to_paths, f_out, indent=4)
             for t_key in cur_tests_to_paths.key():
                 if (not t_key in overall_tests_to_paths) or len(overall_tests_to_paths[t_key]) == 0:
                     overall_tests_to_paths[t_key] = cur_tests_to_paths[t_key]
-
 
     epoch_time = int(time.time())
     out_fname = os.path.join(DATA_FOLDER, f'{OUT_FILE}_{epoch_time}.json')
