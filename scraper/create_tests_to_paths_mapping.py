@@ -19,6 +19,7 @@ from credentials import token
 MAX_JOBS = 4000
 OUT_FILE = "all_jobs" #Old: '/Users/rarviv/Downloads/all_jobs.json'
 DATA_FOLDER = "sample_data"
+DATA_FOLDER = os.path.join(DATA_FOLDER, "tests_locators_to_paths")
 
 OWNER = "openshift"
 REPO = "origin"
@@ -29,6 +30,9 @@ GITHUB_API_COMMIT_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/commits/{commit_hash}
 TST_FETCHING_BASE_URL = r"https://prow.ci.openshift.org/"
 URL = 'https://prow.ci.openshift.org/job-history/gs/origin-ci-test/pr-logs/directory/pull-ci-openshift-origin-master-e2e-gcp?buildId'
 DEFAULT_REQUEST_TIMEOUT_SECONDS = 1800
+
+SET_CONTAINING_ONLY_EMPTY_STR = set()
+SET_CONTAINING_ONLY_EMPTY_STR.add("")
 
 def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_write = 30):
     print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Fetching {len(test_locators_set)} test paths')
@@ -150,9 +154,8 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
     # return failed_tests_locators_to_paths
     return tests_locators_to_paths
 
-def write_data():
-    set_containing_only_empty_str = set()
-    set_containing_only_empty_str.add("")
+def write_data(ignore_previously_fetched_mappings = True):
+
     all_data = dict()
 
     r = requests.get(url=URL, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS)
@@ -160,6 +163,16 @@ def write_data():
     index = r.text.find('var allBuilds = ')
     i = 0
     overall_tests_to_paths = dict()
+
+    if ignore_previously_fetched_mappings:
+        for filename in os.listdir(DATA_FOLDER):
+            if filename.startswith("tests_locators_to_paths_") and filename.endswith(".json"):
+                print(f'Loading existing data from: {os.path.join(DATA_FOLDER, filename)}')
+                with open(os.path.join(DATA_FOLDER, filename)) as f:
+                    data = json.load(f)
+                for k in data.keys():
+                    if len(data[k]) > 0 and set([v.replace('"', '') for v in data[k]]) != SET_CONTAINING_ONLY_EMPTY_STR:
+                        overall_tests_to_paths[k] = data[k]
 
     while index > 0 and i < MAX_JOBS:
         cur_tests_to_paths = dict()
