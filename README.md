@@ -19,13 +19,15 @@ As will be detailed below, the heavy lifting of this implementation (both in cod
 * https://www.redhat.com/en
 * Partner contact: [Name of Contact], [slack handle of contact if any] - TODO - write Ilya's mail? (maybe also Gil's...?)
 ### Methods Used
-* Robi TODO - write the ML methods you used 
-* bla bla
-* bla bla bla 
-* etc.
+* XGBClassifier (xgboost)
+* XGBRegressor (xgboost)
+* train_test_split (sklearn)
+* accuracy_score (sklearn)
+* LabelEncoder (sklearn)
 
 ### Technologies
-* Robi TODO - write the main libraries you used 
+* xgboost
+* sklearn
 * Python (version 3.9.0)
 * PyCharm 
 
