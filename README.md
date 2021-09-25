@@ -1,57 +1,43 @@
-# Project Name
+# Test prioritization in the CI\CD cycle (Red Hat OpenShift case study)
 This is the code for the final project in the course "Workshop: Projects with the Industry and Academia" (IDC, Herzliya August 2021)
 
-This project is a part of the [Data Science Working Group](http://datascience.codeforsanfrancisco.org) at [Code for San Francisco](http://www.codeforsanfrancisco.org).  Other DSWG projects can be found at the [main GitHub repo](https://github.com/sfbrigade/data-science-wg).
-
-#### -- Project Status: [Active, On-Hold, Completed]
+#### Project Status: [Completed]
 
 ## Project Intro/Objective
 
 The purpose of this project is to be a POC in test prioritization as part of a CI\CD cycle.
-More specifically, in this project we aimed at showing the feasibility  of a specific test prioritization scheme in a Red Hat project.
+More specifically, in this project we aimed at showing the feasibility of a specific test prioritization scheme in a Red Hat project.
 The test prioritization scheme is based on the article ["Selective Test Prediction" by Facebook reseacrh](https://research.fb.com/wp-content/uploads/2020/12/Predictive-Test-Selection.pdf) (hereinafter referd to as "the FB article").
-The Red Hat product is the [Openshift project](https://github.com/openshift/origin)
+The Red Hat product we implemented this on is the [OpenShift project](https://github.com/openshift/origin).
+As will be detailed below, the heavy lifting of this implementation (both in coding and computation resources) was creating a coherent and relevant dataset.
 
-
-##Background
-
-This project is a POC in test prioritization as part of a CI\CD process. The idea was to show that the methodolgy described in the FB article can be implemented in Red Hat software products. Most of this 
-The purpose of this project is ________. (Describe the main goals of the project and potential civic impact. Limit to a short paragraph, 3-6 Sentences)
 
 ### Partner
-* [Name of Partner organization/Government department etc..]
-* Website for partner
-* Partner contact: [Name of Contact], [slack handle of contact if any]
-* If you do not have a partner leave this section out
-
+* [Red Hat Inc.]
+* https://www.redhat.com/en
+* Partner contact: [Name of Contact], [slack handle of contact if any] - TODO - write Ilya's mail? (maybe also Gil's...?)
 ### Methods Used
-* Inferential Statistics
-* Machine Learning
-* Data Visualization
-* Predictive Modeling
+* Robi TODO - write the ML methods you used 
+* bla bla
+* bla bla bla 
 * etc.
 
 ### Technologies
-* R 
-* Python
-* D3
-* PostGres, MySql
-* Pandas, jupyter
-* HTML
-* JavaScript
-* etc. 
+* Robi TODO - write the main libraries you used 
+* Python (version 3.9.0)
+* PyCharm 
 
 ## Project Description
+The main challenge in this project was getting the raw data, identifying and extracting the relevant parts and finally prepare in a scheme like in the FB article.
+The first challenege was to choose a project that has enough "meat" (e.g. pull requests, large data suites etc.). With the advice of Gil Klein
+
 (Provide more detailed overview of the project.  Talk a bit about your data sources and what questions and hypothesis you are exploring. What specific data analysis/visualization and modelling work are you using to solve the problem? What blockers and challenges are you facing?  Feel free to number or bullet point things here)
 
-## Needs of this project
+## Project History and Evolution
 
-- frontend developers
-- data exploration/descriptive statistics
-- data processing/cleaning
-- statistical modeling
-- writeup/reporting
-- etc. (be as specific as possible)
+The main challenge in this project was getting the raw data, identifying and extracting the relevant parts and finally prepare in a scheme like in the FB article.
+The first challenege was to choose a project that has enough "meat" (e.g. pull requests, large data suites etc.). With the advice of Gil Klein from Red Hat, the OpenShift project was selected. 
+The second part was a long and tedious cycle of trial & error that invloved vieweing and analyzing the structure of OpenShift's CI system, its test-running outputs, the way it ran tests and documented their state (e.g. fai\success\skip etc.). Eventually we were able to find a good-enough way to track the test's "name"\"identifier" (also referd to as test's "locator" in RedHat's parlance) and a mapping from it to the file that contains that test in the [OpenShift project's repo](https://github.com/openshift/origin).
 
 ## Getting Started
 
@@ -73,12 +59,12 @@ The purpose of this project is ________. (Describe the main goals of the project
 * [Blog Post](link)
 
 
-## Contributing DSWG Members
+## Contributing Members
 
-**Team Leads (Contacts) : [Full Name](https://github.com/[github handle])(@slackHandle)**
+**Team Members (Contacts) : [Alon Mannor](https://github.com/amannor) **
 
 #### Other Members:
-
+TODO - write Ilya and\or Gil?
 |Name     |  Slack Handle   | 
 |---------|-----------------|
 |[Full Name](https://github.com/[github handle])| @johnDoe        |
@@ -90,4 +76,4 @@ The purpose of this project is ________. (Describe the main goals of the project
 * Feel free to contact team leads with any questions or if you are interested in contributing!
 
 #### Misc
-Template taken from: https://github.com/sfbrigade/data-science-wg/blob/master/dswg_project_resources/Project-README-template.md
+This README template was taken from: https://github.com/sfbrigade/data-science-wg/blob/master/dswg_project_resources/Project-README-template.md
