@@ -5,18 +5,20 @@ import time
 
 import requests
 
-from credentials import username
-from credentials import token
 import CONSTS
+from credentials import token
+from credentials import username
 
 DATA_FOLDER = os.path.join(CONSTS.DATA_FOLDER, "files_changes_history")
 ALL_PROJ_FILES_FILE = 'all_project_files_metdata.json'
-PROJ_ROOT_SHA = r'507b91e30606df94166e3a13a02b046222abbc8f' #Taken from https://api.github.com/repos/openshift/origin/branches/master (see https://stackoverflow.com/a/25128301)
+PROJ_ROOT_SHA = r'507b91e30606df94166e3a13a02b046222abbc8f'  # Taken from https://api.github.com/repos/openshift/origin/branches/master (see https://stackoverflow.com/a/25128301)
 MAX_RECORDS_PER_FILE = 300
 
 
 def fetch_url_and_sleep_if_needed(url, use_auth=True):
-    url_data = requests.get(url, auth=(username, token), timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS).json() if use_auth else requests.get(url, timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
+    url_data = requests.get(url, auth=(username, token),
+                            timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS).json() if use_auth else requests.get(url,
+                                                                                                                 timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
     if "message" in url_data and 'API rate limit exceeded' in url_data["message"]:
         print(url_data["message"])
         print(url_data["documentation_url"])
@@ -27,16 +29,19 @@ def fetch_url_and_sleep_if_needed(url, use_auth=True):
         e = datetime.datetime.now()
         print(f'Current time: {e.strftime("%Y-%m-%d %H:%M:%S")}')
         print("Woke up! Continuing where I left off")
-        url_data = requests.get(url, auth=(username, token), timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS).json() if use_auth else requests.get(url, timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
+        url_data = requests.get(url, auth=(username, token),
+                                timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS).json() if use_auth else requests.get(
+            url, timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
 
     return url_data
 
 
 def fill_projects_data_file_if_not_exist():
     if not os.path.exists(ALL_PROJ_FILES_FILE):
-        suffix = CONSTS.GITHUB_API_TREE_SUFFIX_PATTERN.format(owner=CONSTS.OWNER, repo=CONSTS.REPO, tree_sha=PROJ_ROOT_SHA)
+        suffix = CONSTS.GITHUB_API_TREE_SUFFIX_PATTERN.format(owner=CONSTS.OWNER, repo=CONSTS.REPO,
+                                                              tree_sha=PROJ_ROOT_SHA)
         suffix += r'?recursive = 1'
-        full_url = f'{CONSTS.GITHUB_API_BASE_URL}{suffix}' # https://api.github.com/repos/openshift/origin/git/trees/507b91e30606df94166e3a13a02b046222abbc8f?recursive=1'
+        full_url = f'{CONSTS.GITHUB_API_BASE_URL}{suffix}'  # https://api.github.com/repos/openshift/origin/git/trees/507b91e30606df94166e3a13a02b046222abbc8f?recursive=1'
 
         all_files_data = fetch_url_and_sleep_if_needed(full_url)
         with open(ALL_PROJ_FILES_FILE, 'w') as f_out:
@@ -53,11 +58,13 @@ def get_data():
         file_counter = 0
         for file_data in all_files_data['tree']:
             path = file_data['path']
-            file_counter+=1
+            file_counter += 1
 
-            print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ({file_counter}/{total_files_count}) {path}')
+            print(
+                f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ({file_counter}/{total_files_count}) {path}')
 
-            suffix = CONSTS.GITHUB_API_FILE_COMMITS_SUFFIX_PATTERN.format(owner=CONSTS.OWNER, repo=CONSTS.REPO, PATH_TO_FILE=path)
+            suffix = CONSTS.GITHUB_API_FILE_COMMITS_SUFFIX_PATTERN.format(owner=CONSTS.OWNER, repo=CONSTS.REPO,
+                                                                          PATH_TO_FILE=path)
             full_url = f'{CONSTS.GITHUB_API_BASE_URL}{suffix}'
             file_commit_history = fetch_url_and_sleep_if_needed(full_url)
             cur_file_changes_history = dict()
@@ -87,6 +94,7 @@ def get_data():
         with open(out_fname, 'w') as f_out:
             json.dump(files_changes_history, f_out, indent=4)
 
+
 if __name__ == "__main__":
     print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {os.path.basename(__file__)} Start')
 
@@ -95,7 +103,3 @@ if __name__ == "__main__":
     get_data()
 
     print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} {os.path.basename(__file__)} End')
-
-
-
-
