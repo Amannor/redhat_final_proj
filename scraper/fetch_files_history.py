@@ -7,22 +7,16 @@ import requests
 
 from credentials import username
 from credentials import token
+import CONSTS
 
-OWNER = "openshift"
-REPO = "origin"
-GITHUB_API_BASE_URL  = r'https://api.github.com'
-GITHUB_API_FILE_COMMITS_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/commits?path={PATH_TO_FILE}'
-GITHUB_API_TREE_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/git/trees/{tree_sha}' #From https://docs.github.com/en/rest/reference/git#trees
-DATA_FOLDER = 'sample_data'
-DATA_FOLDER = os.path.join(DATA_FOLDER, "files_changes_history")
+DATA_FOLDER = os.path.join(CONSTS.DATA_FOLDER, "files_changes_history")
 ALL_PROJ_FILES_FILE = 'all_project_files_metdata.json'
 PROJ_ROOT_SHA = r'507b91e30606df94166e3a13a02b046222abbc8f' #Taken from https://api.github.com/repos/openshift/origin/branches/master (see https://stackoverflow.com/a/25128301)
 MAX_RECORDS_PER_FILE = 300
-DEFAULT_REQUEST_TIMEOUT_SECONDS = 1800
 
 
 def fetch_url_and_sleep_if_needed(url, use_auth=True):
-    url_data = requests.get(url, auth=(username, token), timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS).json() if use_auth else requests.get(url, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
+    url_data = requests.get(url, auth=(username, token), timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS).json() if use_auth else requests.get(url, timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
     if "message" in url_data and 'API rate limit exceeded' in url_data["message"]:
         print(url_data["message"])
         print(url_data["documentation_url"])
@@ -33,16 +27,16 @@ def fetch_url_and_sleep_if_needed(url, use_auth=True):
         e = datetime.datetime.now()
         print(f'Current time: {e.strftime("%Y-%m-%d %H:%M:%S")}')
         print("Woke up! Continuing where I left off")
-        url_data = requests.get(url, auth=(username, token), timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS).json() if use_auth else requests.get(url, timeout=DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
+        url_data = requests.get(url, auth=(username, token), timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS).json() if use_auth else requests.get(url, timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
 
     return url_data
 
 
 def fill_projects_data_file_if_not_exist():
     if not os.path.exists(ALL_PROJ_FILES_FILE):
-        suffix = GITHUB_API_TREE_SUFFIX_PATTERN.format(owner=OWNER, repo=REPO, tree_sha=PROJ_ROOT_SHA)
+        suffix = CONSTS.GITHUB_API_TREE_SUFFIX_PATTERN.format(owner=CONSTS.OWNER, repo=CONSTS.REPO, tree_sha=PROJ_ROOT_SHA)
         suffix += r'?recursive = 1'
-        full_url = f'{GITHUB_API_BASE_URL}{suffix}' # https://api.github.com/repos/openshift/origin/git/trees/507b91e30606df94166e3a13a02b046222abbc8f?recursive=1'
+        full_url = f'{CONSTS.GITHUB_API_BASE_URL}{suffix}' # https://api.github.com/repos/openshift/origin/git/trees/507b91e30606df94166e3a13a02b046222abbc8f?recursive=1'
 
         all_files_data = fetch_url_and_sleep_if_needed(full_url)
         with open(ALL_PROJ_FILES_FILE, 'w') as f_out:
@@ -63,8 +57,8 @@ def get_data():
 
             print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ({file_counter}/{total_files_count}) {path}')
 
-            suffix = GITHUB_API_FILE_COMMITS_SUFFIX_PATTERN.format(owner=OWNER, repo=REPO, PATH_TO_FILE=path)
-            full_url = f'{GITHUB_API_BASE_URL}{suffix}'
+            suffix = CONSTS.GITHUB_API_FILE_COMMITS_SUFFIX_PATTERN.format(owner=CONSTS.OWNER, repo=CONSTS.REPO, PATH_TO_FILE=path)
+            full_url = f'{CONSTS.GITHUB_API_BASE_URL}{suffix}'
             file_commit_history = fetch_url_and_sleep_if_needed(full_url)
             cur_file_changes_history = dict()
             cur_file_changes_history['path'] = path
