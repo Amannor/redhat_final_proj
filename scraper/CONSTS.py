@@ -11,3 +11,5 @@ MAIN_OPENSHIFT_URL = 'https://prow.ci.openshift.org/job-history/gs/origin-ci-tes
 GITHUB_API_BASE_URL  = r'https://api.github.com'
 GITHUB_API_FILE_COMMITS_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/commits?path={PATH_TO_FILE}'
 GITHUB_API_TREE_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/git/trees/{tree_sha}' #From https://docs.github.com/en/rest/reference/git#trees
+GITHUB_API_PR_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/pulls/{pull_number}' #From: https://docs.github.com/en/rest/reference/pulls#get-a-pull-request
+GITHUB_API_COMMIT_SUFFIX_PATTERN = r'/repos/{owner}/{repo}/commits/{commit_hash}'
