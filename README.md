@@ -1,7 +1,9 @@
+***Note: This file isn't done yet - some parts of the text are simply placeholders***
+
 # Test prioritization in the CI\CD cycle (Red Hat OpenShift case study)
 This is the code for the final project in the course "Workshop: Projects with the Industry and Academia" (IDC, Herzliya August 2021)
 
-#### Project Status: [Completed]
+#### Project Status: [Active, Completed]
 
 ## Project Intro/Objective
 
