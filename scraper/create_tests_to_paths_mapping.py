@@ -15,7 +15,7 @@ import CONSTS
 DATA_FOLDER = os.path.join(CONSTS.DATA_FOLDER, "tests_locators_to_paths")
 
 
-def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_write=30):
+def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_write=10):
     print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Fetching {len(test_locators_set)} test paths')
     artifacts_webpage = None
     soup = None
@@ -33,8 +33,7 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
             open_i = test_locator.find("[")
             close_i = test_locator.rfind("]")
             if open_i < 0 or close_i < 0:
-                print(f'No valid failed test string found for {test_locator} - unable tp deduce path')
-                cur_batch[test_locator] = [""]
+                print(f'No valid test string found for {test_locator} - unable tp deduce path')
                 continue
 
             test_id = test_locator[open_i:close_i + 1]
@@ -102,7 +101,11 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
                             test_path = re.sub('\s+', ' ', test_path)  # Removing leading \ trailing whitespaces
                             tests_paths.add(test_path)
 
-            cur_batch[test_locator] = list(tests_paths)
+            if len(tests_paths) > 0:
+                cur_batch[test_locator] = list(tests_paths)
+                print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Found {len(tests_paths)} test path\s')
+            else:
+                print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} No test paths found')
             if len(cur_batch) >= batch_size_to_write:
                 epoch_time = int(time.time())
                 out_fname = f'tests_locators_to_paths_{epoch_time}.json'
