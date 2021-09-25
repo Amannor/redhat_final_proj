@@ -1,19 +1,21 @@
+import datetime
 import json
 import ntpath
 import os
-import time
-import datetime
+import re
 import sys
+import time
 
 import requests
-from bs4 import BeautifulSoup
 import xmltodict
-import re
+from bs4 import BeautifulSoup
+
 import CONSTS
 
 DATA_FOLDER = os.path.join(CONSTS.DATA_FOLDER, "tests_locators_to_paths")
 
-def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_write = 30):
+
+def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_write=30):
     print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Fetching {len(test_locators_set)} test paths')
     artifacts_webpage = None
     soup = None
@@ -25,7 +27,8 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
         try:
             iteration_num += 1
 
-            print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ({iteration_num}/{len(test_locators_set)}) {test_locator}')
+            print(
+                f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} ({iteration_num}/{len(test_locators_set)}) {test_locator}')
             tests_paths = set()
             open_i = test_locator.find("[")
             close_i = test_locator.rfind("]")
@@ -42,17 +45,21 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
             for link in soup.find_all('a'):
                 h_ref_text = link.get('href')
                 basename = ntpath.basename(h_ref_text)
-                if basename.startswith("junit_e2e_") and basename.endswith(".xml"):  # TODO: better - check using regex if it's of the pattern: junit_e2e_XXXXXXXX-XXXXXX.xml (every X is a digit)
-                    print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} full url: {artifacts_url}{basename}')
-                    response = requests.get(f'{artifacts_url}{basename}', timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS)
-                    print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} response size: {len(response.content)}')
-                    dict_data = xmltodict.parse(response.content) #From https://stackoverflow.com/a/67296064
+                if basename.startswith("junit_e2e_") and basename.endswith(
+                        ".xml"):  # TODO: better - check using regex if it's of the pattern: junit_e2e_XXXXXXXX-XXXXXX.xml (every X is a digit)
+                    print(
+                        f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} full url: {artifacts_url}{basename}')
+                    response = requests.get(f'{artifacts_url}{basename}',
+                                            timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS)
+                    print(
+                        f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} response size: {len(response.content)}')
+                    dict_data = xmltodict.parse(response.content)  # From https://stackoverflow.com/a/67296064
 
                     if not ('testsuite' in dict_data and 'testcase' in dict_data['testsuite']):
                         continue
                     test_general_info_list = [t for t in dict_data['testsuite']['testcase'] if t["@name"] == test_id]
 
-                    #Option 1 - looking in the system out prints
+                    # Option 1 - looking in the system out prints
                     test_info_list = [t for t in test_general_info_list if "system-out" in t]
                     for test_info_item in test_info_list:
                         path_start_i = test_info_item["system-out"].find(f'github.com/{CONSTS.OWNER}/{CONSTS.REPO}')
@@ -74,9 +81,11 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
 
                     # Option 2 - looking in failure texts
                     if len(tests_paths) == 0:
-                        test_info_list = [t for t in test_general_info_list if "failure" in t and '#text' in t["failure"]]
+                        test_info_list = [t for t in test_general_info_list if
+                                          "failure" in t and '#text' in t["failure"]]
                         for test_fail_info in test_info_list:
-                            path_start_i = test_fail_info["failure"]['#text'].find(f'github.com/{CONSTS.OWNER}/{CONSTS.REPO}')
+                            path_start_i = test_fail_info["failure"]['#text'].find(
+                                f'github.com/{CONSTS.OWNER}/{CONSTS.REPO}')
                             if path_start_i < 0:
                                 continue
                             partial_s = test_fail_info["failure"]['#text'][path_start_i:]
@@ -104,7 +113,8 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
                 tests_locators_to_paths.update(cur_batch)
                 cur_batch = dict()
         except:
-            print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Error (Iteration no. {iteration_num}): type {sys.exc_info()[0]}\nvalue {sys.exc_info()[1]}\ntraceback {sys.exc_info()[2]}', )  # See https://docs.python.org/3/library/sys.html#sys.exc_info
+            print(
+                f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Error (Iteration no. {iteration_num}): type {sys.exc_info()[0]}\nvalue {sys.exc_info()[1]}\ntraceback {sys.exc_info()[2]}', )  # See https://docs.python.org/3/library/sys.html#sys.exc_info
 
     if len(cur_batch) > 0:
         epoch_time = int(time.time())
@@ -119,8 +129,8 @@ def get_tests_locators_to_paths(artifacts_url, test_locators_set, batch_size_to_
         print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} No tests paths found')
     return tests_locators_to_paths
 
-def write_data(ignore_previously_fetched_mappings = True):
 
+def write_data(ignore_previously_fetched_mappings=True):
     all_data = dict()
 
     r = requests.get(url=CONSTS.MAIN_OPENSHIFT_URL, timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS)
@@ -136,7 +146,8 @@ def write_data(ignore_previously_fetched_mappings = True):
                 with open(os.path.join(DATA_FOLDER, filename)) as f:
                     data = json.load(f)
                 for k in data.keys():
-                    if len(data[k]) > 0 and set([v.replace('"', '') for v in data[k]]) != CONSTS.SET_CONTAINING_ONLY_EMPTY_STR:
+                    if len(data[k]) > 0 and set(
+                            [v.replace('"', '') for v in data[k]]) != CONSTS.SET_CONTAINING_ONLY_EMPTY_STR:
                         overall_tests_to_paths[k] = data[k]
 
     while index > 0 and i < CONSTS.MAX_JOBS:
@@ -150,23 +161,25 @@ def write_data(ignore_previously_fetched_mappings = True):
         jobs = json.loads(temp)
         if len(jobs) == 0:
             print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Found no jobs, skipping')
-        jobs_len = len(jobs)-1
-        i = i+jobs_len+1
+        jobs_len = len(jobs) - 1
+        i = i + jobs_len + 1
         print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Got {len(jobs)} items')
         for item in jobs:
             try:
                 print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Item id: {item["ID"]}')
                 all_data[item['ID']] = item
 
-                #Test fetching
+                # Test fetching
                 print("Fetching tests")
-                spyglass_res = requests.get(f'{CONSTS.TST_FETCHING_BASE_URL}{item["SpyglassLink"]}', timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS)
+                spyglass_res = requests.get(f'{CONSTS.TST_FETCHING_BASE_URL}{item["SpyglassLink"]}',
+                                            timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS)
                 if spyglass_res.status_code != 200:
                     print(f'Got {spyglass_res.status_code} response code. Skipping item')
                     continue
                 close_i = spyglass_res.text.index(r'>Artifacts</a>')
                 open_i = spyglass_res.text[:close_i].rfind('href=')
-                artifacts_url = spyglass_res.text[open_i + len("href=") + 1:close_i-1] + r'artifacts/e2e-gcp/openshift-e2e-test/artifacts/junit/'
+                artifacts_url = spyglass_res.text[open_i + len(
+                    "href=") + 1:close_i - 1] + r'artifacts/e2e-gcp/openshift-e2e-test/artifacts/junit/'
                 artifacts_webpage = requests.get(artifacts_url, timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS)
 
                 soup = BeautifulSoup(artifacts_webpage.text, 'html.parser')
@@ -174,17 +187,19 @@ def write_data(ignore_previously_fetched_mappings = True):
                 for link in soup.find_all('a'):
                     h_ref_text = link.get('href')
                     basename = ntpath.basename(h_ref_text)
-                    if basename.startswith("e2e-intervals_") and basename.endswith(".json"): #TODO: better - check using regex if it's of the pattern: e2e-intervals_XXXX_XXXX.json (every X is a digit)
-                        tests_results = requests.get(f'{artifacts_url}{basename}', timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
+                    if basename.startswith("e2e-intervals_") and basename.endswith(
+                            ".json"):  # TODO: better - check using regex if it's of the pattern: e2e-intervals_XXXX_XXXX.json (every X is a digit)
+                        tests_results = requests.get(f'{artifacts_url}{basename}',
+                                                     timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS).json()
                         base_date = basename[len('e2e-intervals_'):len(basename) - len('.json')]
                         ci_date = datetime.datetime(int(base_date[0:4]), int(base_date[4:6]),
                                                     int(base_date[6:8]), 0, 0, 0).strftime("%Y-%m-%dT%H:%M:%S")
                         test_locators = set()
                         for tests_result in tests_results["items"]:
                             cur_locator = tests_result["locator"]
-                            if (not cur_locator in overall_tests_to_paths) or len(overall_tests_to_paths[cur_locator]) == 0:
+                            if (not cur_locator in overall_tests_to_paths) or len(
+                                    overall_tests_to_paths[cur_locator]) == 0:
                                 test_locators.add(cur_locator)
-
 
                         cur_tests_locators_to_paths = get_tests_locators_to_paths(artifacts_url, test_locators)
                         for t_key in cur_tests_locators_to_paths.keys():
@@ -192,22 +207,24 @@ def write_data(ignore_previously_fetched_mappings = True):
                                 cur_tests_to_paths[t_key] = cur_tests_locators_to_paths[t_key]
 
             except:
-                print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Error: type {sys.exc_info()[0]}\nvalue {sys.exc_info()[1]}\ntraceback {sys.exc_info()[2]}', ) #See https://docs.python.org/3/library/sys.html#sys.exc_info
+                print(
+                    f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Error: type {sys.exc_info()[0]}\nvalue {sys.exc_info()[1]}\ntraceback {sys.exc_info()[2]}', )  # See https://docs.python.org/3/library/sys.html#sys.exc_info
 
         try:
             x = jobs[jobs_len]['ID']
             print(f'x {x}')
-            r = requests.get(url=CONSTS.MAIN_OPENSHIFT_URL+'='+x, timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS)
+            r = requests.get(url=CONSTS.MAIN_OPENSHIFT_URL + '=' + x, timeout=CONSTS.DEFAULT_REQUEST_TIMEOUT_SECONDS)
             size = len('var allBuilds = ')
             index = r.text.find('var allBuilds = ')
         except:
-            print(f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Error: type {sys.exc_info()[0]}\nvalue {sys.exc_info()[1]}\ntraceback {sys.exc_info()[2]}', )  # See https://docs.python.org/3/library/sys.html#sys.exc_info
+            print(
+                f'{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Error: type {sys.exc_info()[0]}\nvalue {sys.exc_info()[1]}\ntraceback {sys.exc_info()[2]}', )  # See https://docs.python.org/3/library/sys.html#sys.exc_info
             print(f'jobs_len {jobs_len}')
 
         print(i)
 
         if len(cur_tests_to_paths) == 0:
-            print ("No records to write")
+            print("No records to write")
         else:
             for t_key in cur_tests_to_paths.key():
                 if (not t_key in overall_tests_to_paths) or len(overall_tests_to_paths[t_key]) == 0:
