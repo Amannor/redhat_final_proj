@@ -98,7 +98,7 @@ The second part was a long and tedious cycle of trial & error that invloved view
 
 ## Contributing Members
 
-**Team Members (Contacts) : [Alon Mannor](https://github.com/amannor) [Rubi Arviv](https://github.com/rubiarviv)**
+**Team Members (Contacts) : [Alon Mannor](https://github.com/amannor), [Rubi Arviv](https://github.com/rubiarviv)**
 
 #### Other Members:
 TODO - write Ilya and\or Gil?
