@@ -69,7 +69,7 @@ The second part was a long and tedious cycle of trial & error that invloved view
     │   ├── scraper_changeset_to_all_tests_locators_only.py # Creates a list of code changesets. Each changeset is mapped to it's metadata and a list of tests run on this changeset
     │   ├── CONSTS.py                                        # Holds the shared constants used by files in this folder
     │   ├── requirements.txt                                 # Specifies which packages were used by files in this folder
-    │   └── Sample_data                                      # Contains the output of python scripts
+    │   └── sample_data                                      # Contains the output of python scripts
     |       ├── changeset_to_tests                           # Contains files created by scraper_changeset_to_all_tests_locators_only.py
     |       ├── files_changes_history                        # Contains files created by fetch_files_history.py 
     |       └── tests_locators_to_paths                      # Contains files created by create_tests_to_paths_mapping.py
