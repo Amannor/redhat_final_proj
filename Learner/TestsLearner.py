@@ -1,10 +1,8 @@
 # First XGBoost model
 from numpy import loadtxt
 from sklearn.preprocessing import LabelEncoder
-from sklearn.preprocessing import OneHotEncoder
 from xgboost import XGBClassifier, XGBRegressor
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score
 import os
 import csv
@@ -16,35 +14,25 @@ import pandas as pd
 import numpy as np
 import pickle
 
-
+github_project = 'github.com/openshift/origin/'
+##########################
+# Method to translate flatten json to CSV file
+##########################
 def create_csv():
-    path = r'flatten_data.json'
+    path = r'./output/flatten_data.json'
 
     with open(r'learner_schema.json', 'r') as f_schema:
         schema = json.load(f_schema)
         fieldnames = schema["schema_fields"].keys()
 
-    with open(r'prs.csv', mode='w') as csv_file:
-        # fieldnames = ['file_name', 'num_files_changed', 'file_extension', 'num_target_tests', 'number_changes_3d',
-        #               'number_changes_14d', 'number_changes_56d', 'distance', 'failed_7d', 'failed_14d',
-        #               'failed_28d', 'failed_56d', 'minimal_distance', 'test_name']
+    with open(r'./output/prs.csv', mode='w') as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
         with open(path, 'r') as f_reader:
             reader = json.load(f_reader)
             for item in reader:
                 writer.writerow(item)
-                # f_size = len(item['code_changes_data']['files'])
-                # for fn in item['code_changes_data']['files']:
-                #     ext = fn['filename'].rfind('.')
-                #     t_size = len(item['failed_tests'])
-                #     for t in item['failed_tests']:
-                #         writer.writerow({'file_name': fn['filename'], 'num_files_changed': f_size,
-                #                          'file_extension': fn['filename'][ext +1:len(fn['filename'])],
-                #                          'num_target_tests': t_size, 'number_changes_3d': 0,
-                #         'number_changes_14d': 0, 'number_changes_56d': 0, 'distance': 0,
-                #         'failed_7d': 0, 'failed_14d': 0,
-                #         'failed_28d': 0, 'failed_56d': 0, 'minimal_distance': 0, 'test_name': t})
+
 
 
 def collect_data_history():
@@ -54,13 +42,18 @@ def collect_data_history():
         return reader
 
 
+##########################
+# Method to calculate minimal distance between between test file and the file in the changeset
+##########################
 def minimal_distance(changed_files, test_file):
-    tf = test_file.replace('github.com/openshift/origin/', '')
+    tf = test_file.replace(github_project, '')
     splits_tf = tf.split('/')
     min_val = 1000
     for changed_file in changed_files:
-        cf = changed_file['filename'].replace('github.com/openshift/origin/', '')
+        #remove prefix github_project which is the project we are dealing with
+        cf = changed_file['filename'].replace(github_project, '')
         splits_cf = cf.split('/')
+        # the count is calculated according to token
         count = len(splits_cf) + len(splits_tf)
         for i in range(min(len(splits_cf) - 1, len(splits_tf) - 1)):
             if splits_tf[i] == splits_cf[i]:
@@ -71,19 +64,25 @@ def minimal_distance(changed_files, test_file):
             min_val = count
     return min_val
 
-
+##########################
+# Method to calculate common tokens between test files and changesets
+##########################
 def common_token(changed_file, test_file):
-    cf = changed_file.replace('github.com/openshift/origin/', '')
-    tf = test_file.replace('github.com/openshift/origin/', '')
+    cf = changed_file.replace(github_project, '')
+    tf = test_file.replace(github_project, '')
     splits_cf = cf.split('/')
     splits_tf = tf.split('/')
     count = 0
+    # count common token, doesn't have to be continuous
     for i in range(min(len(splits_cf)-1, len(splits_tf)-1)):
         if splits_tf[i] == splits_cf[i]:
             count += 1
     return count
 
 
+##########################
+# Method to flatten json
+##########################
 def flatten_jsons():
     collect_date = datetime.now()
     with open(r'learner_schema.json', 'r') as f_schema:
@@ -220,10 +219,13 @@ def flatten_jsons():
                                 if item['tests_locator_to_state'][tests_locator] == "Failed":
                                     flat_json['test_status'] = 1
                                 flat_json_list.append(flat_json)
-    with open(r'flatten_data.json', mode='w') as j_flat_file:
+    with open(r'./output/flatten_data.json', mode='w') as j_flat_file:
         json.dump(flat_json_list, j_flat_file)
 
 
+##########################
+# Method to calculate files commits in last 3/14/56 days
+##########################
 def commits_breakdown(changed_files):
     collect_date = datetime.now()
     with open(r'learner_schema.json', 'r') as f_schema:
@@ -248,6 +250,9 @@ def commits_breakdown(changed_files):
     return file_changes
 
 
+##########################
+# Method to calculate tests failures breakdown in last 7/14/28/56 days
+##########################
 def test_failure_breakdown(failed_test_files):
     collect_date = datetime.now()
     with open(r'learner_schema.json', 'r') as f_schema:
@@ -275,6 +280,9 @@ def test_failure_breakdown(failed_test_files):
     return failure_breakdown
 
 
+##########################
+# Method to map locators (test name to test files)
+##########################
 def test_mapper(test_locators):
     test_mapping = dict()
     test_name_enum = dict()
@@ -297,21 +305,28 @@ def test_mapper(test_locators):
     return test_mapping, test_name_enum, test_file_enum
 
 
-def learn():
+##########################
+# Classifier or Regressor learner
+##########################
+def learn(is_classifier=True):
     collect_date = datetime.now()
     with open(r'learner_schema.json', 'r') as f_schema:
         schema = json.load(f_schema)
         collect_date = datetime.fromisoformat(schema['date'])
     # load data
-    # for now we are dropping 'project_name'
-    dataset = pd.read_csv(r'prs.csv').drop(['project_name', 'test_name'], axis=1)
+    # for now we are dropping 'project_name' and 'test_name' which is just used for calculating the common
+    # tokens and minimal distance features
+    dataset = pd.read_csv(r'./output/prs.csv').drop(['project_name', 'test_name'], axis=1)
     arr = dataset.to_numpy()
 
+    # encoding textual features like file name and file type
+    # fit stage
     labelencoder1 = LabelEncoder()
     labelencoder1.fit(arr[:, 1])
     labelencoder3 = LabelEncoder()
     labelencoder3.fit(arr[:, 3])
 
+    # split the data train data and validation data (last week)
     df_train = dataset.loc[pd.to_datetime(dataset['date']) <= collect_date]
     df_validate = dataset.loc[pd.to_datetime(dataset['date']) > collect_date]
     arr_train = df_train.to_numpy()
@@ -332,63 +347,65 @@ def learn():
     X_train[X_train == '?'] = 0
     X_validate[X_validate == '?'] = 0
 
-    X_train[:, 0] = labelencoder1.fit_transform(X_train[:, 0])
-    X_train[:, 2] = labelencoder3.fit_transform(X_train[:, 2])
+    # encoding textual features like file name and file type
+    # transform stage
+    X_train[:, 0] = labelencoder1.transform(X_train[:, 0])
+    X_train[:, 2] = labelencoder3.transform(X_train[:, 2])
 
-    X_validate[:, 0] = labelencoder1.fit_transform(X_validate[:, 0])
-    X_validate[:, 2] = labelencoder3.fit_transform(X_validate[:, 2])
+    X_validate[:, 0] = labelencoder1.transform(X_validate[:, 0])
+    X_validate[:, 2] = labelencoder3.transform(X_validate[:, 2])
 
-
+    # split the train data to train and test
     X_train, X_test, y_train, y_test = train_test_split(X_train, y_train, test_size=test_size, random_state=seed)
 
-    # fit model no training data
-    # model = XGBClassifier(learning_rate=0.1,
-    #                       n_estimators=1000,
-    #                       max_depth=5,
-    #                       min_child_weight=1,
-    #                       gamma=0,
-    #                       subsample=0.8,
-    #                       colsample_bytree=0.8,
-    #                       nthread=4,
-    #                       seed=27)
-    model = XGBClassifier(verbosity=2, use_label_encoder=False)
-    model.fit(X_train, y_train)
-    pickle.dump(model, open('model.pkl', 'wb'))
-    pickle.dump(X_validate, open('X_validate.pkl', 'wb'))
-    pickle.dump(y_validate, open('y_validate.pkl', 'wb'))
-    pickle.dump(X_test, open('X_test.pkl', 'wb'))
-    pickle.dump(y_test, open('y_test.pkl', 'wb'))
+    # fit classifier or regressor model fit and save the model to pickle file
+    if is_classifier:
+        model = XGBClassifier(verbosity=2, use_label_encoder=False)
+        model.fit(X_train, y_train)
+        pickle.dump(model, open('./output/classifier_model.pkl', 'wb'))
+    else:
+        model = XGBRegressor(verbosity=2, use_label_encoder=False)
+        model.fit(X_train, y_train)
+        pickle.dump(model, open('./output/regressor_model.pkl', 'wb'))
+    # save the test and validate data
+    pickle.dump(X_validate, open('./output/X_validate.pkl', 'wb'))
+    pickle.dump(y_validate, open('./output/y_validate.pkl', 'wb'))
+    pickle.dump(X_test, open('./output/X_test.pkl', 'wb'))
+    pickle.dump(y_test, open('./output/y_test.pkl', 'wb'))
 
 
+##########################
+# Predict classifier
+##########################
 def predict():
-    loaded_model = pickle.load(open('model.pkl', 'rb'))
-    X_test = pickle.load(open('X_test.pkl', 'rb'))
-    y_test = pickle.load(open('y_test.pkl', 'rb'))
+    loaded_model = pickle.load(open('./output/classifier_model.pkl', 'rb'))
+    X_test = pickle.load(open('./output/X_test.pkl', 'rb'))
+    y_test = pickle.load(open('./output/y_test.pkl', 'rb'))
     # make predictions for test data
     y_pred = loaded_model.predict(X_test)
     predictions = np.array([int(round(value)) for value in y_pred])
     y_test=y_test.astype('int32')
     accuracy = accuracy_score(y_test, predictions)
-
     print("Validation Accuracy: %.2f%%" % (accuracy*100))
 
-    X_validate = pickle.load(open('X_validate.pkl', 'rb'))
-    y_validate = pickle.load(open('y_validate.pkl', 'rb'))
+    # make predictions for validation data
+    X_validate = pickle.load(open('./output/X_validate.pkl', 'rb'))
+    y_validate = pickle.load(open('./output/y_validate.pkl', 'rb'))
 
     y_pred = loaded_model.predict(X_validate)
     predictions = np.array([int(round(value)) for value in y_pred])
     y_validate=y_validate.astype('int32')
     accuracy = accuracy_score(y_validate, predictions)
-
     print("Test Accuracy: %.2f%%" % (accuracy*100))
 
 
 if __name__ == "__main__":
-    # not necessary to run first 2 function each time ##########
-    flatten_jsons()
-    create_csv()
-    ############################################################
-    learn()
+    ##########################################################
+    # it is not necessary to run first 2 methods each time
+    # flatten_jsons()
+    # create_csv()
+    ##########################################################
+    # learn()
     predict()
 
 
