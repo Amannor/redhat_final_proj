@@ -32,8 +32,17 @@ As will be detailed below, the heavy lifting of this implementation (in terms of
 * PyCharm 
 
 ## Project Description
-The main challenge in this project was getting the raw data, identifying and extracting the relevant parts and finally prepare in a scheme like in the FB article.
-The first challenege was to choose a project that has enough "meat" (e.g. pull requests, large data suites etc.). With the advice of Gil Klein
+This project has 2 parts:
+1. Fetching and preparing the data that links code changessets with the respetive tests that tested them (in the CI\CD process).
+2. Running ML algorithm\s on said data to create code that, given a changeset and a list of tests, will output the probabilty that each test will fail in the CI\CD process. 
+
+In more detail:
+--------------
+
+**Step no.1** is accomplished by scraping 2 resources: the [OpenShift Github homepage](https://github.com/openshift/origin) and [the project's CI website](https://prow.ci.openshift.org/)
+
+
+This project scrapes CI\CD metadata on the OpenShift project. This raw metadata is analyzied and aggregated to produce
 
 (Provide more detailed overview of the project.  Talk a bit about your data sources and what questions and hypothesis you are exploring. What specific data analysis/visualization and modelling work are you using to solve the problem? What blockers and challenges are you facing?  Feel free to number or bullet point things here)
 
