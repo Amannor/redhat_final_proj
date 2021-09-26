@@ -43,7 +43,14 @@ In more detail:
 
 \*The code for this part is in the *scraper* folder
 
-**Part no.2** TODO Rubi - explain a bit about what the code in the Learner folder
+**Part no.2** in this part the output from scraper is taken and parsed and the result is a flatten json and csv file to be used by the xgboost. The learning used for now is the XGBClassifier altough XGBRegressor is also implemented.
+The main methods are (1)create_flatten_json, (2)create_csv, (3)learn and (4)predict. The data for the learning validations and tests id splitted in the following manner:
+* Split between history data before the last week and the data from last week.
+* The history data is then splitted again in a ratio of 80/20 where 80% is used for learning and 20% for validating.
+* The last week data is used for testing the model.
+
+Flatten json, csv file ,model, validation data and test data are saved into output folder. 
+   
 
 \*The code for this part is in the *Learner* folder
 
@@ -73,9 +80,11 @@ The second part was a long and tedious cycle of trial & error that invloved view
     |       ├── changeset_to_tests                           # Contains files created by scraper_changeset_to_all_tests_locators_only.py
     |       ├── files_changes_history                        # Contains files created by fetch_files_history.py 
     |       └── tests_locators_to_paths                      # Contains files created by create_tests_to_paths_mapping.py
-    └── ...  TODO Rubi - add the files in Learner folder + short description
-
-
+    └── Learner
+    │   ├── TestLearner.py                                   # prepare flatten json and csv from scraper output, and learn and predict with xgboost
+    │   ├── requirements.txt                                 # Specifies which packages were used by files in this folder and the path of the file test (in the OpenShift Github)
+    │   ├── learner_schema.json                              # json schema file
+    │   └── output                                           # output directory
 ## Getting Started
 
 1. Clone this repo (for help see this [tutorial](https://help.github.com/articles/cloning-a-repository/)).
