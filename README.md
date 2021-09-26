@@ -1,4 +1,4 @@
-***Note: This file isn't done yet - some parts of the text are simply placeholders***
+***Note: This file isn't done yet - some parts of the text are simply placeholders TODO - delte scaffold when done***
 
 # Test prioritization in the CI\CD cycle (Red Hat OpenShift case study)
 This is the code for the final project in the course "Workshop: Projects with the Industry and Academia" (IDC, Herzliya August 2021)
@@ -39,11 +39,11 @@ This project has 2 parts:
 In more detail:
 --------------
 
-**Step no.1** is accomplished by scraping 2 resources (of raw metdata): the [OpenShift Github homepage](https://github.com/openshift/origin) and [the project's CI website](https://prow.ci.openshift.org/). The code that scrapes the data is in 3 different files (see below), each of which produces data files that ready to be pre-processed and then "fed" into the ML model in step no.2
+**Part no.1** is accomplished by scraping 2 resources (of raw metdata): the [OpenShift Github homepage](https://github.com/openshift/origin) and [the project's CI website](https://prow.ci.openshift.org/). The code that scrapes the data is in 3 different files (see below), each of which produces data files that ready to be pre-processed and then "fed" into the ML model in part no.2
 
 \*The code for this part is in the *scraper* folder
 
-**Step no.2** TODO Rubi - explain a bit about what the code in the Learner folder
+**Part no.2** TODO Rubi - explain a bit about what the code in the Learner folder
 
 \*The code for this part is in the *Learner* folder
 
@@ -62,15 +62,18 @@ The second part was a long and tedious cycle of trial & error that invloved view
 
 ## Files description
     .
-    ├── README.md               # This file
-    ├── scraper                 # Folder the code that creates the data files
-    │   ├── fetch_files_history.py             # asd
-    │   ├── create_tests_to_paths_mapping.py # ads
-    │   ├── scraper.py # ads
-    │   ├── scraper_changeset_to_all_tests_locators_only.py # ads
-    │   ├── CONSTS.py             # ads
-    │   ├── requirements.txt              # asd
-    │   └── ...                 # ads
+    ├── README.md                                            # This file
+    ├── scraper                                              # Folder the code that creates the data files
+    │   ├── fetch_files_history.py                           # Fetches changes history of the files in the OpenShift project
+    │   ├── create_tests_to_paths_mapping.py                 # Maps between test "locators" (i.e. the string used to run them in CI\CD) and the path of the file test (in the OpenShift Github)
+    │   ├── scraper.py                       # Original
+    │   ├── scraper_changeset_to_all_tests_locators_only.py # Creates a list of code changesets. Each changeset is mapped to it's metadata and a list of tests run on this changeset
+    │   ├── CONSTS.py                                        # Holds the shared constants used by files in this folder
+    │   ├── requirements.txt                                 # Specifies which packages were used by files in this folder
+    │   └── Sample_data                                      # Contains the output of python scripts
+    |       ├── changeset_to_tests                           # Contains files created by scraper_changeset_to_all_tests_locators_only.py
+    |       ├── files_changes_history                        # Contains files created by fetch_files_history.py 
+    |       └── tests_locators_to_paths                      # Contains files created by create_tests_to_paths_mapping.py
     └── ...  TODO Rubi - add the files in Learner folder + short description
 
 
