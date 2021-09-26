@@ -19,13 +19,13 @@ github_project = 'github.com/openshift/origin/'
 # Method to translate flatten json to CSV file
 ##########################
 def create_csv():
-    path = r'flatten_data.json'
+    path = r'./output/flatten_data.json'
 
     with open(r'learner_schema.json', 'r') as f_schema:
         schema = json.load(f_schema)
         fieldnames = schema["schema_fields"].keys()
 
-    with open(r'prs.csv', mode='w') as csv_file:
+    with open(r'./output/prs.csv', mode='w') as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
         with open(path, 'r') as f_reader:
@@ -219,7 +219,7 @@ def flatten_jsons():
                                 if item['tests_locator_to_state'][tests_locator] == "Failed":
                                     flat_json['test_status'] = 1
                                 flat_json_list.append(flat_json)
-    with open(r'flatten_data.json', mode='w') as j_flat_file:
+    with open(r'./output/flatten_data.json', mode='w') as j_flat_file:
         json.dump(flat_json_list, j_flat_file)
 
 
@@ -316,7 +316,7 @@ def learn(is_classifier=True):
     # load data
     # for now we are dropping 'project_name' and 'test_name' which is just used for calculating the common
     # tokens and minimal distance features
-    dataset = pd.read_csv(r'prs.csv').drop(['project_name', 'test_name'], axis=1)
+    dataset = pd.read_csv(r'./output/prs.csv').drop(['project_name', 'test_name'], axis=1)
     arr = dataset.to_numpy()
 
     # encoding textual features like file name and file type
@@ -362,25 +362,25 @@ def learn(is_classifier=True):
     if is_classifier:
         model = XGBClassifier(verbosity=2, use_label_encoder=False)
         model.fit(X_train, y_train)
-        pickle.dump(model, open('classifier_model.pkl', 'wb'))
+        pickle.dump(model, open('./output/classifier_model.pkl', 'wb'))
     else:
         model = XGBRegressor(verbosity=2, use_label_encoder=False)
         model.fit(X_train, y_train)
-        pickle.dump(model, open('regressor_model.pkl', 'wb'))
+        pickle.dump(model, open('./output/regressor_model.pkl', 'wb'))
     # save the test and validate data
-    pickle.dump(X_validate, open('X_validate.pkl', 'wb'))
-    pickle.dump(y_validate, open('y_validate.pkl', 'wb'))
-    pickle.dump(X_test, open('X_test.pkl', 'wb'))
-    pickle.dump(y_test, open('y_test.pkl', 'wb'))
+    pickle.dump(X_validate, open('./output/X_validate.pkl', 'wb'))
+    pickle.dump(y_validate, open('./output/y_validate.pkl', 'wb'))
+    pickle.dump(X_test, open('./output/X_test.pkl', 'wb'))
+    pickle.dump(y_test, open('./output/y_test.pkl', 'wb'))
 
 
 ##########################
 # Predict classifier
 ##########################
 def predict():
-    loaded_model = pickle.load(open('classifier_model.pkl', 'rb'))
-    X_test = pickle.load(open('X_test.pkl', 'rb'))
-    y_test = pickle.load(open('y_test.pkl', 'rb'))
+    loaded_model = pickle.load(open('./output/classifier_model.pkl', 'rb'))
+    X_test = pickle.load(open('./output/X_test.pkl', 'rb'))
+    y_test = pickle.load(open('./output/y_test.pkl', 'rb'))
     # make predictions for test data
     y_pred = loaded_model.predict(X_test)
     predictions = np.array([int(round(value)) for value in y_pred])
@@ -389,8 +389,8 @@ def predict():
     print("Validation Accuracy: %.2f%%" % (accuracy*100))
 
     # make predictions for validation data
-    X_validate = pickle.load(open('X_validate.pkl', 'rb'))
-    y_validate = pickle.load(open('y_validate.pkl', 'rb'))
+    X_validate = pickle.load(open('./output/X_validate.pkl', 'rb'))
+    y_validate = pickle.load(open('./output/y_validate.pkl', 'rb'))
 
     y_pred = loaded_model.predict(X_validate)
     predictions = np.array([int(round(value)) for value in y_pred])
@@ -405,7 +405,7 @@ if __name__ == "__main__":
     # flatten_jsons()
     # create_csv()
     ##########################################################
-    learn()
+    # learn()
     predict()
 
 
