@@ -66,7 +66,6 @@ The second part was a long and tedious cycle of trial & error that invloved view
     ├── scraper                                              # Folder the code that creates the data files
     │   ├── fetch_files_history.py                           # Fetches changes history of the files in the OpenShift project
     │   ├── create_tests_to_paths_mapping.py                 # Maps between test "locators" (i.e. the string used to run them in CI\CD) and the path of the file test (in the OpenShift Github)
-    │   ├── scraper.py                       # Original
     │   ├── scraper_changeset_to_all_tests_locators_only.py # Creates a list of code changesets. Each changeset is mapped to it's metadata and a list of tests run on this changeset
     │   ├── CONSTS.py                                        # Holds the shared constants used by files in this folder
     │   ├── requirements.txt                                 # Specifies which packages were used by files in this folder
