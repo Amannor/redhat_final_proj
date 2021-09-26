@@ -39,7 +39,15 @@ This project has 2 parts:
 In more detail:
 --------------
 
-**Step no.1** is accomplished by scraping 2 resources: the [OpenShift Github homepage](https://github.com/openshift/origin) and [the project's CI website](https://prow.ci.openshift.org/)
+**Step no.1** is accomplished by scraping 2 resources (of raw metdata): the [OpenShift Github homepage](https://github.com/openshift/origin) and [the project's CI website](https://prow.ci.openshift.org/). The code that scrapes the data is in 3 different files (see below), each of which produces data files that ready to be pre-processed and then "fed" into the ML model in step no.2
+
+\*The code for this part is in the *scraper* folder
+
+**Step no.2** TODO Rubi - explain a bit about what the code in the Learner folder
+
+\*The code for this part is in the *Learner* folder
+
+
 
 
 This project scrapes CI\CD metadata on the OpenShift project. This raw metadata is analyzied and aggregated to produce
@@ -51,6 +59,20 @@ This project scrapes CI\CD metadata on the OpenShift project. This raw metadata 
 The main challenge in this project was getting the raw data, identifying and extracting the relevant parts and finally prepare in a scheme like in the FB article.
 The first challenege was to choose a project that has enough "meat" (e.g. pull requests, large data suites etc.). With the advice of Gil Klein from Red Hat, the OpenShift project was selected. 
 The second part was a long and tedious cycle of trial & error that invloved vieweing and analyzing the structure of OpenShift's CI system, its test-running outputs, the way it ran tests and documented their state (e.g. fai\success\skip etc.). Eventually we were able to find a good-enough way to track the test's "name"\"identifier" (also referd to as test's "locator" in RedHat's parlance) and a mapping from it to the file that contains that test in the [OpenShift project's repo](https://github.com/openshift/origin).
+
+## Files description
+    .
+    ├── README.md               # This file
+    ├── scraper                 # Folder the code that creates the data files
+    │   ├── fetch_files_history.py             # asd
+    │   ├── create_tests_to_paths_mapping.py # ads
+    │   ├── scraper.py # ads
+    │   ├── scraper_changeset_to_all_tests_locators_only.py # ads
+    │   ├── CONSTS.py             # ads
+    │   ├── requirements.txt              # asd
+    │   └── ...                 # ads
+    └── ...  TODO Rubi - add the files in Learner folder + short description
+
 
 ## Getting Started
 
