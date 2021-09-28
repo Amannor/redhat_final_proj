@@ -93,7 +93,7 @@ From all the data related challeneges, the one that took the most time was to cr
 3. To create up-to-date data (*scraper* folder)
    3.1 Run the 3 files (fetch_files_history.py, create_tests_to_paths_mapping.py, scraper_changeset_to_all_tests_locators_only.py). Each is its own process and can run simultaneously to others. 
    \*Runtime:
-    - For the files that use the Github API (fetch_files_history.py, scraper_changeset_to_all_tests_locators_only.py) - see the relevant [documentation](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting)
+    - For the files that use the Github API (fetch_files_history.py, scraper_changeset_to_all_tests_locators_only.py) - see the relevant [documentation](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting). Note that the code expects you to have a file called credentials.py with you Github username and token.
     - For the file create_tests_to_paths_mapping.py - this may take a long time (depending on your needs). The data we have in this repo has been collected in a time span of ~40 hours.
 
 4. To run the learner and predictor (given data is present) (*Learner* folder)
