@@ -8,8 +8,8 @@ This is the code for the final project in the course "Workshop: Projects with th
 ## Project Intro/Objective
 
 The purpose of this project is to be a POC in test prioritization as part of a CI\CD cycle.
-More specifically, in this project we aimed at showing the feasibility of a specific test prioritization scheme in a Red Hat project.
-The test prioritization scheme is based on the article ["Predictive Test Selection" by Facebook reseacrh (Machalica et al., 2019)](https://research.fb.com/wp-content/uploads/2020/12/Predictive-Test-Selection.pdf) (hereinafter referd to as "the FB article").
+More specifically, in this project we aimed at showing the feasibility of a specific predictive test selection scheme in a Red Hat project.
+The test selection scheme is based on the article ["Predictive Test Selection" by Facebook reseacrh (Machalica et al., 2019)](https://research.fb.com/wp-content/uploads/2020/12/Predictive-Test-Selection.pdf) (hereinafter referd to as "the FB article").
 The Red Hat product we implemented this on is the [OpenShift project](https://github.com/openshift/origin).
 As will be detailed below, the heavy lifting of this implementation (in terms of coding and computation resources, run time etc.) was creating a coherent dataset of sufficient size.
 
@@ -18,6 +18,7 @@ As will be detailed below, the heavy lifting of this implementation (in terms of
 * Red Hat Inc.
 * https://www.redhat.com/en
 * Partner contact: [Name of Contact], [slack handle of contact if any] - TODO - write Ilya's mail? (maybe also Gil's...?)
+
 ### Methods Used
 * XGBClassifier (xgboost)
 * XGBRegressor (xgboost)
@@ -33,8 +34,9 @@ As will be detailed below, the heavy lifting of this implementation (in terms of
 
 ## Project Description
 This project has 2 parts:
-1. Fetching and preparing the data that links code changessets with the respetive tests that tested them (in the CI\CD process).
+1. Fetching and preparing the data that links code changessets with the respective tests that were run on them (in the CI\CD process).
 2. Running ML algorithm\s on said data to create code that, given a changeset and a list of tests, will output the probabilty that each test will fail in the CI\CD process. 
+3. The prioritized list will be used to select which tests will be run given future code changesets (since running all tests for each changeset is infeasible).
 
 In more detail
 --------------
@@ -44,7 +46,7 @@ In more detail
 \*The code for this part is in the *scraper* folder
 
 
-**Part no.2** in this part the output from scraper is taken and parsed and the result is a flatten json and csv file to be used by the xgboost. The learning used for now is the XGBClassifier altough XGBRegressor is also implemented.
+**Part no.2** is accomplished by taking the output from scraper and parsing it. The result is a flatten json and csv file to be used by the xgboost. The learning used for now is the XGBClassifier altough XGBRegressor is also implemented.
 The main methods are (1)create_flatten_json, (2)create_csv, (3)learn and (4)predict. The data for the learning validations and tests ids is splitted in the following manner:
 * Split between history data before the last week and the data from last week.
 * The history data is then splitted again in a ratio of 80/20 where 80% is used for learning and 20% for validating.
@@ -76,7 +78,7 @@ From all the data related challeneges, the one that took the most was to create 
     |       └── tests_locators_to_paths                      # Contains files created by create_tests_to_paths_mapping.py
     └── Learner
     │   ├── TestLearner.py                                   # Prepares the flatten json and csv from scraper output, and learns and predicts with xgboost
-    │   ├── requirements.txt                                 # Specifies which packages were used by files in this folder and the path of the file test (in the OpenShift Github)
+    │   ├── requirements.txt                                 # Specifies which packages were used by files in this folder
     │   ├── learner_schema.json                              # json schema file
     │   └── output                                           # output directory
 
