@@ -3,7 +3,7 @@ from numpy import loadtxt
 from sklearn.preprocessing import LabelEncoder
 from xgboost import XGBClassifier, XGBRegressor
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, recall_score
 import os
 import csv
 import json
@@ -13,8 +13,11 @@ from datetime import timedelta
 import pandas as pd
 import numpy as np
 import pickle
+from scraper.CONSTS import SET_CONTAINING_ONLY_EMPTY_STR
+import re
 
 github_project = 'github.com/openshift/origin/'
+src_str = re.compile(github_project, re.IGNORECASE)
 ##########################
 # Method to translate flatten json to CSV file
 ##########################
@@ -46,12 +49,12 @@ def collect_data_history():
 # Method to calculate minimal distance between between test file and the file in the changeset
 ##########################
 def minimal_distance(changed_files, test_file):
-    tf = test_file.replace(github_project, '')
+    tf = src_str.sub('', test_file)
     splits_tf = tf.split('/')
     min_val = 1000
     for changed_file in changed_files:
         #remove prefix github_project which is the project we are dealing with
-        cf = changed_file['filename'].replace(github_project, '')
+        cf = src_str.sub('', changed_file['filename'])
         splits_cf = cf.split('/')
         # the count is calculated according to token
         count = len(splits_cf) + len(splits_tf)
@@ -68,8 +71,8 @@ def minimal_distance(changed_files, test_file):
 # Method to calculate common tokens between test files and changesets
 ##########################
 def common_token(changed_file, test_file):
-    cf = changed_file.replace(github_project, '')
-    tf = test_file.replace(github_project, '')
+    cf = src_str.sub('', changed_file)
+    tf = src_str.sub('', test_file)
     splits_cf = cf.split('/')
     splits_tf = tf.split('/')
     count = 0
@@ -77,6 +80,8 @@ def common_token(changed_file, test_file):
     for i in range(min(len(splits_cf)-1, len(splits_tf)-1)):
         if splits_tf[i] == splits_cf[i]:
             count += 1
+        else:
+            break
     return count
 
 
@@ -158,8 +163,8 @@ def flatten_jsons():
                                 flat_json['failed_14d'] = 0
                                 flat_json['failed_28d'] = 0
                                 flat_json['failed_56d'] = 0
-                            flat_json['minimal_distance'] = 0
-                            flat_json['common_tokens'] = 0
+                            flat_json['minimal_distance'] = -1
+                            flat_json['common_tokens'] = -1
                             test_name = tests_locator[len('e2e-test/"'):len(tests_locator) - 1]
                             if test_name in test_name_enum:
                                 flat_json['test_name'] = test_name_enum[test_name]
@@ -210,11 +215,9 @@ def flatten_jsons():
                                     flat_json['test_file'] = test_file_enum[f_t]
                                 else:
                                     flat_json['test_file'] = 0
-                                flat_json['minimal_distance'] = common_token(flat_json['file_name'],
-                                                                             flat_json['test_file'])
-                                flat_json['common_tokens'] = minimal_distance(
-                                    item['code_changes_data']['commits'][0]['commit_files'],
-                                    flat_json['test_file'])
+                                flat_json['common_tokens'] = common_token(flat_json['file_name'], f_t)
+                                flat_json['minimal_distance'] = minimal_distance(
+                                    item['code_changes_data']['commits'][0]['commit_files'], f_t)
                                 flat_json['test_status'] = 0
                                 if item['tests_locator_to_state'][tests_locator] == "Failed":
                                     flat_json['test_status'] = 1
@@ -293,11 +296,24 @@ def test_mapper(test_locators):
         with open(f, 'r') as f_reader:
             reader = json.load(f_reader)
             for item in reader:
-                key = item[len('e2e-test/"'):len(item) - 1]
-                if key not in test_name_enum:
-                    test_name_enum[key] = i
+                # key = item[len('e2e-test/"'):len(item) - 1]
+                if item not in test_name_enum:
+                    test_name_enum[item] = i
                     i += 1
-                test_mapping[key] = reader[item]
+                if item in test_mapping and \
+                        (len(reader[item]) == 0 or set(reader[item]) == SET_CONTAINING_ONLY_EMPTY_STR):
+                    continue
+                # if len(reader[item]) == 0 or len(reader[item]) == 1 and reader[item][0] == '':
+                #     continue
+                if item not in test_mapping:
+                    test_mapping[item] = reader[item]
+                else:
+                    test_mapping[item].extend(reader[item])
+                    temp_set = set()
+                    for it in test_mapping[item]:
+                        if it not in temp_set:
+                            temp_set.add(it)
+                    test_mapping[item] = list(temp_set)
                 for f_n in reader[item]:
                     if f_n not in test_file_enum:
                         test_file_enum[f_n] = j
@@ -374,6 +390,26 @@ def learn(is_classifier=True):
     pickle.dump(y_test, open('./output/y_test.pkl', 'wb'))
 
 
+def find_TP(y, y_hat):
+   # counts the number of true positives (y = 1, y_hat = 1)
+   return sum((y == 1) & (y_hat == 1))
+
+
+def find_FN(y, y_hat):
+   # counts the number of false negatives (y = 1, y_hat = 0) Type-II error
+   return sum((y == 1) & (y_hat == 0))
+
+
+def find_FP(y, y_hat):
+   # counts the number of false positives (y = 0, y_hat = 1) Type-I error
+   return sum((y == 0) & (y_hat == 1))
+
+
+def find_TN(y, y_hat):
+   # counts the number of true negatives (y = 0, y_hat = 0)
+   return sum((y == 0) & (y_hat == 0))
+
+
 ##########################
 # Predict classifier
 ##########################
@@ -398,14 +434,29 @@ def predict():
     accuracy = accuracy_score(y_validate, predictions)
     print("Test Accuracy: %.2f%%" % (accuracy*100))
 
+    TP = find_TP(y_validate, predictions)
+    FN = find_FN(y_validate, predictions)
+    FP = find_FP(y_validate, predictions)
+    TN = find_TN(y_validate, predictions)
+    print('TP:', TP)
+    print('FN:', FN)
+    print('FP:', FP)
+    print('TN:', TN)
+    precision = TP / (TP + FP)
+    print('Precision:', precision)
+    recall = recall_score(y_validate, predictions)
+    print('Recall: %f' % recall)
+    f1_score = 2 * ((precision * recall) / (precision + recall))
+    print('F1 score: %f' % f1_score)
+
 
 if __name__ == "__main__":
     ##########################################################
     # it is not necessary to run first 2 methods each time
-    # flatten_jsons()
-    # create_csv()
-    ##########################################################
-    # learn()
+    flatten_jsons()
+    create_csv()
+    #########################################################
+    learn()
     predict()
 
 
