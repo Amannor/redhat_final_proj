@@ -88,17 +88,22 @@ From all the data related challeneges, the one that took the most time was to cr
 
 1. Clone this repo (for help see this [tutorial](https://help.github.com/articles/cloning-a-repository/)).
 
-2. To run any python code, you first need to install the required packages. It's recommended that you do this on a virtual environment (for help see [official documentation](https://docs.python.org/3/tutorial/venv.html) 
+2. To run any python code, you first need to install the required packages. It's recommended that you do this on a virtual environment (for help see [official documentation](https://docs.python.org/3/tutorial/venv.html))
 
 3. To create up-to-date data (*scraper* folder)
+   
    3.1 Run the 3 files (fetch_files_history.py, create_tests_to_paths_mapping.py, scraper_changeset_to_all_tests_locators_only.py). Each is its own process and can run simultaneously to others. 
-   \*Runtime:
-    - For the files that use the Github API (fetch_files_history.py, scraper_changeset_to_all_tests_locators_only.py) - see the relevant [documentation](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting). Note that the code expects you to have a file called credentials.py with you Github username and token.
+   
+   3.2 Notes + Runtime:
+    - For the files that use the Github API (fetch_files_history.py, scraper_changeset_to_all_tests_locators_only.py) - see the relevant [documentation](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting).
+**\*Note\*** that the code expects you to have a file called credentials.py with you Github username and token.
     - For the file create_tests_to_paths_mapping.py - this may take a long time (depending on your needs). The data we have in this repo has been collected in a time span of ~40 hours.
 
 4. To run the learner and predictor (given data is present) (*Learner* folder)
-   3.1 Rubi Todo - describe berifely what needs to be in order to run the code, what kind of outputs are we to expect and anything else that might be relevant
-   \*Runtime:
+   
+   4.1 Rubi Todo - describe berifely what needs to be in order to run the code, what kind of outputs are we to expect and anything else that might be relevant
+   
+   4.2 Runtime:
     - Rubi Todo - what kind of runtime are we to expect (order of magnitude is enough)
     
 
