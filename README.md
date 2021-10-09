@@ -17,7 +17,7 @@ As will be detailed below, the heavy lifting of this implementation (in terms of
 ### Partner
 * Red Hat Inc.
 * https://www.redhat.com/en
-* Partners contact:
+* Partner contacts:
    * Dr. Ilya Kolchinsky, ikolchin@redhat.com
    * Gil Klein, gklein@redhat.com
 
