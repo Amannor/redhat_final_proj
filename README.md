@@ -119,13 +119,6 @@ From all the data related challeneges, the one that took the most time was to cr
 
 **Team Members (Contacts) : [Alon Mannor](https://github.com/amannor), [Rubi Arviv](https://github.com/rubiarviv)**
 
-#### Other Members:
-TODO - write Ilya and\or Gil?
-|Name     |  Slack Handle   | 
-|---------|-----------------|
-|[Full Name](https://github.com/[github handle])| @johnDoe        |
-|[Full Name](https://github.com/[github handle]) |     @janeDoe    |
-
 ## Contact
 * Feel free to contact team members with any questions or if you are interested in contributing!
 
