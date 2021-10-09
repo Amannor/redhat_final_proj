@@ -7,6 +7,7 @@ from sklearn.metrics import accuracy_score, recall_score
 import os
 import csv
 import json
+from sklearn.model_selection import GridSearchCV
 
 from datetime import datetime
 from datetime import timedelta
@@ -15,6 +16,11 @@ import numpy as np
 import pickle
 from scraper.CONSTS import SET_CONTAINING_ONLY_EMPTY_STR
 import re
+import math
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import RepeatedKFold
+from sklearn.model_selection import RepeatedStratifiedKFold
+from sklearn.metrics import classification_report, confusion_matrix
 
 github_project = 'github.com/openshift/origin/'
 src_str = re.compile(github_project, re.IGNORECASE)
@@ -350,6 +356,9 @@ def learn(is_classifier=True):
 
     # split data into X and y
 
+    # np.random.shuffle(arr_train)
+
+    # arr_train = arr_train[0:100000, :]
     X_train = arr_train[:, 1:16]
     X_validate = arr_validate[:, 1:16]
     y_train = arr_train[:, 16]
@@ -371,8 +380,14 @@ def learn(is_classifier=True):
     X_validate[:, 0] = labelencoder1.transform(X_validate[:, 0])
     X_validate[:, 2] = labelencoder3.transform(X_validate[:, 2])
 
+    label_encoder = LabelEncoder()
+    y_train = label_encoder.fit_transform(y_train)
+
+    # X_train_r = X_train
+    # y_train_r =y_train
+
     # split the train data to train and test
-    X_train, X_test, y_train, y_test = train_test_split(X_train, y_train, test_size=test_size, random_state=seed)
+    # X_train, X_test, y_train, y_test = train_test_split(X_train, y_train, test_size=test_size, random_state=seed)
 
     # fit classifier or regressor model fit and save the model to pickle file
     if is_classifier:
@@ -380,74 +395,76 @@ def learn(is_classifier=True):
         model.fit(X_train, y_train)
         pickle.dump(model, open('./output/classifier_model.pkl', 'wb'))
     else:
-        model = XGBRegressor(verbosity=2, use_label_encoder=False)
+        # # define model
+        # model = XGBClassifier()
+        # # define grid
+        # weights = [1, 10, 25, 50, 75, 99, 100, 1000]
+        # param_grid = dict(scale_pos_weight=weights)
+        # # define evaluation procedure
+        # cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
+        # # define grid search
+        # grid = GridSearchCV(estimator=model, param_grid=param_grid, n_jobs=-1, cv=cv, scoring='roc_auc')
+        # # execute the grid search
+        # label_encoder = LabelEncoder()
+        # y_train_r = label_encoder.fit_transform(y_train_r)
+        # grid_result = grid.fit(X_train_r, y_train_r)
+        # # report the best configuration
+        # print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
+        # # report all configurations
+        # means = grid_result.cv_results_['mean_test_score']
+        # stds = grid_result.cv_results_['std_test_score']
+        # params = grid_result.cv_results_['params']
+        # for mean, stdev, param in zip(means, stds, params):
+        #     print("%f (%f) with: %r" % (mean, stdev, param))
+        model = XGBRegressor(scale_pos_weight=9, use_label_encoder=False)
+        # evaluate model
         model.fit(X_train, y_train)
         pickle.dump(model, open('./output/regressor_model.pkl', 'wb'))
+
     # save the test and validate data
     pickle.dump(X_validate, open('./output/X_validate.pkl', 'wb'))
     pickle.dump(y_validate, open('./output/y_validate.pkl', 'wb'))
-    pickle.dump(X_test, open('./output/X_test.pkl', 'wb'))
-    pickle.dump(y_test, open('./output/y_test.pkl', 'wb'))
 
 
-def find_TP(y, y_hat):
-   # counts the number of true positives (y = 1, y_hat = 1)
-   return sum((y == 1) & (y_hat == 1))
-
-
-def find_FN(y, y_hat):
-   # counts the number of false negatives (y = 1, y_hat = 0) Type-II error
-   return sum((y == 1) & (y_hat == 0))
-
-
-def find_FP(y, y_hat):
-   # counts the number of false positives (y = 0, y_hat = 1) Type-I error
-   return sum((y == 0) & (y_hat == 1))
-
-
-def find_TN(y, y_hat):
-   # counts the number of true negatives (y = 0, y_hat = 0)
-   return sum((y == 0) & (y_hat == 0))
+def cut_off(x, th=0.7):
+    if x >= th:
+        return 1
+    return 0
 
 
 ##########################
 # Predict classifier
 ##########################
-def predict():
-    loaded_model = pickle.load(open('./output/classifier_model.pkl', 'rb'))
-    X_test = pickle.load(open('./output/X_test.pkl', 'rb'))
-    y_test = pickle.load(open('./output/y_test.pkl', 'rb'))
-    # make predictions for test data
-    y_pred = loaded_model.predict(X_test)
-    predictions = np.array([int(round(value)) for value in y_pred])
-    y_test=y_test.astype('int32')
-    accuracy = accuracy_score(y_test, predictions)
-    print("Validation Accuracy: %.2f%%" % (accuracy*100))
+def predict(is_classifier=True):
 
+    if is_classifier:
+        loaded_model = pickle.load(open('./output/classifier_model.pkl', 'rb'))
+        # X_test = pickle.load(open('./output/X_test.pkl', 'rb'))
+        # y_test = pickle.load(open('./output/y_test.pkl', 'rb'))
+        # # make predictions for test data
+        # y_pred = loaded_model.predict(X_test)
+        # predictions = np.array([int(round(value)) for value in y_pred])
+        #
+        # y_test = y_test.astype('int32')
+        # accuracy = accuracy_score(y_test, predictions)
+        # print("Validation Accuracy: %.2f%%" % (accuracy*100))
+
+    else:
+        loaded_model = pickle.load(open('./output/regressor_model.pkl', 'rb'))
     # make predictions for validation data
     X_validate = pickle.load(open('./output/X_validate.pkl', 'rb'))
     y_validate = pickle.load(open('./output/y_validate.pkl', 'rb'))
 
     y_pred = loaded_model.predict(X_validate)
-    predictions = np.array([int(round(value)) for value in y_pred])
-    y_validate=y_validate.astype('int32')
-    accuracy = accuracy_score(y_validate, predictions)
-    print("Test Accuracy: %.2f%%" % (accuracy*100))
+    if is_classifier:
+        predictions = np.array([int(round(value)) for value in y_pred])
+    else:
+        predictions = np.array([int(cut_off(value, 0.7)) for value in y_pred])
+    y_validate = y_validate.astype('int32')
 
-    TP = find_TP(y_validate, predictions)
-    FN = find_FN(y_validate, predictions)
-    FP = find_FP(y_validate, predictions)
-    TN = find_TN(y_validate, predictions)
-    print('TP:', TP)
-    print('FN:', FN)
-    print('FP:', FP)
-    print('TN:', TN)
-    precision = TP / (TP + FP)
-    print('Precision:', precision)
-    recall = recall_score(y_validate, predictions)
-    print('Recall: %f' % recall)
-    f1_score = 2 * ((precision * recall) / (precision + recall))
-    print('F1 score: %f' % f1_score)
+    print('confusion matrix: ')
+    print(confusion_matrix(y_validate, predictions))
+    print(classification_report(y_validate, predictions))
 
 
 if __name__ == "__main__":
@@ -456,7 +473,7 @@ if __name__ == "__main__":
     flatten_jsons()
     create_csv()
     #########################################################
-    learn()
-    predict()
+    learn(False)
+    predict(False)
 
 
