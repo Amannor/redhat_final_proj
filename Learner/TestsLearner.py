@@ -391,7 +391,7 @@ def learn(is_classifier=True):
 
     # fit classifier or regressor model fit and save the model to pickle file
     if is_classifier:
-        model = XGBClassifier(verbosity=2, use_label_encoder=False)
+        model = XGBClassifier(scale_pos_weight=9, verbosity=2, use_label_encoder=False)
         model.fit(X_train, y_train)
         pickle.dump(model, open('./output/classifier_model.pkl', 'wb'))
     else:
