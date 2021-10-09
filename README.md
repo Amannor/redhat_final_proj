@@ -17,7 +17,9 @@ As will be detailed below, the heavy lifting of this implementation (in terms of
 ### Partner
 * Red Hat Inc.
 * https://www.redhat.com/en
-* Partner contact: [Name of Contact], [slack handle of contact if any] - TODO - write Ilya's mail? (maybe also Gil's...?)
+* Partners contact:
+   * Dr. Ilya Kolchinsky, ikolchin@redhat.com
+   * Gil Klein, gklein@redhat.com
 
 ### Methods Used
 * XGBClassifier (xgboost)
