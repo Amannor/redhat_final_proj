@@ -79,7 +79,7 @@ From all the data related challeneges, the one that took the most time was to cr
     |       ├── changeset_to_tests                           # Contains files created by scraper_changeset_to_all_tests_locators_only.py
     |       ├── files_changes_history                        # Contains files created by fetch_files_history.py 
     |       └── tests_locators_to_paths                      # Contains files created by create_tests_to_paths_mapping.py
-    └── Learner                                              # Folder containing the code that processes the data files
+    ├── Learner                                              # Folder containing the code that processes the data files
     │   ├── TestLearner.py                                   # Prepares the flatten json and csv from the scraper's output, and learns and predicts using xgboost
     │   ├── requirements.txt                                 # Specifies which packages were used by files in this folder
     │   ├── learner_schema.json                              # json schema file
@@ -103,10 +103,10 @@ From all the data related challeneges, the one that took the most time was to cr
 
 4. To run the learner and predictor (given data is present) (*Learner* folder)
    
-   4.1 Rubi Todo - describe berifely what needs to be in order to run the code, what kind of outputs are we to expect and anything else that might be relevant
-   
+   4.1 In order to run the code the Learner will use all the data under scraper/sample_data folder. The Learner will first build of it a flattened json that will translated to CSV file.
+   The outputs expected are flatten_data.json, prs.csv and pkl files of the xgboost trained model and the test validation files. In the end of the test of the model the program will output the confusion matrix and classification report.
    4.2 Runtime:
-    - Rubi Todo - what kind of runtime are we to expect (order of magnitude is enough)
+    - The total runtime of the parsing + learner should take no more then few minutes, for the data collected here (around 600,000 records)
     
 
 ## Featured Notebooks/Analysis/Deliverables
