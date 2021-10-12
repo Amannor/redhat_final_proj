@@ -45,7 +45,7 @@ In more detail
 
 **Part no.1** is accomplished by scraping 2 resources (of raw metdata): the [OpenShift Github homepage](https://github.com/openshift/origin) and [the project's CI website](https://prow.ci.openshift.org/). The code that scrapes the data is in 3 different files (see below), each of which produces data files that are ready to be pre-processed and then "fed" into the ML model in part no.2
 
-\*The code for this part is in the *scraper* folder
+\*The code for part no.1 is in the *scraper* folder
 
 
 **Part no.2** is accomplished by taking the output from scraper (the former part) and parsing it. The result is a flatten json and a csv file to be used by the xgboost. The learning used for now is the XGBClassifier altough XGBRegressor is also implemented.
@@ -57,7 +57,7 @@ The data for the learning validations and tests ids is splitted in the following
 
 The flatten json, csv file ,model, validation data and test data are saved into output folder. 
    
-\*The code for this part is in the *Learner* folder
+\*The code for part no. 2 is in the *Learner* folder
 
 ## Project History and Evolution
 
