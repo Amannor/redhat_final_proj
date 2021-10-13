@@ -110,7 +110,7 @@ From all the data related challeneges, the one that took the most time was to cr
     
 
 ## Featured Notebooks/Analysis/Deliverables
-* The presentation summarizing this project can be found [here](https://github.com/Amannor/redhat_final_proj/blob/main/presentation/Demo_day_redhat_alon_rubi.pptx) (.pptx file)
+* The presentation summarizing this project can be found [here](https://github.com/Amannor/redhat_final_proj/blob/main/submission/presentation/Demo_day_redhat_alon_rubi.pptx) (.pptx file)
 * Todo - Maybe links to the data repo if we separate it [Notebook/Markdown/Slide DeckTitle](link)
 * Todo - Maybe link to the video we'll do[Blog Post](link)
 
