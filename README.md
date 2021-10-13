@@ -9,7 +9,8 @@ This is the code for the final project in the course "Workshop: Projects with th
 
 The purpose of this project is to be a POC in test prioritization as part of a CI\CD cycle.
 More specifically, in this project we aimed at showing the feasibility of a specific predictive test selection scheme in a Red Hat project.
-The test selection scheme is based on the article ["Predictive Test Selection" by Facebook reseacrh (Machalica et al., 2019)](https://research.fb.com/wp-content/uploads/2020/12/Predictive-Test-Selection.pdf) (hereinafter referd to as "the FB article").
+The test selection scheme is based on the article ["Predictive Test Selection" by Facebook reseacrh (Machalica et al., 2019)](https://research.fb.com/wp-content/uploads/2020/12/Predictive-Test-Selection.pdf) ([permalink](https://github.com/Amannor/redhat_final_proj/blob/main/Predictive_Test_Selection_Facebook_2019.pdf)) (hereinafter referd to as "the FB article").
+
 The Red Hat product we implemented this on is the [OpenShift project](https://github.com/openshift/origin).
 As will be detailed below, the heavy lifting of this implementation (in terms of coding and computation resources, run time etc.) was creating a coherent dataset of sufficient size.
 
@@ -111,7 +112,7 @@ From all the data related challeneges, the one that took the most time was to cr
 
 ## Featured Notebooks/Analysis/Deliverables
 * The presentation summarizing this project can be found [here](https://github.com/Amannor/redhat_final_proj/blob/main/submission/presentation/Demo_day_redhat_alon_rubi.pptx) (.pptx file)
-* The product requirements definition (PRD) document can be found [here](https://github.com/Amannor/redhat_final_proj/blob/main/submission/PRD/projects_workshop_PRD_redhat_alon_rubi.pdf) (pdf file)
+* The Product Requirements Definition (PRD) document can be found [here](https://github.com/Amannor/redhat_final_proj/blob/main/submission/PRD/projects_workshop_PRD_redhat_alon_rubi.pdf) (.pdf file)
 * Todo - Maybe link to the video we'll do[Blog Post](link)
 
 
