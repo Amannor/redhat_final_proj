@@ -1,5 +1,11 @@
 # Added manually
 credentials.py
+submission/final_report/*.aux
+submission/final_report/*.log
+submission/final_report/*.gz
+
+
+
 
 # Taken from: https://gist.github.com/MOOOWOOO/3cf91616c9f3bbc3d1339adfc707b08a
 
