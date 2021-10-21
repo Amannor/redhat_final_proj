@@ -70,25 +70,25 @@ From all the data related challenges, the one that took the most time was to cre
     .
     ├── README.md                                            # This file
     ├── Predictive_Test_Selection_Facebook_2019              # A copy of the Facebok article
-    └── scraper                                              # Folder containing the code that creates the data files
-        ├── fetch_files_history.py                           # Fetches changes history of the files in the OpenShift project
-        ├── create_tests_to_paths_mapping.py                 # Maps between test "locators" (i.e. the string used to run them in CI\CD) and the path of the file test (in the OpenShift Github)
-        ├── scraper_changeset_to_all_tests_locators_only.py  # Creates a list of code changesets. Each changeset is mapped to its metadata and a list of tests run on this changeset
-        ├── CONSTS.py                                        # Holds the shared configuration values and constants used by files in this folder
-        ├── requirements.txt                                 # Specifies which packages were used by files in this folder
-        └── sample_data                                      # Contains the output of python scripts
-            ├── changeset_to_tests                           # Contains files created by scraper_changeset_to_all_tests_locators_only.py
-            ├── files_changes_history                        # Contains files created by fetch_files_history.py 
-            └── tests_locators_to_paths                      # Contains files created by create_tests_to_paths_mapping.py
-    ─── Learner                                              # Folder containing the code that processes the data files
-        ├── TestLearner.py                                   # Prepares the flatten json and csv from the scraper's output, and learns and predicts using xgboost
-        ├── requirements.txt                                 # Specifies which packages were used by files in this folder
-        ├── learner_schema.json                              # json schema file
-        └── output                                           # output directory
-   ─── submission                                            # Folder containing submission related files and folders
-        ├── PRD                                              # Folder containing PRD related files
-        ├── final_report                                     # Folder containing files related to the final project
-        └── presentation                                     # Folder containing files related to the project's presentation
+    ├── scraper                                              # Folder containing the code that creates the data files
+    │   ├── fetch_files_history.py                           # Fetches changes history of the files in the OpenShift project
+    │   ├── create_tests_to_paths_mapping.py                 # Maps between test "locators" (i.e. the string used to run them in CI\CD) and the path of the file test (in the OpenShift Github)
+    │   ├── scraper_changeset_to_all_tests_locators_only.py  # Creates a list of code changesets. Each changeset is mapped to its metadata and a list of tests run on this changeset
+    │   ├── CONSTS.py                                        # Holds the shared configuration values and constants used by files in this folder
+    │   ├── requirements.txt                                 # Specifies which packages were used by files in this folder
+    │   └── sample_data                                      # Contains the output of python scripts
+    │       ├── changeset_to_tests                           # Contains files created by scraper_changeset_to_all_tests_locators_only.py
+    │       ├── files_changes_history                        # Contains files created by fetch_files_history.py 
+    │       └── tests_locators_to_paths                      # Contains files created by create_tests_to_paths_mapping.py
+    ├── Learner                                              # Folder containing the code that processes the data files
+    │    ├── TestLearner.py                                   # Prepares the flatten json and csv from the scraper's output, and learns and predicts using xgboost
+    │   ├── requirements.txt                                 # Specifies which packages were used by files in this folder
+    │   ├── learner_schema.json                              # json schema file
+    │   └── output                                           # output directory
+    ├── submission                                           # Folder containing submission related files and folders
+    │   ├── PRD                                              # Folder containing PRD related files
+    │   ├── final_report                                     # Folder containing files related to the final project
+    │   └── presentation                                     # Folder containing files related to the project's presentation
 
 
 ## Getting Started
