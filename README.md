@@ -81,7 +81,7 @@ From all the data related challenges, the one that took the most time was to cre
     │       ├── files_changes_history                        # Contains files created by fetch_files_history.py 
     │       └── tests_locators_to_paths                      # Contains files created by create_tests_to_paths_mapping.py
     ├── Learner                                              # Folder containing the code that processes the data files
-    │    ├── TestLearner.py                                   # Prepares the flatten json and csv from the scraper's output, and learns and predicts using xgboost
+    │   ├── TestLearner.py                                   # Prepares the flatten json and csv from the scraper's output, and learns and predicts using xgboost
     │   ├── requirements.txt                                 # Specifies which packages were used by files in this folder
     │   ├── learner_schema.json                              # json schema file
     │   └── output                                           # output directory
