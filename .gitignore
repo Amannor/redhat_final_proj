@@ -3,6 +3,9 @@ credentials.py
 submission/final_report/*.aux
 submission/final_report/*.log
 submission/final_report/*.gz
+submission/final_report/empty_template/*.aux
+submission/final_report/empty_template/*.log
+submission/final_report/empty_template/*.gz
 final_report_to_submit.*
 
 
