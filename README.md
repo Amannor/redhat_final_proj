@@ -7,7 +7,7 @@ This is the code for the final project in the course "Workshop: Projects with th
 
 The purpose of this project is to be a POC in test prioritization as part of a CI\CD cycle.
 More specifically, in this project we aimed at showing the feasibility of a specific predictive test selection scheme in a Red Hat project.
-The test selection scheme is based on the article ["Predictive Test Selection" by Facebook reseacrh (Machalica et al., 2019)](https://research.fb.com/wp-content/uploads/2020/12/Predictive-Test-Selection.pdf) ([permalink](https://github.com/Amannor/redhat_final_proj/blob/main/Predictive_Test_Selection_Facebook_2019.pdf)) (hereinafter referd to as "the FB article").
+The test selection scheme is based on the article ["Predictive Test Selection" by Facebook reseacrh (Machalica et al., 2019)](https://research.fb.com/wp-content/uploads/2020/12/Predictive-Test-Selection.pdf) ([permalink](https://github.com/Amannor/redhat_final_proj/blob/main/Predictive_Test_Selection_Facebook_2019.pdf)) (hereinafter referred to as "the FB article").
 
 The Red Hat product we implemented this on is the [OpenShift project](https://github.com/openshift/origin).
 As will be detailed below, the heavy lifting of this implementation (in terms of coding and computation resources, run time etc.) was creating a coherent dataset of sufficient size.
